@@ -1,0 +1,17 @@
+{
+  "tag_groups": [
+    {
+      "id": "dieta",
+      "label": "Dieta",
+      "color": "#2dd4bf",
+      "icon": "🥦",
+      "tags": [
+        {
+          "id": "proteico",
+          "label": "Proteico"
+        }
+      ]
+    }
+  ],
+  "max_upload_mb": 12
+}

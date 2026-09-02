@@ -25,6 +25,10 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) =>
 const fold = (s) => String(s ?? '').toLowerCase()
   .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
+// Gli indirizzi sono tutti relativi: così l'app funziona sia su
+// http://localhost:8790/ sia su https://utente.github.io/archivio-ricette/
+const img = (p) => String(p || '').replace(/^\//, '');
+
 const EASE = 'cubic-bezier(0.16, 1, 0.3, 1)';
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -56,19 +60,35 @@ function placeholder(r) {
 /* ── Caricamento dati ────────────────────────────────────────────── */
 
 async function boot() {
+  let cfg, list;
   try {
-    const [cfg, list] = await Promise.all([
-      fetch('/api/config').then((r) => r.json()),
-      fetch('/api/recipes').then((r) => r.json()),
-    ]);
-    state.groups  = cfg.tag_groups || [];
-    state.recipes = list.recipes || [];
-    state.groups.forEach((g) => g.tags.forEach((t) => {
-      state.tagIndex[t.id] = { label: t.label, color: g.color, group: g.id };
-    }));
+    // 1° tentativo: il server locale, che sa anche scrivere
+    const [c, l] = await Promise.all([fetch('api/config'), fetch('api/recipes')]);
+    if (!c.ok || !l.ok) throw new Error('api assente');
+    [cfg, list] = [await c.json(), await l.json()];
   } catch (e) {
-    toast('❌ Server non raggiungibile');
-    return;
+    // 2°: i file pubblicati. Nessun server dietro, quindi sola lettura.
+    state.readonly = true;
+    const v = '?v=' + Date.now();          // aggira la cache di GitHub Pages
+    try {
+      const [c, l] = await Promise.all([fetch('data/config.json' + v), fetch('data/recipes.json' + v)]);
+      if (!c.ok || !l.ok) throw new Error('dati assenti');
+      [cfg, list] = [await c.json(), await l.json()];
+    } catch (err) {
+      toast('❌ Non riesco a leggere l\'archivio');
+      return;
+    }
+  }
+
+  state.groups  = cfg.tag_groups || [];
+  state.recipes = list.recipes || [];
+  state.groups.forEach((g) => g.tags.forEach((t) => {
+    state.tagIndex[t.id] = { label: t.label, color: g.color, group: g.id };
+  }));
+
+  if (state.readonly) {
+    $('#btnNew').hidden = true;
+    $('#roBadge').hidden = false;
   }
   buildFilters();
   buildTagPicker();
@@ -76,7 +96,7 @@ async function boot() {
 }
 
 async function reload() {
-  const res = await fetch('/api/recipes');
+  const res = await fetch('api/recipes');
   state.recipes = (await res.json()).recipes || [];
   render(true);
 }
@@ -164,7 +184,7 @@ function cardHTML(r, i) {
     ? `<span class="mini-tag more">+${r.tags.length - 3}</span>` : '';
 
   const media = r.image
-    ? `<img src="${esc(r.image)}" alt="" loading="lazy">`
+    ? `<img src="${esc(img(r.image))}" alt="" loading="lazy">`
     : placeholder(r);
 
   const time = r.time_min ? `<div class="rc-time">⏱ ${r.time_min}′</div>` : '';
@@ -175,8 +195,10 @@ function cardHTML(r, i) {
         ${media}
         <div class="rc-sheen"></div>
         ${time}
-        <button class="rc-fav${r.favorite ? ' on' : ''}" data-fav="${r.id}"
-                title="Preferita" aria-label="Preferita">${r.favorite ? '★' : '☆'}</button>
+        ${state.readonly
+          ? (r.favorite ? '<div class="rc-fav on static">★</div>' : '')
+          : `<button class="rc-fav${r.favorite ? ' on' : ''}" data-fav="${r.id}"
+                title="Preferita" aria-label="Preferita">${r.favorite ? '★' : '☆'}</button>`}
       </div>
       <div class="rc-body">
         <h3 class="rc-name">${esc(r.name)}</h3>
@@ -200,10 +222,12 @@ function render(animate) {
   if (!list.length) {
     const virgin = state.recipes.length === 0;
     $('#empty .empty-title').textContent = virgin ? 'Archivio vuoto' : 'Nessun risultato';
-    $('#emptySub').textContent = virgin
-      ? "Aggiungi la prima ricetta e comincia a costruire l'archivio."
-      : 'Prova a cambiare filtri o testo di ricerca.';
-    $('#btnNewEmpty').hidden = !virgin;
+    $('#emptySub').textContent = !virgin
+      ? 'Prova a cambiare filtri o testo di ricerca.'
+      : state.readonly
+        ? 'Nessuna ricetta pubblicata per ora.'
+        : "Aggiungi la prima ricetta e comincia a costruire l'archivio.";
+    $('#btnNewEmpty').hidden = !virgin || state.readonly;
   }
 
   const tot = state.recipes.length;
@@ -315,7 +339,7 @@ function openDetail(id, fromEl) {
   }).join('');
 
   const hero = r.image
-    ? `<img src="${esc(r.image)}" alt="">`
+    ? `<img src="${esc(img(r.image))}" alt="">`
     : placeholder(r);
 
   const pills = [
@@ -345,6 +369,7 @@ function openDetail(id, fromEl) {
 
   $('#detailInner').innerHTML = `
     <div class="dt-bar"><div class="dt-tools">
+        ${state.readonly ? '' : `
         <button class="icon-btn${r.favorite ? ' on' : ''}" data-act="fav" title="Preferita">
           <span style="font-size:1rem;line-height:1">${r.favorite ? '★' : '☆'}</span>
         </button>
@@ -352,7 +377,7 @@ function openDetail(id, fromEl) {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"></path>
           </svg>
-        </button>
+        </button>`}
         <button class="icon-btn close" data-act="close" title="Chiudi (Esc)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
         </button>
@@ -403,8 +428,9 @@ $('#detail').addEventListener('click', async (e) => {
 /* ── Preferiti ───────────────────────────────────────────────────── */
 
 async function toggleFav(id) {
+  if (state.readonly) return null;
   try {
-    const res = await fetch(`/api/recipes/${id}/favorite`, { method: 'POST' });
+    const res = await fetch(`api/recipes/${id}/favorite`, { method: 'POST' });
     if (!res.ok) throw 0;
     const updated = await res.json();
     const i = state.recipes.findIndex((r) => r.id === id);
@@ -563,11 +589,11 @@ async function uploadImage(file) {
     const small = await shrink(file);
     const fd = new FormData();
     fd.append('image', small, small.name || 'foto.jpg');
-    const res = await fetch('/api/images', { method: 'POST', body: fd });
+    const res = await fetch('api/images', { method: 'POST', body: fd });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'upload fallito');
     state.draftImg = data.url;
-    $('#dzPreview').src = data.url;
+    $('#dzPreview').src = img(data.url);
   } catch (err) {
     toast('❌ ' + (err.message || 'Caricamento non riuscito'));
     clearImage();
@@ -633,7 +659,7 @@ function openEditor(recipe, origin) {
   clearImage();
   if (recipe?.image) {
     state.draftImg = recipe.image;
-    $('#dzPreview').src = recipe.image;
+    $('#dzPreview').src = img(recipe.image);
     $('#drop').classList.add('has-img');
     $('#dzRemove').hidden = false;
   }
@@ -675,7 +701,7 @@ async function saveRecipe(e) {
   btn.disabled = true;
   try {
     const editing = state.editing;
-    const res = await fetch(editing ? `/api/recipes/${editing.id}` : '/api/recipes', {
+    const res = await fetch(editing ? `api/recipes/${editing.id}` : 'api/recipes', {
       method: editing ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -702,7 +728,7 @@ async function deleteRecipe() {
     return;
   }
   try {
-    const res = await fetch(`/api/recipes/${state.editing.id}`, { method: 'DELETE' });
+    const res = await fetch(`api/recipes/${state.editing.id}`, { method: 'DELETE' });
     if (!res.ok) throw 0;
     closeSheet();
     await reload();
@@ -786,7 +812,7 @@ document.addEventListener('keydown', (e) => {
   if (typing || state.openSheet) return;
 
   if (e.key === '/') { e.preventDefault(); $('#search').focus(); }
-  if (e.key.toLowerCase() === 'n') { e.preventDefault(); openEditor(null, $('#btnNew')); }
+  if (e.key.toLowerCase() === 'n' && !state.readonly) { e.preventDefault(); openEditor(null, $('#btnNew')); }
 });
 
 setupDropzone();

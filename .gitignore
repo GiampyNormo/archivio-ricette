@@ -1,8 +1,7 @@
-# I dati sono tuoi e restano sul Mac: su GitHub va solo il codice.
-recipes.json
-recipes.bak.json
-images/*
-!images/.gitkeep
+# Ricette e foto vengono pubblicate di proposito: sono loro
+# che il telefono legge dal sito. Fuori solo scarti e backup.
+docs/data/recipes.bak.json
+docs/data/*.tmp
 
 .DS_Store
 __pycache__/

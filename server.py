@@ -20,11 +20,16 @@ from pathlib import Path
 
 from flask import Flask, abort, jsonify, request, send_from_directory
 
+# Il sito sta in docs/ perché è la cartella che GitHub Pages pubblica.
+# Ricette e foto vivono lì dentro: il server scrive già dove il sito legge,
+# così "pubblicare" è solo un git push, senza copiare niente in giro.
 BASE_DIR   = Path(__file__).parent
-WEB_DIR    = BASE_DIR / "web"
-IMG_DIR    = BASE_DIR / "images"
-DATA_FILE  = BASE_DIR / "recipes.json"
-BAK_FILE   = BASE_DIR / "recipes.bak.json"
+WEB_DIR    = BASE_DIR / "docs"
+DATA_DIR   = WEB_DIR / "data"
+IMG_DIR    = WEB_DIR / "images"
+DATA_FILE  = DATA_DIR / "recipes.json"
+CFG_FILE   = DATA_DIR / "config.json"
+BAK_FILE   = DATA_DIR / "recipes.bak.json"
 PORT       = 8790
 
 MAX_UPLOAD_MB = 12
@@ -75,6 +80,17 @@ def tag_index():
     return idx
 
 
+def config_payload():
+    return {"tag_groups": tags_payload(), "max_upload_mb": MAX_UPLOAD_MB}
+
+
+def write_static_config():
+    """La versione pubblicata non ha un server: i tag glieli lasciamo su file."""
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    with CFG_FILE.open("w", encoding="utf-8") as f:
+        json.dump(config_payload(), f, ensure_ascii=False, indent=2)
+
+
 def tags_payload():
     return [
         {
@@ -113,7 +129,8 @@ def save_recipes(recipes):
         except OSError:
             pass
     payload = {"version": 1, "updated_at": now_iso(), "recipes": recipes}
-    fd, tmp = tempfile.mkstemp(dir=str(BASE_DIR), suffix=".tmp")
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=str(DATA_DIR), suffix=".tmp")
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as f:
             json.dump(payload, f, ensure_ascii=False, indent=2)
@@ -229,7 +246,7 @@ def images(filename):
 
 @app.route("/api/config")
 def api_config():
-    return jsonify({"tag_groups": tags_payload(), "max_upload_mb": MAX_UPLOAD_MB})
+    return jsonify(config_payload())
 
 
 @app.route("/api/recipes")
@@ -293,7 +310,7 @@ def api_upload():
     if ext not in ALLOWED_EXT:
         abort(400, "Formato immagine non supportato")
     name = "%s-%s.%s" % (time.strftime("%Y%m%d"), uuid.uuid4().hex[:10], ext)
-    IMG_DIR.mkdir(exist_ok=True)
+    IMG_DIR.mkdir(parents=True, exist_ok=True)
     file.save(str(IMG_DIR / name))
     return jsonify({"url": "/images/" + name})
 
@@ -326,7 +343,8 @@ if __name__ == "__main__":
     parser.add_argument("--port", type=int, default=PORT)
     args = parser.parse_args()
 
-    IMG_DIR.mkdir(exist_ok=True)
+    IMG_DIR.mkdir(parents=True, exist_ok=True)
+    write_static_config()
     host = "127.0.0.1" if args.local else "0.0.0.0"
 
     print("\n  🍳  ARCHIVIO RICETTE")

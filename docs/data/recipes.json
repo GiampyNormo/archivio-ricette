@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "updated_at": "2026-09-02T15:55:50+00:00",
+  "recipes": [
+    {
+      "id": "97dea9c8ef56",
+      "name": "Frittata di zucchine",
+      "image": "/images/20260902-bad67dadeb.png",
+      "tags": [
+        "proteico"
+      ],
+      "ingredients": [
+        "4 uova",
+        "2 zucchine",
+        "Parmigiano"
+      ],
+      "steps": [
+        "Fai appassire le zucchine.",
+        "Sbatti le uova e versa.",
+        "Cuoci 5 minuti per lato."
+      ],
+      "notes": "",
+      "servings": 2,
+      "time_min": 20,
+      "favorite": false,
+      "created_at": "2026-09-02T15:49:52+00:00",
+      "updated_at": "2026-09-02T15:55:50+00:00"
+    },
+    {
+      "id": "5cafe3efb174",
+      "name": "Pasta al pesto di pistacchi",
+      "image": null,
+      "tags": [],
+      "ingredients": [
+        "320 g di linguine",
+        "120 g di pistacchi",
+        "Pecorino"
+      ],
+      "steps": [
+        "Frulla il pesto.",
+        "Cuoci la pasta.",
+        "Manteca con acqua di cottura."
+      ],
+      "notes": "",
+      "servings": 4,
+      "time_min": 20,
+      "favorite": false,
+      "created_at": "2026-09-02T15:49:52+00:00",
+      "updated_at": "2026-09-02T15:49:52+00:00"
+    },
+    {
+      "id": "0a4ee5a49363",
+      "name": "Porridge ai frutti rossi",
+      "image": null,
+      "tags": [
+        "proteico"
+      ],
+      "ingredients": [
+        "60 g di avena",
+        "250 ml di latte",
+        "Frutti di bosco"
+      ],
+      "steps": [
+        "Scalda avena e latte.",
+        "Completa con la frutta."
+      ],
+      "notes": "",
+      "servings": 1,
+      "time_min": 8,
+      "favorite": true,
+      "created_at": "2026-09-02T15:49:52+00:00",
+      "updated_at": "2026-09-02T15:49:52+00:00"
+    }
+  ]
+}

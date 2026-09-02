@@ -1,22 +1,26 @@
 # 🍳 Archivio Ricette
 
-Archivio locale delle ricette di casa. I dati restano sul tuo Mac: nessun account, nessun cloud.
+Archivio delle ricette di casa. Vive in due forme, con lo stesso codice:
 
-## Avviare
+| | Dove | Cosa puoi fare |
+|---|---|---|
+| **Archivio** | server sul Mac | aggiungi, modifichi, elimini, carichi foto |
+| **Sfoglia** | GitHub Pages | apri il link da qualsiasi telefono e leggi, anche fuori casa |
 
-Doppio click su **`avvia.command`** — parte il server e si apre il browser.
+Il flusso è: **scrivi sul Mac → pubblichi → sfogli ovunque.**
 
-Da terminale, in alternativa:
+## Scrivere (sul Mac)
 
-```bash
-python3 server.py
-```
+Doppio click su **`avvia.command`**. Da terminale: `python3 server.py`.
 
-- Su questo Mac → <http://localhost:8790>
-- Dal telefono (stessa Wi-Fi) → l'indirizzo `http://192.168.x.x:8790` che compare all'avvio
+- Qui → <http://localhost:8790>
+- Dal telefono in Wi-Fi → l'indirizzo `192.168.x.x:8790` stampato all'avvio (versione completa, scrittura inclusa)
+- Solo questo computer → `python3 server.py --local`
 
-Chi è collegato alla tua rete può aprire l'archivio e modificarlo. Per chiuderlo solo a questo computer:
-`python3 server.py --local`
+## Pubblicare
+
+Doppio click su **`pubblica.command`**: manda online le ricette nuove e ti ristampa il link.
+Passa un minuto o due prima che il sito si aggiorni.
 
 ## Usare
 
@@ -28,14 +32,14 @@ Chi è collegato alla tua rete può aprire l'archivio e modificarlo. Per chiuder
 | Preferite | ☆ sulla card o nel dettaglio |
 | Cercare | Campo in alto (o tasto `/`) — cerca in nome, ingredienti, passaggi |
 | Filtrare | Chip dei tag: più tag dello **stesso gruppo** = OR, gruppi **diversi** = AND |
-| Spuntare gli ingredienti | Click sulla riga mentre cucini |
+| Spuntare gli ingredienti | Click sulla riga mentre cucini (funziona anche dal telefono) |
 | Chiudere | `Esc` o click fuori |
 
 **Foto**: trascina un file sul riquadro, cliccalo per scegliere dal Mac, oppure incolla con `⌘V`.
-Le immagini vengono rimpicciolite prima del salvataggio, così l'archivio resta leggero.
+Vengono rimpicciolite prima del salvataggio, così l'archivio resta leggero.
 
 **Ingredienti e procedimento**: `Invio` crea la riga successiva, `Backspace` su una riga vuota la cancella.
-Con **Incolla lista** puoi buttare dentro tutto un elenco copiato da un sito e viene diviso riga per riga.
+Con **Incolla lista** puoi buttare dentro un elenco copiato da un sito e viene diviso riga per riga.
 
 ## Aggiungere tag
 
@@ -43,7 +47,7 @@ Per ora c'è un tag solo, **Proteico**: la lista vera arriva quando l'hai decisa
 
 I tag stanno nel server, non nell'interfaccia: quando inserisci una ricetta puoi solo sceglierli
 dall'elenco, mai crearne di nuovi. Per aggiungerne uno apri `server.py`, cerca il blocco
-`TAG_GROUPS` (in cima al file, ben segnalato) e aggiungi una riga al gruppo giusto:
+`TAG_GROUPS` (in cima al file, ben segnalato) e aggiungi una riga:
 
 ```python
 ("id-univoco", "Etichetta visibile"),
@@ -51,24 +55,29 @@ dall'elenco, mai crearne di nuovi. Per aggiungerne uno apri `server.py`, cerca i
 
 L'`id` non va più cambiato una volta usato — è quello salvato dentro le ricette.
 L'etichetta invece si può riscrivere quando vuoi. Riavvia il server e il tag compare
-sia nei filtri sia nel form.
-
-Per un gruppo nuovo, copia un blocco intero e cambia `id`, `label`, `color`, `icon`.
+sia nei filtri sia nel form. Per un gruppo nuovo, copia un blocco e cambia `id`, `label`, `color`, `icon`.
 
 ## File
 
 ```
-server.py        server + elenco dei tag
-web/             interfaccia (html, css, js)
-recipes.json     le ricette          ← il file da salvare se fai un backup
-recipes.bak.json copia automatica della versione precedente
-images/          le foto
+server.py                   server + elenco dei tag
+pubblica.command            manda online le ricette nuove
+avvia.command               apre l'archivio sul Mac
+docs/                       il sito — è la cartella che GitHub Pages pubblica
+  index.html style.css app.js
+  data/recipes.json         le ricette      ← il file da salvare se fai un backup
+  data/config.json          i tag, riscritto a ogni avvio del server
+  images/                   le foto
 ```
 
-Ricette e foto restano solo sul tuo Mac: `.gitignore` le tiene fuori dal repository.
+Il server scrive già dentro `docs/`, dove il sito legge: pubblicare è solo un `git push`,
+non c'è niente da copiare a mano.
 
-```
-```
+## Da sapere
+
+Il repository è pubblico, quindi **ricette e foto sono visibili a chiunque abbia il link**.
+È la condizione per poterle sfogliare dal telefono senza login. Se un giorno preferisci il contrario,
+si passa a repository privato e si rinuncia al link (resta l'accesso in Wi-Fi di casa).
 
 ## Prossimo passo
 
