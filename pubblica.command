@@ -9,7 +9,7 @@ echo "  ────────────────────────
 if [ -z "$(git status --porcelain)" ]; then
   echo "  Non c'è niente di nuovo da pubblicare."
   echo ""
-  read -n 1 -s -r -p "  Premi un tasto per chiudere."
+  read -n 1 -s -r -p "  Premi un tasto per chiudere." || true
   exit 0
 fi
 
@@ -30,4 +30,4 @@ fi
 
 echo "  ────────────────────────────────────────────"
 echo ""
-read -n 1 -s -r -p "  Premi un tasto per chiudere."
+read -n 1 -s -r -p "  Premi un tasto per chiudere." || true
