@@ -1,0 +1,9 @@
+# I dati sono tuoi e restano sul Mac: su GitHub va solo il codice.
+recipes.json
+recipes.bak.json
+images/*
+!images/.gitkeep
+
+.DS_Store
+__pycache__/
+*.pyc

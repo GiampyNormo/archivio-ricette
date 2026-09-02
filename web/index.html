@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#070b0d">
+  <title>Archivio Ricette</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍳</text></svg>">
+</head>
+<body>
+
+<div class="bg-glow g1"></div>
+<div class="bg-glow g2"></div>
+<div class="bg-glow g3"></div>
+
+<div class="app">
+
+  <!-- ── Topbar ── -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">🍳</div>
+      <div class="brand-text">
+        <div class="brand-name">Archivio <span>Ricette</span></div>
+        <div class="brand-sub">Cucina di casa</div>
+      </div>
+    </div>
+
+    <div class="search-wrap">
+      <svg class="search-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path>
+      </svg>
+      <input id="search" type="search" placeholder="Cerca per nome o ingrediente…" autocomplete="off" spellcheck="false">
+      <kbd class="search-kbd">/</kbd>
+    </div>
+
+    <button class="btn-new" id="btnNew">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+        <path d="M12 5v14M5 12h14"></path>
+      </svg>
+      <span>Nuova ricetta</span>
+    </button>
+  </header>
+
+  <!-- ── Filtri ── -->
+  <section class="filters">
+    <div class="filter-row" id="filterRow"></div>
+    <div class="filter-meta">
+      <span id="countLabel" class="count-label">—</span>
+      <div class="meta-right">
+        <button class="mini-toggle" id="btnFav" title="Solo preferite">★ Preferite</button>
+        <div class="select-wrap">
+          <select id="sort">
+            <option value="recent">Più recenti</option>
+            <option value="name">Nome A–Z</option>
+            <option value="time">Più veloci</option>
+          </select>
+        </div>
+        <button class="mini-toggle ghost" id="btnClear" hidden>Azzera filtri</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Griglia ── -->
+  <main class="grid" id="grid"></main>
+
+  <div class="empty" id="empty" hidden>
+    <div class="empty-mark">🥘</div>
+    <div class="empty-title">Nessuna ricetta qui</div>
+    <div class="empty-sub" id="emptySub">Aggiungi la prima e comincia a costruire l'archivio.</div>
+    <button class="btn-new solo" id="btnNewEmpty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"></path></svg>
+      <span>Nuova ricetta</span>
+    </button>
+  </div>
+
+  <footer class="foot">
+    <span class="foot-soon">📅 Calendario settimanale · in arrivo</span>
+  </footer>
+
+</div>
+
+<!-- ── Dettaglio ricetta ── -->
+<div class="scrim" id="scrim"></div>
+
+<div class="sheet" id="detail" hidden>
+  <div class="sheet-inner" id="detailInner"></div>
+</div>
+
+<!-- ── Editor ── -->
+<div class="sheet editor" id="editor" hidden>
+  <div class="sheet-inner">
+    <form id="form" autocomplete="off">
+      <header class="ed-head">
+        <div>
+          <div class="ed-eyebrow" id="edEyebrow">Nuova ricetta</div>
+          <input class="ed-name" id="fName" name="name" type="text" placeholder="Nome della ricetta" maxlength="120" required>
+        </div>
+        <button type="button" class="icon-btn close" id="edClose" title="Chiudi (Esc)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </header>
+
+      <div class="ed-body">
+        <div class="ed-col">
+          <!-- Foto -->
+          <label class="lbl">Foto</label>
+          <div class="dropzone" id="drop" tabindex="0">
+            <input type="file" id="fImage" accept="image/*" hidden>
+            <div class="dz-empty">
+              <div class="dz-ic">🖼️</div>
+              <div class="dz-txt">Trascina una foto<br><span>oppure clicca · incolla con ⌘V</span></div>
+            </div>
+            <img class="dz-preview" id="dzPreview" alt="">
+            <button type="button" class="dz-remove" id="dzRemove" hidden title="Rimuovi foto">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+            </button>
+            <div class="dz-progress" id="dzProgress" hidden><div class="dz-bar"></div></div>
+          </div>
+
+          <!-- Numeri -->
+          <div class="num-row">
+            <div class="num-field">
+              <label class="lbl" for="fTime">Tempo</label>
+              <div class="num-input">
+                <input id="fTime" type="number" min="1" max="1440" placeholder="—" inputmode="numeric">
+                <span>min</span>
+              </div>
+            </div>
+            <div class="num-field">
+              <label class="lbl" for="fServings">Porzioni</label>
+              <div class="num-input">
+                <input id="fServings" type="number" min="1" max="50" placeholder="—" inputmode="numeric">
+                <span>pers.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tag -->
+          <label class="lbl" id="tagLabel">Tag <em>· scelti dall'elenco</em></label>
+          <div class="tag-picker" id="tagPicker"></div>
+        </div>
+
+        <div class="ed-col">
+          <!-- Ingredienti -->
+          <div class="list-head">
+            <label class="lbl">Ingredienti</label>
+            <button type="button" class="link-btn" data-bulk="ing">Incolla lista</button>
+          </div>
+          <div class="line-list" id="ingList"></div>
+          <textarea class="bulk" id="ingBulk" hidden placeholder="Incolla qui gli ingredienti, uno per riga…"></textarea>
+          <button type="button" class="add-line" data-add="ing">+ Ingrediente</button>
+
+          <!-- Procedimento -->
+          <div class="list-head">
+            <label class="lbl">Procedimento</label>
+            <button type="button" class="link-btn" data-bulk="step">Incolla lista</button>
+          </div>
+          <div class="line-list steps" id="stepList"></div>
+          <textarea class="bulk" id="stepBulk" hidden placeholder="Incolla qui i passaggi, uno per riga…"></textarea>
+          <button type="button" class="add-line" data-add="step">+ Passaggio</button>
+
+          <!-- Note -->
+          <label class="lbl">Note <em>· facoltative</em></label>
+          <textarea id="fNotes" class="notes" rows="3" maxlength="2000" placeholder="Varianti, sostituzioni, cosa ha funzionato…"></textarea>
+        </div>
+      </div>
+
+      <footer class="ed-foot">
+        <button type="button" class="btn-danger" id="edDelete" hidden>Elimina</button>
+        <div class="ed-actions">
+          <button type="button" class="btn-ghost" id="edCancel">Annulla</button>
+          <button type="submit" class="btn-primary" id="edSave">Salva ricetta</button>
+        </div>
+      </footer>
+    </form>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
