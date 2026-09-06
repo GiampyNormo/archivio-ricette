@@ -59,15 +59,36 @@ function placeholder(r) {
 
 /* ── Caricamento dati ────────────────────────────────────────────── */
 
+/**
+ * Cerca il server locale. Distingue due fallimenti molto diversi:
+ * una risposta 404 vuol dire host statico (GitHub Pages) e non ha senso
+ * insistere; un errore di rete invece può essere il server che sta ancora
+ * partendo, e lì vale la pena riprovare — altrimenti l'archivio sul Mac
+ * si bloccherebbe in sola lettura solo per aver aperto il browser troppo presto.
+ */
+async function findServer(tentativi = 4) {
+  for (let i = 0; i < tentativi; i++) {
+    try {
+      const [c, l] = await Promise.all([fetch('api/config'), fetch('api/recipes')]);
+      if (c.status === 404 || l.status === 404) return null;   // sito pubblicato
+      if (!c.ok || !l.ok) throw new Error('api incompleta');
+      return [await c.json(), await l.json()];
+    } catch (e) {
+      if (i === tentativi - 1) return null;
+      await new Promise((r) => setTimeout(r, 300 + i * 400));
+    }
+  }
+  return null;
+}
+
 async function boot() {
   let cfg, list;
-  try {
-    // 1° tentativo: il server locale, che sa anche scrivere
-    const [c, l] = await Promise.all([fetch('api/config'), fetch('api/recipes')]);
-    if (!c.ok || !l.ok) throw new Error('api assente');
-    [cfg, list] = [await c.json(), await l.json()];
-  } catch (e) {
-    // 2°: i file pubblicati. Nessun server dietro, quindi sola lettura.
+  const dalServer = await findServer();
+
+  if (dalServer) {
+    [cfg, list] = dalServer;
+  } else {
+    // Nessun server dietro: leggo i file pubblicati e passo in sola lettura.
     state.readonly = true;
     const v = '?v=' + Date.now();          // aggira la cache di GitHub Pages
     try {
@@ -75,7 +96,9 @@ async function boot() {
       if (!c.ok || !l.ok) throw new Error('dati assenti');
       [cfg, list] = [await c.json(), await l.json()];
     } catch (err) {
-      toast('❌ Non riesco a leggere l\'archivio');
+      toast(location.protocol === 'file:'
+        ? '📂 Hai aperto il file direttamente. Per usare l\'archivio lancia avvia.command.'
+        : '❌ Non riesco a leggere l\'archivio');
       return;
     }
   }
@@ -86,8 +109,10 @@ async function boot() {
     state.tagIndex[t.id] = { label: t.label, color: g.color, group: g.id };
   }));
 
-  if (state.readonly) {
-    $('#btnNew').hidden = true;
+  if (!state.readonly) {
+    $('#btnNew').hidden = false;
+    $('#btnNew').classList.add('pop');     // entra in dissolvenza, non di scatto
+  } else {
     const badge = $('#roBadge');
     badge.hidden = false;
     badge.title = 'Perché non posso aggiungere ricette?';

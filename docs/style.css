@@ -135,6 +135,8 @@ body::before {
 .btn-new:hover svg { transform: rotate(90deg); }
 .btn-new:active { transform: translateY(0) scale(0.97); }
 .btn-new.solo { margin-top: 22px; }
+.btn-new.pop { animation: btnIn .34s var(--ease); }
+@keyframes btnIn { from { opacity: 0; transform: scale(.9); } to { opacity: 1; transform: none; } }
 
 /* ── Filtri ── */
 .filters { margin-bottom: 26px; }
