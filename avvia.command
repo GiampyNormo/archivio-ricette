@@ -5,6 +5,10 @@ cd "$(dirname "$0")"
 PY=/usr/bin/python3
 PORTA=8790
 
+# Le ricette aggiunte dal link stanno su GitHub: prima di partire ci si
+# riallinea, altrimenti la copia locale mostrerebbe un archivio vecchio.
+git pull --rebase --autostash -q 2>/dev/null || true
+
 if ! $PY -c "import flask" 2>/dev/null; then
   echo "Manca Flask. Lo installo…"
   $PY -m pip install --user flask || { echo "Installazione non riuscita."; read -r; exit 1; }

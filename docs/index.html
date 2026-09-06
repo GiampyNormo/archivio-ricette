@@ -38,6 +38,13 @@
       <kbd class="search-kbd">/</kbd>
     </div>
 
+    <button class="icon-btn key" id="btnKey" hidden title="Attiva la scrittura da qui">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="7.5" cy="15.5" r="4.5"></circle><path d="M10.7 12.3L20 3"></path>
+        <path d="M17 6l2.5 2.5"></path>
+      </svg>
+    </button>
+
     <!-- Parte nascosto e lo mostra l'avvio solo dove si può davvero scrivere:
          se partisse visibile lampeggerebbe a ogni caricamento del sito pubblicato. -->
     <button class="btn-new" id="btnNew" hidden>
@@ -75,8 +82,11 @@
     <div class="empty-title">Nessuna ricetta qui</div>
     <div class="empty-sub" id="emptySub">Aggiungi la prima e comincia a costruire l'archivio.</div>
     <button class="btn-new solo" id="btnNewEmpty">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"></path></svg>
-      <span>Nuova ricetta</span>
+      <svg class="ic-piu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"></path></svg>
+      <svg class="ic-chiave" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" hidden>
+        <circle cx="7.5" cy="15.5" r="4.5"></circle><path d="M10.7 12.3L20 3"></path><path d="M17 6l2.5 2.5"></path>
+      </svg>
+      <span class="lbl-txt">Nuova ricetta</span>
     </button>
   </div>
 
@@ -183,8 +193,59 @@
   </div>
 </div>
 
+<!-- ── Chiave GitHub ── -->
+<div class="sheet" id="setup" hidden>
+  <div class="sheet-inner">
+    <header class="ed-head">
+      <div>
+        <div class="ed-eyebrow">Scrivere da qui</div>
+        <div class="setup-title">Collega il tuo GitHub</div>
+      </div>
+      <button type="button" class="icon-btn close" id="setupClose" title="Chiudi (Esc)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+    </header>
+
+    <div class="setup-body">
+      <p class="setup-p">
+        Questa pagina salva le ricette dentro il tuo archivio su GitHub. Per farlo le serve
+        il permesso, che si dà una volta sola con una <b>chiave</b>. La chiave resta
+        in questo browser: non finisce online e nessun altro la vede.
+      </p>
+
+      <ol class="setup-steps">
+        <li>Apri <a id="setupLink" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">la pagina delle chiavi su GitHub</a>.</li>
+        <li><b>Token name</b>: scrivi <code>Archivio Ricette</code>.</li>
+        <li><b>Expiration</b>: scegli una scadenza lunga, o nessuna.</li>
+        <li><b>Repository access</b>: <i>Only select repositories</i> → scegli <code id="setupRepo">archivio-ricette</code>.</li>
+        <li><b>Permissions</b> → <i>Repository permissions</i> → <b>Contents</b> → <i>Read and write</i>.</li>
+        <li><b>Generate token</b>, copia quello che compare e incollalo qui sotto.</li>
+      </ol>
+
+      <label class="lbl" for="setupToken">La chiave</label>
+      <input type="password" id="setupToken" class="setup-input" placeholder="github_pat_…"
+             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <div class="setup-msg" id="setupMsg"></div>
+
+      <p class="setup-nota">
+        Se un giorno vuoi revocarla, si cancella dalla stessa pagina di GitHub.
+        Non serve mandarla a nessuno, nemmeno a me.
+      </p>
+    </div>
+
+    <footer class="ed-foot">
+      <button type="button" class="btn-danger" id="setupForget" hidden>Scollega</button>
+      <div class="ed-actions">
+        <button type="button" class="btn-ghost" id="setupCancel">Annulla</button>
+        <button type="button" class="btn-primary" id="setupSave">Attiva</button>
+      </div>
+    </footer>
+  </div>
+</div>
+
 <div id="toast"></div>
 
+<script src="store.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

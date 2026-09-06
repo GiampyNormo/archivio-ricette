@@ -6,6 +6,8 @@ echo ""
 echo "  📤  PUBBLICO L'ARCHIVIO"
 echo "  ────────────────────────────────────────────"
 
+git pull --rebase --autostash -q 2>/dev/null || true
+
 CAMBI=$(git status --porcelain)
 # Anche i commit già fatti ma mai inviati vanno pubblicati: se un push
 # fallisce (rete assente) restano qui, e senza questo controllo il comando

@@ -27,7 +27,7 @@ const fold = (s) => String(s ?? '').toLowerCase()
 
 // Gli indirizzi sono tutti relativi: così l'app funziona sia su
 // http://localhost:8790/ sia su https://utente.github.io/archivio-ricette/
-const img = (p) => String(p || '').replace(/^\//, '');
+const img = (p) => store.urlFoto(p);
 
 const EASE = 'cubic-bezier(0.16, 1, 0.3, 1)';
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -59,76 +59,51 @@ function placeholder(r) {
 
 /* ── Caricamento dati ────────────────────────────────────────────── */
 
-/**
- * Cerca il server locale. Distingue due fallimenti molto diversi:
- * una risposta 404 vuol dire host statico (GitHub Pages) e non ha senso
- * insistere; un errore di rete invece può essere il server che sta ancora
- * partendo, e lì vale la pena riprovare — altrimenti l'archivio sul Mac
- * si bloccherebbe in sola lettura solo per aver aperto il browser troppo presto.
- */
-async function findServer(tentativi = 4) {
-  for (let i = 0; i < tentativi; i++) {
-    try {
-      const [c, l] = await Promise.all([fetch('api/config'), fetch('api/recipes')]);
-      if (c.status === 404 || l.status === 404) return null;   // sito pubblicato
-      if (!c.ok || !l.ok) throw new Error('api incompleta');
-      return [await c.json(), await l.json()];
-    } catch (e) {
-      if (i === tentativi - 1) return null;
-      await new Promise((r) => setTimeout(r, 300 + i * 400));
-    }
-  }
-  return null;
-}
-
 async function boot() {
-  let cfg, list;
-  const dalServer = await findServer();
-
-  if (dalServer) {
-    [cfg, list] = dalServer;
-  } else {
-    // Nessun server dietro: leggo i file pubblicati e passo in sola lettura.
-    state.readonly = true;
-    const v = '?v=' + Date.now();          // aggira la cache di GitHub Pages
-    try {
-      const [c, l] = await Promise.all([fetch('data/config.json' + v), fetch('data/recipes.json' + v)]);
-      if (!c.ok || !l.ok) throw new Error('dati assenti');
-      [cfg, list] = [await c.json(), await l.json()];
-    } catch (err) {
-      toast(location.protocol === 'file:'
-        ? '📂 Hai aperto il file direttamente. Per usare l\'archivio lancia avvia.command.'
-        : '❌ Non riesco a leggere l\'archivio');
-      return;
-    }
+  let dati;
+  try {
+    dati = await store.load();
+  } catch (e) {
+    toast(location.protocol === 'file:'
+      ? '📂 Hai aperto il file direttamente. Apri invece il link dell\'archivio.'
+      : '❌ Non riesco a leggere l\'archivio');
+    return;
   }
 
-  state.groups  = cfg.tag_groups || [];
-  state.recipes = list.recipes || [];
+  state.groups   = dati.cfg.tag_groups || [];
+  state.recipes  = dati.recipes || [];
   state.groups.forEach((g) => g.tags.forEach((t) => {
     state.tagIndex[t.id] = { label: t.label, color: g.color, group: g.id };
   }));
 
-  if (!state.readonly) {
-    $('#btnNew').hidden = false;
-    $('#btnNew').classList.add('pop');     // entra in dissolvenza, non di scatto
-  } else {
-    const badge = $('#roBadge');
-    badge.hidden = false;
-    badge.title = 'Perché non posso aggiungere ricette?';
-    badge.addEventListener('click', () => toast(
-      '👀 Questa è la copia pubblicata: qui si sfoglia e basta. ' +
-      'Le ricette si aggiungono dal Mac, con avvia.command.'));
-  }
+  aggiornaModo();
+  if (store.erroreChiave) toast('⚠️ ' + store.erroreChiave);
+
   buildFilters();
   buildTagPicker();
   render(true);
 }
 
 async function reload() {
-  const res = await fetch('api/recipes');
-  state.recipes = (await res.json()).recipes || [];
+  state.recipes = await store.list();
   render(true);
+}
+
+/** Mostra o nasconde i comandi di scrittura secondo il deposito attivo. */
+function aggiornaModo() {
+  state.readonly = !store.puoScrivere();
+
+  $('#btnNew').hidden = state.readonly;
+  if (!state.readonly) $('#btnNew').classList.add('pop');
+
+  $('#btnKey').hidden = !store.githubDisponibile();
+  $('#btnKey').classList.toggle('on', store.mode === 'github');
+  $('#btnKey').title = store.mode === 'github'
+    ? 'Chiave GitHub collegata' : 'Attiva la scrittura da qui';
+
+  const badge = $('#roBadge');
+  badge.hidden = !state.readonly;
+  badge.title = 'Attiva la scrittura da qui';
 }
 
 
@@ -255,10 +230,14 @@ function render(animate) {
     $('#emptySub').innerHTML = !virgin
       ? 'Prova a cambiare filtri o testo di ricerca.'
       : state.readonly
-        ? 'Qui le ricette si sfogliano soltanto.<br>Si aggiungono dal Mac con <b>avvia.command</b>, ' +
-          'poi si mandano online con <b>pubblica.command</b>.'
+        ? 'Per aggiungere ricette da qui serve collegare una volta sola il tuo GitHub.'
         : "Aggiungi la prima ricetta e comincia a costruire l'archivio.";
-    $('#btnNewEmpty').hidden = !virgin || state.readonly;
+
+    $('#btnNewEmpty').hidden = !virgin;
+    $('#btnNewEmpty .lbl-txt').textContent = state.readonly
+      ? 'Attiva la scrittura' : 'Nuova ricetta';
+    $('#btnNewEmpty .ic-piu').hidden = state.readonly;
+    $('#btnNewEmpty .ic-chiave').hidden = !state.readonly;
   }
 
   const tot = state.recipes.length;
@@ -461,14 +440,12 @@ $('#detail').addEventListener('click', async (e) => {
 async function toggleFav(id) {
   if (state.readonly) return null;
   try {
-    const res = await fetch(`api/recipes/${id}/favorite`, { method: 'POST' });
-    if (!res.ok) throw 0;
-    const updated = await res.json();
+    const updated = await store.setFavorite(id, state.recipes);
     const i = state.recipes.findIndex((r) => r.id === id);
     if (i >= 0) state.recipes[i] = updated;
     render();
     return updated;
-  } catch { toast('❌ Non sono riuscito a salvare'); return null; }
+  } catch (e) { toast('❌ ' + (e.message || 'Non sono riuscito a salvare')); return null; }
 }
 
 
@@ -618,13 +595,8 @@ async function uploadImage(file) {
 
   try {
     const small = await shrink(file);
-    const fd = new FormData();
-    fd.append('image', small, small.name || 'foto.jpg');
-    const res = await fetch('api/images', { method: 'POST', body: fd });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'upload fallito');
-    state.draftImg = data.url;
-    $('#dzPreview').src = img(data.url);
+    state.draftImg = await store.putImage(small);
+    $('#dzPreview').src = img(state.draftImg);
   } catch (err) {
     toast('❌ ' + (err.message || 'Caricamento non riuscito'));
     clearImage();
@@ -732,16 +704,18 @@ async function saveRecipe(e) {
   btn.disabled = true;
   try {
     const editing = state.editing;
-    const res = await fetch(editing ? `api/recipes/${editing.id}` : 'api/recipes', {
-      method: editing ? 'PUT' : 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'salvataggio fallito');
+    const salvata = await store.save(payload, editing, state.recipes);
+
+    // aggiorno l'elenco qui invece di rileggere tutto: è immediato
+    if (editing) {
+      const i = state.recipes.findIndex((r) => r.id === editing.id);
+      if (i >= 0) state.recipes[i] = salvata;
+    } else {
+      state.recipes.push(salvata);
+    }
 
     closeSheet();
-    await reload();
+    render(true);
     toast(editing ? '✅ Ricetta aggiornata' : '✅ Ricetta salvata');
   } catch (err) {
     toast('❌ ' + (err.message || 'Errore di salvataggio'));
@@ -759,12 +733,13 @@ async function deleteRecipe() {
     return;
   }
   try {
-    const res = await fetch(`api/recipes/${state.editing.id}`, { method: 'DELETE' });
-    if (!res.ok) throw 0;
+    const id = state.editing.id;
+    await store.remove(id, state.recipes);
+    state.recipes = state.recipes.filter((r) => r.id !== id);
     closeSheet();
-    await reload();
+    render(true);
     toast('🗑️ Ricetta eliminata');
-  } catch { toast('❌ Eliminazione non riuscita'); }
+  } catch (e) { toast('❌ ' + (e.message || 'Eliminazione non riuscita')); }
 }
 
 
@@ -807,7 +782,10 @@ $('#btnClear').addEventListener('click', () => {
 });
 
 $('#btnNew').addEventListener('click', (e) => openEditor(null, e.currentTarget));
-$('#btnNewEmpty').addEventListener('click', (e) => openEditor(null, e.currentTarget));
+$('#btnNewEmpty').addEventListener('click', (e) => {
+  if (state.readonly) apriSetup(e.currentTarget);
+  else openEditor(null, e.currentTarget);
+});
 $('#edClose').addEventListener('click', () => closeSheet());
 $('#edCancel').addEventListener('click', () => closeSheet());
 $('#edDelete').addEventListener('click', deleteRecipe);
@@ -845,6 +823,64 @@ document.addEventListener('keydown', (e) => {
   if (e.key === '/') { e.preventDefault(); $('#search').focus(); }
   if (e.key.toLowerCase() === 'n' && !state.readonly) { e.preventDefault(); openEditor(null, $('#btnNew')); }
 });
+
+/* ── Chiave GitHub ────────────────────────────────────────────────── */
+
+function apriSetup(origine) {
+  const c = store.repo;
+  $('#setupRepo').textContent = c.repo;
+  $('#setupToken').value = '';
+  $('#setupMsg').textContent = '';
+  $('#setupMsg').className = 'setup-msg';
+  $('#setupForget').hidden = store.mode !== 'github';
+  openSheet($('#setup'), origine);
+  setTimeout(() => $('#setupToken').focus(), 420);
+}
+
+async function attivaChiave() {
+  const t = $('#setupToken').value.trim();
+  const msg = $('#setupMsg');
+  if (!t) { msg.className = 'setup-msg ko'; msg.textContent = 'Incolla la chiave qui sopra.'; return; }
+
+  const btn = $('#setupSave');
+  btn.disabled = true;
+  msg.className = 'setup-msg wait';
+  msg.textContent = 'Controllo la chiave…';
+
+  try {
+    await verificaChiave(t);
+    msg.className = 'setup-msg ok';
+    msg.textContent = '✅ Fatto. Ricarico l\'archivio…';
+    const dati = await store.load();
+    state.recipes = dati.recipes || [];
+    aggiornaModo();
+    render(true);
+    setTimeout(() => { closeSheet(); toast('🔑 Ora puoi aggiungere ricette da qui'); }, 700);
+  } catch (e) {
+    msg.className = 'setup-msg ko';
+    msg.textContent = '❌ ' + (e.message || 'Chiave non accettata');
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+async function scollegaChiave() {
+  tokenArchivio.clear();
+  closeSheet();
+  const dati = await store.load();
+  state.recipes = dati.recipes || [];
+  aggiornaModo();
+  render(true);
+  toast('🔒 Chiave rimossa da questo browser');
+}
+
+$('#btnKey').addEventListener('click', (e) => apriSetup(e.currentTarget));
+$('#roBadge').addEventListener('click', (e) => apriSetup(e.currentTarget));
+$('#setupClose').addEventListener('click', () => closeSheet());
+$('#setupCancel').addEventListener('click', () => closeSheet());
+$('#setupSave').addEventListener('click', attivaChiave);
+$('#setupForget').addEventListener('click', scollegaChiave);
+$('#setupToken').addEventListener('keydown', (e) => { if (e.key === 'Enter') attivaChiave(); });
 
 setupDropzone();
 boot();
