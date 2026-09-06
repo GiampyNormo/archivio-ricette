@@ -88,7 +88,12 @@ async function boot() {
 
   if (state.readonly) {
     $('#btnNew').hidden = true;
-    $('#roBadge').hidden = false;
+    const badge = $('#roBadge');
+    badge.hidden = false;
+    badge.title = 'Perché non posso aggiungere ricette?';
+    badge.addEventListener('click', () => toast(
+      '👀 Questa è la copia pubblicata: qui si sfoglia e basta. ' +
+      'Le ricette si aggiungono dal Mac, con avvia.command.'));
   }
   buildFilters();
   buildTagPicker();
@@ -222,10 +227,11 @@ function render(animate) {
   if (!list.length) {
     const virgin = state.recipes.length === 0;
     $('#empty .empty-title').textContent = virgin ? 'Archivio vuoto' : 'Nessun risultato';
-    $('#emptySub').textContent = !virgin
+    $('#emptySub').innerHTML = !virgin
       ? 'Prova a cambiare filtri o testo di ricerca.'
       : state.readonly
-        ? 'Nessuna ricetta pubblicata per ora.'
+        ? 'Qui le ricette si sfogliano soltanto.<br>Si aggiungono dal Mac con <b>avvia.command</b>, ' +
+          'poi si mandano online con <b>pubblica.command</b>.'
         : "Aggiungi la prima ricetta e comincia a costruire l'archivio.";
     $('#btnNewEmpty').hidden = !virgin || state.readonly;
   }

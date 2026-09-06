@@ -89,11 +89,15 @@ body::before {
 .brand-sub { font-size: 0.6rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
 
 .ro-badge {
-  align-self: center; margin-left: 2px;
+  align-self: center; margin-left: 2px; cursor: help;
   font-size: .58rem; text-transform: uppercase; letter-spacing: 1.6px; font-weight: 700;
   color: var(--accent); padding: 4px 9px; border-radius: 7px;
   background: rgba(var(--accent-rgb), .1); border: 1px solid rgba(var(--accent-rgb), .3);
+  transition: background .2s, border-color .2s;
 }
+.ro-badge::after { content: ' ?'; opacity: .55; }
+.ro-badge:hover { background: rgba(var(--accent-rgb), .18); border-color: rgba(var(--accent-rgb), .5); }
+.empty-sub b { color: var(--accent); font-weight: 600; }
 .rc-fav.static { pointer-events: none; }
 
 .search-wrap { position: relative; flex: 1; max-width: 460px; margin-left: auto; }

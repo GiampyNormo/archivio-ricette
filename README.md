@@ -9,6 +9,11 @@ Archivio delle ricette di casa. Vive in due forme, con lo stesso codice:
 
 Il flusso è: **scrivi sul Mac → pubblichi → sfogli ovunque.**
 
+> Sul link non c'è il tasto **Nuova ricetta**: è voluto, lì si legge soltanto.
+> Per aggiungere ricette apri l'archivio sul Mac. Se il Mac è acceso e sei in casa,
+> dal telefono puoi aprire il suo indirizzo `192.168.x.x:8790` e hai l'app completa,
+> tasto compreso.
+
 ## Scrivere (sul Mac)
 
 Doppio click su **`avvia.command`**. Da terminale: `python3 server.py`.
