@@ -16,7 +16,7 @@ i sei passaggi che ti mostra. In sintesi, su GitHub:
 2. **Token name**: `Archivio Ricette`
 3. **Expiration**: una scadenza lunga, o nessuna
 4. **Repository access** → *Only select repositories* → `archivio-ricette`
-5. **Permissions** → *Repository permissions* → **Contents** → *Read and write*
+5. **Permissions** → *Repository permissions* → cerca **`Contents`** (la casella cerca i permessi, non i repository) → *Read and write*
 6. **Generate token**, copia, incolla nella pagina
 
 La chiave resta nel browser dove l'hai incollata: non finisce nel repository e non serve

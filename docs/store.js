@@ -144,10 +144,11 @@ async function verificaChiave(t) {
     if (!res.ok) throw new Error(res.status === 404
       ? 'La chiave non vede questo repository'
       : 'Chiave rifiutata da GitHub');
-    const info = await res.json();
-    if (info.permissions && info.permissions.push === false) {
-      throw new Error('La chiave può solo leggere: serve il permesso di scrittura');
-    }
+    // Niente controllo su `permissions.push`: sulle chiavi a grana fine quel
+    // campo non riflette in modo affidabile il permesso Contents, e rifiutare
+    // una chiave buona sarebbe peggio che scoprire il problema al primo
+    // salvataggio, dove l'errore 403 dice già cosa manca.
+    await res.json();
     return true;
   } catch (e) {
     if (prima) token.set(prima); else token.clear();
