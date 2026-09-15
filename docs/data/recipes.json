@@ -1,5 +1,41 @@
 {
   "version": 1,
-  "updated_at": "2026-09-15T15:43:21+00:00",
-  "recipes": []
+  "updated_at": "2026-09-15T15:58:39+00:00",
+  "recipes": [
+    {
+      "id": "6c947a9ad256",
+      "name": "Pollo sfilacciato al chipotle",
+      "image": "/images/20260915-9917cbe42a.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "1 cipolla",
+        "3 spicchi d'aglio",
+        "3 peperoni rossi",
+        "3 cucchiaini di coriandolo in polvere",
+        "1 cucchiaio di cumino in polvere",
+        "4 cucchiai di pasta di chipotle",
+        "1 cucchiaio di concentrato di pomodoro",
+        "300 ml di brodo di pollo",
+        "12 cosce di pollo disossate e senza pelle",
+        "Olio d'oliva",
+        "Sale e pepe"
+      ],
+      "steps": [
+        "Trita finemente la cipolla, gratta l'aglio e affetta i peperoni sottili.",
+        "Scalda un tegame largo e basso a fuoco medio con un filo d'olio. Unisci cipolla e peperoni e falli ammorbidire 5-7 minuti, poi aggiungi aglio, coriandolo, cumino, pasta di chipotle e concentrato di pomodoro. Cuoci 2 minuti, finché profuma e si scurisce un po'.",
+        "Aggiungi le cosce di pollo e versa il brodo. Sala e pepa. Porta a bollore, poi prosegui a fuoco medio per 25-30 minuti, finché il pollo è tenero e la salsa si è addensata. Un goccio d'acqua se la vuoi più brodosa, oppure lascia ridurre ancora se la vuoi più densa.",
+        "Sfilaccia il pollo direttamente in pentola con due forchette e mescola bene, così tutto si avvolge nella salsa affumicata.",
+        "Se lo prepari in anticipo, lascialo intiepidire, mettilo in un contenitore e tienilo in frigo."
+      ],
+      "notes": "Si conserva bene, si congela e si riscalda senza perdere niente.\n\nOlio, sale e pepe non erano nell'elenco ingredienti dell'originale ma servono nel procedimento: li ho aggiunti io.\n\nFonte: «Juicy Pulled Chipotle Chicken» — MOB, 4,7★ su 1410 voti\nhttps://www.mob.co.uk/recipes/juicy-pulled-chipotle-chicken",
+      "servings": 6,
+      "time_min": 50,
+      "favorite": false,
+      "created_at": "2026-09-15T15:58:39+00:00",
+      "updated_at": "2026-09-15T15:58:39+00:00"
+    }
+  ]
 }
