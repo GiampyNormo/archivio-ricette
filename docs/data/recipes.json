@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-15T16:15:07+00:00",
+  "updated_at": "2026-09-15T16:18:56+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -147,7 +147,7 @@
     {
       "id": "e8cdebfc33e7",
       "name": "BLT di pollo al chipotle",
-      "image": null,
+      "image": "/images/20260915-4ea6040ed9.jpg",
       "tags": [
         "proteico"
       ],
@@ -203,14 +203,14 @@
         }
       ],
       "nutrition_basis": "per porzione",
-      "notes": "L'elenco ingredienti era coperto in basso dal banner «At the shops?»: sotto la maionese potrebbe esserci dell'altro.\n\nNel passaggio finale l'app elenca olio, sale e pepe, ma il testo del passaggio non li nomina.\n\nFonte: «Chipotle Chicken BLT» — MOB, 4,7★ su 10 voti",
+      "notes": "Come congelarlo: congela solo il pollo cotto, in porzioni. Fallo raffreddare completamente prima. Non ricongelarlo una volta scongelato. Bacon, lattuga, salsa, maionese e pane non sono adatti al congelamento.\n\nNel passaggio finale l'app elenca olio, sale e pepe, ma il testo del passaggio non li nomina.\n\nC'era anche un riquadro «How to store it» che nello screenshot era tagliato a metà.\n\nFonte: «Chipotle Chicken BLT» — MOB, 4,7★ su 10 voti",
       "servings": 2,
       "prep_min": 5,
       "cook_min": 10,
       "time_min": null,
       "favorite": false,
       "created_at": "2026-09-15T16:06:33+00:00",
-      "updated_at": "2026-09-15T16:15:07+00:00"
+      "updated_at": "2026-09-15T16:18:56+00:00"
     }
   ]
 }
