@@ -6,3 +6,6 @@ docs/data/*.tmp
 .DS_Store
 __pycache__/
 *.pyc
+
+# Screenshot di lavoro: servono solo per l'importazione, non vanno online
+_screenshot/
