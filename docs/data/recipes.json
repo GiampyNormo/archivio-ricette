@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-15T16:04:22+00:00",
+  "updated_at": "2026-09-15T16:06:33+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -49,7 +49,7 @@
         "400 g di patate dolci",
         "120 g di cheddar",
         "2 cucchiai di panna acida",
-        "150 g di salsa messicana",
+        "150 g di salsa",
         "½ cipolla rossa",
         "10 g di coriandolo fresco",
         "3 lime"
@@ -68,7 +68,38 @@
       "time_min": null,
       "favorite": false,
       "created_at": "2026-09-15T16:03:29+00:00",
-      "updated_at": "2026-09-15T16:04:22+00:00"
+      "updated_at": "2026-09-15T16:06:33+00:00"
+    },
+    {
+      "id": "e8cdebfc33e7",
+      "name": "BLT di pollo al chipotle",
+      "image": null,
+      "tags": [
+        "proteico"
+      ],
+      "components": [
+        "6c947a9ad256"
+      ],
+      "ingredients": [
+        "12 fette di bacon",
+        "1 lattuga little gem",
+        "8 fette di pane bianco morbido",
+        "150 g di salsa di pomodoro",
+        "150 g di maionese"
+      ],
+      "steps": [
+        "Prepara il pollo sfilacciato al chipotle.",
+        "Scalda una padella antiaderente a fuoco medio. Quando è calda, rosola il bacon finché è dorato e croccante da entrambi i lati. Trasferiscilo su un piatto foderato con carta da cucina.",
+        "Taglia la lattuga a striscioline. Metti il pollo sfilacciato nella padella vuota e scaldalo finché è bollente. Un goccio d'acqua se ha bisogno di ammorbidirsi.",
+        "Tosta le fette di pane se ti va. Spalma la salsa su metà delle fette e la maionese sull'altra metà.",
+        "Componi: parti dalla lattuga sul lato con la maionese, aggiungi una cucchiaiata generosa di pollo caldo, copri col bacon croccante e chiudi con la fetta spalmata di salsa. Taglia e mangia!"
+      ],
+      "notes": "5 min di preparazione · 10 min di cottura (MOB li dà separati, qui il campo tempo è uno solo: l'ho lasciato vuoto invece di sommarli).\n\nL'elenco ingredienti era coperto in basso dal banner «At the shops?»: sotto la maionese potrebbe esserci dell'altro.\n\nNel passaggio finale l'app elenca olio, sale e pepe, ma il testo del passaggio non li nomina.\n\nFonte: «Chipotle Chicken BLT» — MOB, 4,7★ su 10 voti",
+      "servings": 2,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-15T16:06:33+00:00",
+      "updated_at": "2026-09-15T16:06:33+00:00"
     }
   ]
 }
