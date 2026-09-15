@@ -36,6 +36,8 @@ computer che non è tuo.
 | Preferite | ☆ sulla card o nel dettaglio |
 | Cercare | Campo in alto (o tasto `/`) — cerca in nome, ingredienti, passaggi |
 | Filtrare | Chip dei tag: più tag dello **stesso gruppo** = OR, gruppi **diversi** = AND |
+| Collegare una preparazione | Nell'editor, campo **Preparazioni usate**: cerchi un'altra ricetta e la agganci |
+| Saltare a una preparazione | Nella ricetta aperta, blocco **Usa anche** → click; la freccia ‹ torna indietro |
 | Spuntare gli ingredienti | Click sulla riga mentre cucini |
 | Chiudere | `Esc` o click fuori |
 
@@ -45,6 +47,12 @@ Vengono rimpicciolite nel browser prima di partire, così l'archivio resta legge
 **Ingredienti e procedimento**: `Invio` crea la riga successiva, `Backspace` su una riga vuota
 la cancella. Con **Incolla lista** butti dentro un elenco copiato da un sito e viene diviso
 riga per riga.
+
+**Preparazioni condivise**: una base che rifai in più piatti (una salsa, un olio aromatizzato,
+un misto di spezie) va inserita come ricetta a sé, poi la agganci ai piatti che la usano. Dentro
+il piatto compare in **Usa anche** e ci clicchi per aprirla; dentro la preparazione trovi
+**Usata in** con tutti i piatti che la richiamano. Cancellando una preparazione i collegamenti
+si puliscono da soli, senza lasciare riferimenti rotti.
 
 Ogni salvataggio è un commit nel repository: hai la cronologia completa di ogni ricetta,
 e niente si perde davvero.

@@ -14,6 +14,9 @@ const state = {
   draftImg:  null,     // url immagine del form
   openSheet: null,
   origin:    null,     // rect di partenza per l'animazione
+  readonly:  false,    // true dove non si può scrivere
+  draftComp: [],       // preparazioni collegate nel form
+  stack:     [],       // ricette da cui si è arrivati, per tornare indietro
 };
 
 const $  = (s, r = document) => r.querySelector(s);
@@ -305,6 +308,7 @@ function closeSheet(instant) {
   const sheet = state.openSheet;
   if (!sheet) return;
   state.openSheet = null;
+  state.stack = [];
 
   $('#scrim').classList.remove('on');
   lockScroll(false);
@@ -339,9 +343,10 @@ function closeSheet(instant) {
 
 /* ── Dettaglio ricetta ───────────────────────────────────────────── */
 
-function openDetail(id, fromEl) {
+/** Riempie il pannello con una ricetta. Non lo apre: quello lo fa openDetail. */
+function disegnaDettaglio(id) {
   const r = state.recipes.find((x) => x.id === id);
-  if (!r) return;
+  if (!r) return false;
 
   const tags = (r.tags || []).map((t) => {
     const info = state.tagIndex[t];
@@ -363,6 +368,35 @@ function openDetail(id, fromEl) {
       <span><span class="mk">${p.k}</span><br><span class="mv">${esc(p.v)}</span></span>
     </div>`).join('');
 
+  // Preparazioni: quelle che questa ricetta usa, e quelle che usano lei
+  const usate = (r.components || []).map(ricettaPerId).filter(Boolean);
+  const usanti = state.recipes.filter((x) => (x.components || []).includes(r.id));
+
+  const rigaLink = (x, sotto) => `
+    <button class="dt-link" data-vai="${x.id}">
+      ${miniatura(x)}
+      <span class="testo"><span class="nome">${esc(x.name)}</span>
+        ${sotto ? `<span class="sotto">${esc(sotto)}</span>` : ''}</span>
+      <span class="freccia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <path d="M9 18l6-6-6-6"></path></svg></span>
+    </button>`;
+
+  const bloccoUsate = usate.length ? `
+    <div class="dt-link-sec">
+      <div class="sec-title">Usa anche</div>
+      <div class="dt-links">${usate.map((x) => rigaLink(x,
+        [x.time_min ? x.time_min + ' min' : null,
+         (x.ingredients || []).length + ' ingredienti'].filter(Boolean).join(' · '))).join('')}</div>
+    </div>` : '';
+
+  const bloccoUsanti = usanti.length ? `
+    <div class="dt-body" style="grid-template-columns:1fr;padding-top:0">
+      <div>
+        <div class="sec-title">Usata in</div>
+        <div class="dt-links">${usanti.map((x) => rigaLink(x, '')).join('')}</div>
+      </div>
+    </div>` : '';
+
   const ing = (r.ingredients || []).length
     ? `<ul class="ing-list">${r.ingredients.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`
     : '<div class="dt-empty-note">Nessun ingrediente inserito.</div>';
@@ -379,6 +413,10 @@ function openDetail(id, fromEl) {
 
   $('#detailInner').innerHTML = `
     <div class="dt-bar"><div class="dt-tools">
+        ${state.stack.length ? `
+        <button class="icon-btn" data-act="indietro" title="Torna indietro">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>` : ''}
         ${state.readonly ? '' : `
         <button class="icon-btn${r.favorite ? ' on' : ''}" data-act="fav" title="Preferita">
           <span style="font-size:1rem;line-height:1">${r.favorite ? '★' : '☆'}</span>
@@ -401,23 +439,54 @@ function openDetail(id, fromEl) {
     </div>
     ${pills ? `<div class="dt-meta">${pills}</div>` : ''}
     <div class="dt-body">
-      <div><div class="sec-title">Ingredienti</div>${ing}</div>
+      <div><div class="sec-title">Ingredienti</div>${ing}${bloccoUsate}</div>
       <div><div class="sec-title">Procedimento</div>${steps}</div>
     </div>
+    ${bloccoUsanti}
     ${notes}
     <div class="dt-foot">Aggiunta il ${when}</div>`;
 
   $('#detailInner').dataset.id = r.id;
+  return true;
+}
+
+function openDetail(id, fromEl) {
+  state.stack = [];
+  if (!disegnaDettaglio(id)) return;
   openSheet($('#detail'), fromEl);
+}
+
+/** Cambia ricetta dentro il pannello già aperto, con un dissolvenza breve. */
+function apriCollegata(id) {
+  if (!disegnaDettaglio(id)) return;
+  $('#detail').scrollTop = 0;
+  if (!reduced) {
+    $('#detailInner').animate(
+      [{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }],
+      { duration: 320, easing: EASE });
+  }
 }
 
 $('#detail').addEventListener('click', async (e) => {
   const li = e.target.closest('.ing-list li');
   if (li) { li.classList.toggle('done'); return; }
 
+  const vai = e.target.closest('[data-vai]');
+  if (vai) {
+    state.stack.push($('#detailInner').dataset.id);
+    apriCollegata(vai.dataset.vai);
+    return;
+  }
+
   const btn = e.target.closest('[data-act]');
   if (!btn) return;
   const id = $('#detailInner').dataset.id;
+
+  if (btn.dataset.act === 'indietro') {
+    const prima = state.stack.pop();
+    if (prima) apriCollegata(prima);
+    return;
+  }
 
   if (btn.dataset.act === 'close') closeSheet();
   if (btn.dataset.act === 'edit') {
@@ -560,6 +629,85 @@ function buildTagPicker() {
 }
 
 
+/* ── Editor: preparazioni collegate ──────────────────────────────── */
+
+const ricettaPerId = (id) => state.recipes.find((r) => r.id === id);
+
+/** Miniatura: la foto se c'è, altrimenti l'emoji del segnaposto. */
+function miniatura(r) {
+  if (r.image) return `<img class="mini-foto" src="${esc(img(r.image))}" alt="">`;
+  const ph = placeholder(r).match(/<span>(.*?)<\/span>/);
+  return `<span class="vuoto">${ph ? ph[1] : '🍽️'}</span>`;
+}
+
+function disegnaComponenti() {
+  $('#compPicked').innerHTML = state.draftComp.map((id) => {
+    const r = ricettaPerId(id);
+    if (!r) return '';
+    return `<span class="comp-chip">${esc(r.name)}
+      <button type="button" class="via" data-via="${id}" title="Togli il collegamento">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button></span>`;
+  }).join('');
+}
+
+function cercaComponenti(testo) {
+  const box = $('#compResults');
+  const q = fold(testo.trim());
+  const escluso = state.editing ? state.editing.id : null;
+
+  const trovate = state.recipes
+    .filter((r) => r.id !== escluso && !state.draftComp.includes(r.id))
+    .filter((r) => !q || fold(r.name).includes(q))
+    .slice(0, 8);
+
+  if (!q && !trovate.length) { box.hidden = true; return; }
+
+  box.innerHTML = trovate.length
+    ? trovate.map((r) => `<button type="button" class="comp-res" data-add-comp="${r.id}">
+         ${miniatura(r)}<span>${esc(r.name)}</span></button>`).join('')
+    : '<div class="comp-none">Nessuna ricetta con questo nome.</div>';
+  box.hidden = false;
+}
+
+function setupComponenti() {
+  const input = $('#compSearch');
+
+  input.addEventListener('focus', () => cercaComponenti(input.value));
+  input.addEventListener('input', () => cercaComponenti(input.value));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { $('#compResults').hidden = true; input.blur(); }
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const primo = $('#compResults .comp-res');
+      if (primo) primo.click();
+    }
+  });
+
+  // mousedown invece di click: il blur dell'input chiuderebbe il menù prima
+  $('#compResults').addEventListener('mousedown', (e) => {
+    const b = e.target.closest('[data-add-comp]');
+    if (!b) return;
+    e.preventDefault();
+    state.draftComp.push(b.dataset.addComp);
+    disegnaComponenti();
+    input.value = '';
+    cercaComponenti('');
+    input.focus();
+  });
+
+  $('#compPicked').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-via]');
+    if (!b) return;
+    state.draftComp = state.draftComp.filter((x) => x !== b.dataset.via);
+    disegnaComponenti();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.comp-search')) $('#compResults').hidden = true;
+  });
+}
+
 /* ── Editor: immagine ────────────────────────────────────────────── */
 
 async function shrink(file, max = 1600, quality = 0.85) {
@@ -679,6 +827,11 @@ function openEditor(recipe, origin) {
   setLines('ing',  recipe?.ingredients);
   setLines('step', recipe?.steps);
 
+  state.draftComp = [...(recipe?.components || [])].filter(ricettaPerId);
+  disegnaComponenti();
+  $('#compSearch').value = '';
+  $('#compResults').hidden = true;
+
   openSheet($('#editor'), origin);
   setTimeout(() => { if (!recipe) $('#fName').focus(); }, 380);
 }
@@ -692,6 +845,7 @@ async function saveRecipe(e) {
     name,
     image:       state.draftImg,
     tags:        $$('.tp-tag.on').map((b) => b.dataset.tag),
+    components:  [...state.draftComp],
     ingredients: getLines('ing'),
     steps:       getLines('step'),
     notes:       $('#fNotes').value.trim(),
@@ -883,4 +1037,5 @@ $('#setupForget').addEventListener('click', scollegaChiave);
 $('#setupToken').addEventListener('keydown', (e) => { if (e.key === 'Enter') attivaChiave(); });
 
 setupDropzone();
+setupComponenti();
 boot();

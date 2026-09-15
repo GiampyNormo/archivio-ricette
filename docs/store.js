@@ -102,11 +102,19 @@ function normalizza(dati, esistente, tagValidi) {
   let foto = dati.image == null ? null : String(dati.image);
   if (foto && !foto.startsWith('/images/')) foto = null;
 
+  // Preparazioni usate da questa ricetta: id di altre ricette, mai di sé stessa.
+  const componenti = [];
+  for (const c of (dati.components || []).slice(0, 30)) {
+    const id = String(c).trim().slice(0, 40);
+    if (id && id !== base.id && !componenti.includes(id)) componenti.push(id);
+  }
+
   return {
     id:          base.id || nuovoId(),
     name:        nome,
     image:       foto,
     tags,
+    components:  componenti,
     ingredients: pulisciRighe(dati.ingredients),
     steps:       pulisciRighe(dati.steps),
     notes:       String(dati.notes || '').trim().slice(0, 2000),
@@ -314,7 +322,12 @@ const store = {
       return;
     }
     const via = elenco.find((r) => r.id === id);
-    await this.applicaSuGithub(elenco, (l) => l.filter((r) => r.id !== id),
+    await this.applicaSuGithub(elenco, (l) => l
+      .filter((r) => r.id !== id)
+      // nessuno deve restare a puntare una ricetta che non c'è più
+      .map((r) => ((r.components || []).includes(id)
+        ? { ...r, components: r.components.filter((c) => c !== id), updated_at: oraIso() }
+        : r)),
       `Elimino la ricetta: ${via ? via.name : id}`);
   },
 

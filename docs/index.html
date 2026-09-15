@@ -167,6 +167,17 @@
           <textarea class="bulk" id="ingBulk" hidden placeholder="Incolla qui gli ingredienti, uno per riga…"></textarea>
           <button type="button" class="add-line" data-add="ing">+ Ingrediente</button>
 
+          <!-- Preparazioni collegate -->
+          <div class="list-head">
+            <label class="lbl">Preparazioni usate <em>· altre ricette dell'archivio</em></label>
+          </div>
+          <div class="comp-picked" id="compPicked"></div>
+          <div class="comp-search">
+            <input type="text" id="compSearch" placeholder="Collega una ricetta…"
+                   autocomplete="off" spellcheck="false">
+            <div class="comp-results" id="compResults" hidden></div>
+          </div>
+
           <!-- Procedimento -->
           <div class="list-head">
             <label class="lbl">Procedimento</label>

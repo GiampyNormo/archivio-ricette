@@ -187,11 +187,23 @@ def normalize(body, existing=None):
     if image is not None:
         image = str(image)[:300] if str(image).startswith("/images/") else None
 
+    # Preparazioni usate da questa ricetta: id di altre ricette, mai di sé stessa.
+    # Un id che punta a una ricetta cancellata viene semplicemente ignorato da
+    # chi legge, così un riferimento rotto non fa saltare niente.
+    proprio = base.get("id")
+    componenti, visti = [], set()
+    for c in (body.get("components") or [])[:30]:
+        c = str(c).strip()[:40]
+        if c and c != proprio and c not in visti:
+            visti.add(c)
+            componenti.append(c)
+
     return {
         "id":          base.get("id") or uuid.uuid4().hex[:12],
         "name":        name,
         "image":       image,
         "tags":        uniq,
+        "components":  componenti,
         "ingredients": clean_lines(body.get("ingredients")),
         "steps":       clean_lines(body.get("steps")),
         "notes":       str(body.get("notes", "") or "").strip()[:2000],
@@ -284,6 +296,11 @@ def api_delete(rid):
     if len(keep) == len(recipes):
         abort(404, "Ricetta non trovata")
     gone = next(r for r in recipes if r.get("id") == rid)
+    # nessuno deve restare a puntare una ricetta che non c'è più
+    for r in keep:
+        if rid in (r.get("components") or []):
+            r["components"] = [c for c in r["components"] if c != rid]
+            r["updated_at"] = now_iso()
     save_recipes(keep)
     drop_image(gone.get("image"))
     return jsonify({"ok": True})
