@@ -430,7 +430,7 @@ function disegnaDettaglio(id) {
   const nutri = (r.nutrition || []).length ? `
     <div class="dt-body" style="grid-template-columns:1fr;padding-top:0">
       <div>
-        <div class="sec-title">Valori nutrizionali</div>
+        <div class="sec-title">Valori nutrizionali${r.nutrition_basis ? ' · ' + esc(r.nutrition_basis) : ''}</div>
         <div class="nutri-grid">
           ${r.nutrition.map((n) => `<div class="nutri-voce">
              <span class="nk">${esc(n.k)}</span><span class="nv">${esc(n.v)}</span></div>`).join('')}
@@ -852,6 +852,7 @@ function openEditor(recipe, origin) {
   $('#fCook').value     = recipe?.cook_min || '';
   $('#fTime').value     = recipe?.time_min || '';
   $('#fServings').value = recipe?.servings || '';
+  $('#fNutriBasis').value = recipe?.nutrition_basis || '';
   $('#fNutri').value    = nutriATesto(recipe?.nutrition);
   $('#fNotes').value    = recipe?.notes || '';
   $('#edSave').textContent = recipe ? 'Salva modifiche' : 'Salva ricetta';
@@ -901,6 +902,7 @@ async function saveRecipe(e) {
     ingredients: getLines('ing'),
     steps:       getLines('step'),
     nutrition:   nutriDaTesto($('#fNutri').value),
+    nutrition_basis: $('#fNutriBasis').value.trim(),
     notes:       $('#fNotes').value.trim(),
     prep_min:    $('#fPrep').value || null,
     cook_min:    $('#fCook').value || null,

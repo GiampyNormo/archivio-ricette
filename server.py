@@ -223,6 +223,9 @@ def normalize(body, existing=None):
         "ingredients": clean_lines(body.get("ingredients")),
         "steps":       clean_lines(body.get("steps")),
         "nutrition":   clean_nutrition(body.get("nutrition")),
+        # A cosa si riferiscono i valori (es. "per porzione"): è un dato della
+        # fonte, non si dà per scontato né si riscala.
+        "nutrition_basis": re.sub(r"\s+", " ", str(body.get("nutrition_basis", "") or "")).strip()[:60],
         "notes":       str(body.get("notes", "") or "").strip()[:2000],
         "servings":    clean_int(body.get("servings"), 1, 50),
         # Tre tempi distinti perché le fonti li danno così: alcune dichiarano

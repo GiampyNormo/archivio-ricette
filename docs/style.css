@@ -477,6 +477,7 @@ body::before {
 }
 .nutri-voce .nk { font-size: .62rem; text-transform: uppercase; letter-spacing: 1.3px; color: var(--muted); font-weight: 600; }
 .nutri-voce .nv { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--accent); letter-spacing: -.2px; }
+.basis { margin-bottom: 9px; font-family: var(--font-body); font-size: .82rem; }
 .nutri { min-height: 92px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; }
 
 .dt-notes {

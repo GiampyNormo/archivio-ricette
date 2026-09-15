@@ -130,6 +130,8 @@ function normalizza(dati, esistente, tagValidi) {
     ingredients: pulisciRighe(dati.ingredients),
     steps:       pulisciRighe(dati.steps),
     nutrition:   pulisciNutrizione(dati.nutrition),
+    // A cosa si riferiscono i valori (es. "per porzione"): dato della fonte.
+    nutrition_basis: String(dati.nutrition_basis || '').replace(/\s+/g, ' ').trim().slice(0, 60),
     notes:       String(dati.notes || '').trim().slice(0, 2000),
     servings:    interoTra(dati.servings, 1, 50),
     // Tre tempi distinti: le fonti a volte danno preparazione e cottura

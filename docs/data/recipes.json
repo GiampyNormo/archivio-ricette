@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-15T16:13:39+00:00",
+  "updated_at": "2026-09-15T16:15:07+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -28,12 +28,49 @@
         "Sfilaccia il pollo direttamente in pentola con due forchette e mescola bene, così tutto si avvolge nella salsa affumicata.",
         "Se lo prepari in anticipo, lascialo intiepidire, mettilo in un contenitore e tienilo in frigo."
       ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "424 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "52 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "26 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "7 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "9 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "5 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "2 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "326 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
       "notes": "Si conserva bene · Si congela · Si riscalda\n\nFonte: «Juicy Pulled Chipotle Chicken» — MOB, 4,7★ su 1410 voti\nhttps://www.mob.co.uk/recipes/juicy-pulled-chipotle-chicken",
       "servings": 6,
+      "prep_min": null,
+      "cook_min": null,
       "time_min": 40,
       "favorite": false,
       "created_at": "2026-09-15T15:58:39+00:00",
-      "updated_at": "2026-09-15T16:04:22+00:00"
+      "updated_at": "2026-09-15T16:15:07+00:00"
     },
     {
       "id": "d32ac280ca59",
@@ -63,12 +100,49 @@
         "Quando gli spicchi sono pronti dividili nei piatti e cospargi con metà del cheddar. Copri col pollo caldo, cucchiaiate di panna acida e salsa, poi finisci col cheddar rimasto e il coriandolo. Scola le cipolle marinate e distribuiscile sopra.",
         "Servi con spicchi di lime da spremere."
       ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "891 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "47 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "51 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "20 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "62 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "19 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "11 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "1169 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
       "notes": "Fonte: «Loaded Chipotle Chicken & Sweet Potato Wedges» — MOB, 4,8★ su 34 voti",
       "servings": 2,
+      "prep_min": 10,
+      "cook_min": 35,
       "time_min": null,
       "favorite": false,
       "created_at": "2026-09-15T16:03:29+00:00",
-      "updated_at": "2026-09-15T16:06:33+00:00"
+      "updated_at": "2026-09-15T16:15:07+00:00"
     },
     {
       "id": "e8cdebfc33e7",
@@ -94,7 +168,41 @@
         "Tosta le fette di pane se ti va. Spalma la salsa su metà delle fette e la maionese sull'altra metà.",
         "Componi: parti dalla lattuga sul lato con la maionese, aggiungi una cucchiaiata generosa di pollo caldo, copri col bacon croccante e chiudi con la fetta spalmata di salsa. Taglia e mangia!"
       ],
-      "nutrition": [],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "1721 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "72 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "121 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "26 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "82 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "16 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "6 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "2600 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
       "notes": "L'elenco ingredienti era coperto in basso dal banner «At the shops?»: sotto la maionese potrebbe esserci dell'altro.\n\nNel passaggio finale l'app elenca olio, sale e pepe, ma il testo del passaggio non li nomina.\n\nFonte: «Chipotle Chicken BLT» — MOB, 4,7★ su 10 voti",
       "servings": 2,
       "prep_min": 5,
@@ -102,7 +210,7 @@
       "time_min": null,
       "favorite": false,
       "created_at": "2026-09-15T16:06:33+00:00",
-      "updated_at": "2026-09-15T16:13:39+00:00"
+      "updated_at": "2026-09-15T16:15:07+00:00"
     }
   ]
 }
