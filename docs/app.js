@@ -25,6 +25,13 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+/* Un ingrediente che comincia con "# " è un'intestazione di sezione
+   (es. "# Per il pollo"): serve quando la stessa cosa torna in più parti
+   della ricetta con dosi diverse. */
+const isSezione = (riga) => /^#\s+/.test(String(riga || ''));
+const testoSezione = (riga) => String(riga).replace(/^#\s+/, '');
+const soloIngredienti = (lista) => (lista || []).filter((x) => !isSezione(x));
+
 const fold = (s) => String(s ?? '').toLowerCase()
   .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
@@ -382,7 +389,8 @@ function disegnaDettaglio(id) {
     r.cook_min  ? { i: '🔥', k: 'Cottura',      v: r.cook_min + ' min', c: 'var(--accent2)' } : null,
     r.time_min  ? { i: '⏱️', k: 'Tempo',        v: r.time_min + ' min', c: 'var(--accent2)' } : null,
     r.servings  ? { i: '🍽️', k: 'Porzioni', v: r.servings + (r.servings === 1 ? ' persona' : ' persone'), c: 'var(--cyan)' } : null,
-    (r.ingredients || []).length ? { i: '🧂', k: 'Ingredienti', v: r.ingredients.length, c: 'var(--accent)' } : null,
+    soloIngredienti(r.ingredients).length
+      ? { i: '🧂', k: 'Ingredienti', v: soloIngredienti(r.ingredients).length, c: 'var(--accent)' } : null,
     (r.steps || []).length ? { i: '📋', k: 'Passaggi', v: r.steps.length, c: 'var(--violet)' } : null,
   ].filter(Boolean).map((p) => `
     <div class="meta-pill" style="--c:${p.c}">
@@ -408,7 +416,7 @@ function disegnaDettaglio(id) {
       <div class="sec-title">Usa anche</div>
       <div class="dt-links">${usate.map((x) => rigaLink(x,
         [tempoCard(x) ? tempoCard(x).replace(/′/g, ' min').replace('+', ' + ') : null,
-         (x.ingredients || []).length + ' ingredienti'].filter(Boolean).join(' · '))).join('')}</div>
+         soloIngredienti(x.ingredients).length + ' ingredienti'].filter(Boolean).join(' · '))).join('')}</div>
     </div>` : '';
 
   const bloccoUsanti = usanti.length ? `
@@ -420,7 +428,9 @@ function disegnaDettaglio(id) {
     </div>` : '';
 
   const ing = (r.ingredients || []).length
-    ? `<ul class="ing-list">${r.ingredients.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`
+    ? `<ul class="ing-list">${r.ingredients.map((x) => (isSezione(x)
+        ? `<li class="ing-sez">${esc(testoSezione(x))}</li>`
+        : `<li>${esc(x)}</li>`)).join('')}</ul>`
     : '<div class="dt-empty-note">Nessun ingrediente inserito.</div>';
 
   const steps = (r.steps || []).length
@@ -566,6 +576,9 @@ function lineRow(kind, value) {
     </button>`;
 
   const input = $('input', row);
+  const segnaSezione = () => row.classList.toggle('e-sez', kind !== 'step' && isSezione(input.value));
+  segnaSezione();
+  input.addEventListener('input', segnaSezione);
 
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {

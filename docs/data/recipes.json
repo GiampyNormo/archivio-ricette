@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-15T16:18:56+00:00",
+  "updated_at": "2026-09-15T16:22:20+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -211,6 +211,56 @@
       "favorite": false,
       "created_at": "2026-09-15T16:06:33+00:00",
       "updated_at": "2026-09-15T16:18:56+00:00"
+    },
+    {
+      "id": "6f2d66a364cc",
+      "name": "Rice box di pollo BBQ coreano",
+      "image": "/images/20260915-d2a65ee858.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "# Per il pollo",
+        "1 kg di cosce di pollo disossate e senza pelle",
+        "6 cucchiai di gochujang",
+        "3 cucchiai di zucchero semolato",
+        "3 cucchiai di salsa di soia chiara",
+        "2 cucchiai di aceto di riso",
+        "1 cucchiaio di olio di semi",
+        "2 cucchiai di semi di sesamo",
+        "4 cipollotti",
+        "# Per il riso",
+        "250 g di riso per sushi",
+        "300 ml di acqua",
+        "# Per il pickle veloce",
+        "1 cetriolo",
+        "2 carote",
+        "1 cucchiaio di aceto di riso",
+        "2 cucchiaini di zucchero semolato",
+        "1 cucchiaino di sale",
+        "1 cucchiaino di olio di sesamo",
+        "# Per servire",
+        "4 uova"
+      ],
+      "steps": [
+        "Parti dal riso. Sciacqua il riso per sushi sotto acqua fredda finché l'acqua esce limpida, poi scolalo. Mettilo in un pentolino con l'acqua, porta a bollore, copri e abbassa al minimo. Cuoci 12 minuti, poi spegni e lascia coperto altri 12 minuti a vapore.",
+        "Intanto occupati del pollo. In una ciotola capiente mescola gochujang, olio di semi, salsa di soia, aceto di riso, zucchero e semi di sesamo. Taglia il pollo a bocconcini, aggiungilo alla marinata con una presa generosa di sale e mescola bene finché è tutto rivestito.",
+        "Separa la parte verde dei cipollotti da quella bianca. Affetta finemente il verde e mettilo da parte per servire. Taglia il bianco in pezzi da circa 2 cm. Scalda una padella grande a fuoco vivo. Quando è calda unisci il pollo e rosolalo 8-9 minuti, finché è ben dorato e cotto dentro, poi aggiungi il bianco dei cipollotti e mescola un altro paio di minuti. Versa la marinata rimasta e lasciala ridur",
+        "Mentre il pollo cuoce, porta a bollore un pentolino d'acqua. Prendi le uova direttamente dal frigo e calale dentro. Cuoci 7 minuti, poi passale in una ciotola d'acqua fredda. Quando sono fredde sgusciale e mettile da parte.",
+        "Per il pickle veloce, affetta finemente il cetriolo e riduci le carote a nastri con un pelapatate. Condisci con aceto di riso, zucchero, sale e olio di sesamo.",
+        "Dividi il riso in quattro contenitori, copri col pollo e con le verdure marinate. Taglia le uova a metà e appoggiale sopra, poi finisci col verde dei cipollotti affettato. Chiudi i contenitori e mettili in frigo pronti da prendere per pranzo: si conservano fino a 3 giorni."
+      ],
+      "nutrition": [],
+      "nutrition_basis": "",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nCome congelarlo: congela solo il pollo cotto, in porzioni, fino a 3 mesi. Non ricongelarlo una volta scongelato. Escludi riso, uova e pickle.\n\nAccanto c'era un secondo riquadro «How to store it» tagliato nello screenshot.\n\nFonte: «Korean BBQ Chicken Rice Box» di Finn Tonry — MOB, 4,8★ su 332 voti",
+      "servings": 4,
+      "prep_min": 15,
+      "cook_min": 25,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-15T16:22:20+00:00",
+      "updated_at": "2026-09-15T16:22:20+00:00"
     }
   ]
 }

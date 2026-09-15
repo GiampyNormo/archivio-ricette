@@ -40,6 +40,7 @@ computer che non è tuo.
 | Saltare a una preparazione | Nella ricetta aperta, blocco **Usa anche** → click; la freccia ‹ torna indietro |
 | Tempi | Tre campi distinti: **preparazione**, **cottura**, **totale**. Si compilano quelli dichiarati dalla fonte, non si sommano mai fra loro |
 | Valori nutrizionali | Riquadro nell'editor, una voce per riga: `Calorie: 540 kcal` |
+| Sezioni negli ingredienti | Una riga che comincia con `# ` è un'intestazione: `# Per il pollo`. Serve quando la stessa cosa torna in più parti con dosi diverse |
 | Spuntare gli ingredienti | Click sulla riga mentre cucini |
 | Chiudere | `Esc` o click fuori |
 
