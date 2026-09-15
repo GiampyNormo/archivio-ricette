@@ -89,6 +89,18 @@ function interoTra(v, min, max) {
   return Number.isFinite(n) && n >= min && n <= max ? n : null;
 }
 
+function pulisciNutrizione(v) {
+  if (!Array.isArray(v)) return [];
+  const out = [];
+  for (const item of v.slice(0, 24)) {
+    if (!item || typeof item !== 'object') continue;
+    const k = String(item.k || '').replace(/\s+/g, ' ').trim().slice(0, 40);
+    const val = String(item.v || '').replace(/\s+/g, ' ').trim().slice(0, 40);
+    if (k && val) out.push({ k, v: val });
+  }
+  return out;
+}
+
 function normalizza(dati, esistente, tagValidi) {
   const base = esistente || {};
   const nome = String(dati.name || '').replace(/\s+/g, ' ').trim().slice(0, 120);
@@ -117,8 +129,13 @@ function normalizza(dati, esistente, tagValidi) {
     components:  componenti,
     ingredients: pulisciRighe(dati.ingredients),
     steps:       pulisciRighe(dati.steps),
+    nutrition:   pulisciNutrizione(dati.nutrition),
     notes:       String(dati.notes || '').trim().slice(0, 2000),
     servings:    interoTra(dati.servings, 1, 50),
+    // Tre tempi distinti: le fonti a volte danno preparazione e cottura
+    // separate, a volte solo un totale. Non vanno mai sommati fra loro.
+    prep_min:    interoTra(dati.prep_min, 1, 1440),
+    cook_min:    interoTra(dati.cook_min, 1, 1440),
     time_min:    interoTra(dati.time_min, 1, 1440),
     favorite:    Boolean(dati.favorite ?? base.favorite ?? false),
     created_at:  base.created_at || oraIso(),

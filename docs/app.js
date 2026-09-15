@@ -36,6 +36,25 @@ const EASE = 'cubic-bezier(0.16, 1, 0.3, 1)';
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 
+/* ── Tempi ───────────────────────────────────────────────────────────
+   Le fonti danno a volte un totale, a volte preparazione e cottura
+   separate. Non si sommano: sulla card compaiono affiancati (5'+10'),
+   nel dettaglio restano due voci distinte. */
+
+/** Etichetta compatta per la card. */
+function tempoCard(r) {
+  if (r.time_min) return r.time_min + '′';
+  const pezzi = [r.prep_min, r.cook_min].filter(Boolean);
+  return pezzi.length ? pezzi.map((n) => n + '′').join('+') : null;
+}
+
+/** Numero solo per ordinare "più veloci": non viene mai mostrato. */
+function tempoOrdine(r) {
+  if (r.time_min) return r.time_min;
+  const somma = (r.prep_min || 0) + (r.cook_min || 0);
+  return somma || 9e9;
+}
+
 /* ── Placeholder grafico per le ricette senza foto ───────────────── */
 
 const PH_EMOJI = {
@@ -172,7 +191,7 @@ function filtered() {
   if (state.sort === 'name') {
     out.sort((a, b) => coll.compare(a.name, b.name));
   } else if (state.sort === 'time') {
-    out.sort((a, b) => (a.time_min || 9e9) - (b.time_min || 9e9) || coll.compare(a.name, b.name));
+    out.sort((a, b) => tempoOrdine(a) - tempoOrdine(b) || coll.compare(a.name, b.name));
   } else {
     out.sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')));
   }
@@ -195,7 +214,8 @@ function cardHTML(r, i) {
     ? `<img src="${esc(img(r.image))}" alt="" loading="lazy">`
     : placeholder(r);
 
-  const time = r.time_min ? `<div class="rc-time">⏱ ${r.time_min}′</div>` : '';
+  const t = tempoCard(r);
+  const time = t ? `<div class="rc-time">⏱ ${t}</div>` : '';
 
   return `
     <article class="rcard" data-id="${r.id}" style="animation-delay:${Math.min(i, 14) * 34}ms">
@@ -358,7 +378,9 @@ function disegnaDettaglio(id) {
     : placeholder(r);
 
   const pills = [
-    r.time_min  ? { i: '⏱️', k: 'Tempo',    v: r.time_min + ' min', c: 'var(--accent2)' } : null,
+    r.prep_min  ? { i: '🔪', k: 'Preparazione', v: r.prep_min + ' min', c: 'var(--accent2)' } : null,
+    r.cook_min  ? { i: '🔥', k: 'Cottura',      v: r.cook_min + ' min', c: 'var(--accent2)' } : null,
+    r.time_min  ? { i: '⏱️', k: 'Tempo',        v: r.time_min + ' min', c: 'var(--accent2)' } : null,
     r.servings  ? { i: '🍽️', k: 'Porzioni', v: r.servings + (r.servings === 1 ? ' persona' : ' persone'), c: 'var(--cyan)' } : null,
     (r.ingredients || []).length ? { i: '🧂', k: 'Ingredienti', v: r.ingredients.length, c: 'var(--accent)' } : null,
     (r.steps || []).length ? { i: '📋', k: 'Passaggi', v: r.steps.length, c: 'var(--violet)' } : null,
@@ -385,7 +407,7 @@ function disegnaDettaglio(id) {
     <div class="dt-link-sec">
       <div class="sec-title">Usa anche</div>
       <div class="dt-links">${usate.map((x) => rigaLink(x,
-        [x.time_min ? x.time_min + ' min' : null,
+        [tempoCard(x) ? tempoCard(x).replace(/′/g, ' min').replace('+', ' + ') : null,
          (x.ingredients || []).length + ' ingredienti'].filter(Boolean).join(' · '))).join('')}</div>
     </div>` : '';
 
@@ -404,6 +426,17 @@ function disegnaDettaglio(id) {
   const steps = (r.steps || []).length
     ? `<ol class="step-list">${r.steps.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>`
     : '<div class="dt-empty-note">Nessun passaggio inserito.</div>';
+
+  const nutri = (r.nutrition || []).length ? `
+    <div class="dt-body" style="grid-template-columns:1fr;padding-top:0">
+      <div>
+        <div class="sec-title">Valori nutrizionali</div>
+        <div class="nutri-grid">
+          ${r.nutrition.map((n) => `<div class="nutri-voce">
+             <span class="nk">${esc(n.k)}</span><span class="nv">${esc(n.v)}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>` : '';
 
   const notes = r.notes
     ? `<div class="dt-notes"><span class="nk">Note</span>${esc(r.notes)}</div>` : '';
@@ -442,6 +475,7 @@ function disegnaDettaglio(id) {
       <div><div class="sec-title">Ingredienti</div>${ing}${bloccoUsate}</div>
       <div><div class="sec-title">Procedimento</div>${steps}</div>
     </div>
+    ${nutri}
     ${bloccoUsanti}
     ${notes}
     <div class="dt-foot">Aggiunta il ${when}</div>`;
@@ -629,6 +663,21 @@ function buildTagPicker() {
 }
 
 
+/* ── Valori nutrizionali: testo ⇄ coppie etichetta/valore ────────── */
+
+function nutriDaTesto(testo) {
+  return String(testo || '').split('\n').map((riga) => {
+    const i = riga.indexOf(':');
+    if (i < 1) return null;
+    const k = riga.slice(0, i).trim();
+    const v = riga.slice(i + 1).trim();
+    return k && v ? { k, v } : null;
+  }).filter(Boolean);
+}
+
+const nutriATesto = (lista) =>
+  (lista || []).map((n) => `${n.k}: ${n.v}`).join('\n');
+
 /* ── Editor: preparazioni collegate ──────────────────────────────── */
 
 const ricettaPerId = (id) => state.recipes.find((r) => r.id === id);
@@ -799,8 +848,11 @@ function openEditor(recipe, origin) {
 
   $('#edEyebrow').textContent = recipe ? 'Modifica ricetta' : 'Nuova ricetta';
   $('#fName').value     = recipe?.name || '';
+  $('#fPrep').value     = recipe?.prep_min || '';
+  $('#fCook').value     = recipe?.cook_min || '';
   $('#fTime').value     = recipe?.time_min || '';
   $('#fServings').value = recipe?.servings || '';
+  $('#fNutri').value    = nutriATesto(recipe?.nutrition);
   $('#fNotes').value    = recipe?.notes || '';
   $('#edSave').textContent = recipe ? 'Salva modifiche' : 'Salva ricetta';
   $('#edDelete').hidden = !recipe;
@@ -848,7 +900,10 @@ async function saveRecipe(e) {
     components:  [...state.draftComp],
     ingredients: getLines('ing'),
     steps:       getLines('step'),
+    nutrition:   nutriDaTesto($('#fNutri').value),
     notes:       $('#fNotes').value.trim(),
+    prep_min:    $('#fPrep').value || null,
+    cook_min:    $('#fCook').value || null,
     time_min:    $('#fTime').value || null,
     servings:    $('#fServings').value || null,
     favorite:    state.editing?.favorite || false,

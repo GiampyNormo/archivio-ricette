@@ -469,6 +469,16 @@ body::before {
   border: 1px solid rgba(var(--accent2-rgb),.28);
 }
 
+.nutri-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 9px; }
+.nutri-voce {
+  display: flex; flex-direction: column; gap: 3px;
+  padding: 11px 14px; border-radius: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+}
+.nutri-voce .nk { font-size: .62rem; text-transform: uppercase; letter-spacing: 1.3px; color: var(--muted); font-weight: 600; }
+.nutri-voce .nv { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--accent); letter-spacing: -.2px; }
+.nutri { min-height: 92px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; }
+
 .dt-notes {
   margin: 0 32px 30px; padding: 18px 20px; border-radius: 14px;
   background: rgba(192,132,252,.06); border: 1px solid rgba(192,132,252,.2);
@@ -531,6 +541,8 @@ body::before {
 
 /* Numeri */
 .num-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
+.num-row + .num-row { margin-top: 12px; }
+.num-nota { font-size: .72rem; color: var(--muted); line-height: 1.5; margin-top: 10px; }
 .num-field .lbl { margin-top: 0 !important; }
 .num-input {
   display: flex; align-items: center; gap: 6px; padding: 11px 14px;

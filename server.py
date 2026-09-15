@@ -168,6 +168,22 @@ def clean_int(value, lo, hi):
     return n if lo <= n <= hi else None
 
 
+def clean_nutrition(value):
+    """Valori nutrizionali come coppie etichetta/valore: si salva quello che
+    la fonte scrive, senza interpretare unità né ricalcolare niente."""
+    if not isinstance(value, list):
+        return []
+    out = []
+    for item in value[:24]:
+        if not isinstance(item, dict):
+            continue
+        k = re.sub(r"\s+", " ", str(item.get("k", ""))).strip()[:40]
+        v = re.sub(r"\s+", " ", str(item.get("v", ""))).strip()[:40]
+        if k and v:
+            out.append({"k": k, "v": v})
+    return out
+
+
 def normalize(body, existing=None):
     idx = tag_index()
     base = existing or {}
@@ -206,8 +222,14 @@ def normalize(body, existing=None):
         "components":  componenti,
         "ingredients": clean_lines(body.get("ingredients")),
         "steps":       clean_lines(body.get("steps")),
+        "nutrition":   clean_nutrition(body.get("nutrition")),
         "notes":       str(body.get("notes", "") or "").strip()[:2000],
         "servings":    clean_int(body.get("servings"), 1, 50),
+        # Tre tempi distinti perché le fonti li danno così: alcune dichiarano
+        # preparazione e cottura separate, altre solo un totale. Non si sommano
+        # mai — se una fonte dà i due pezzi, restano due pezzi.
+        "prep_min":    clean_int(body.get("prep_min"), 1, 1440),
+        "cook_min":    clean_int(body.get("cook_min"), 1, 1440),
         "time_min":    clean_int(body.get("time_min"), 1, 1440),
         "favorite":    bool(body.get("favorite", base.get("favorite", False))),
         "created_at":  base.get("created_at") or now_iso(),

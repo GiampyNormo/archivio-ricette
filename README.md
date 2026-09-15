@@ -38,6 +38,8 @@ computer che non è tuo.
 | Filtrare | Chip dei tag: più tag dello **stesso gruppo** = OR, gruppi **diversi** = AND |
 | Collegare una preparazione | Nell'editor, campo **Preparazioni usate**: cerchi un'altra ricetta e la agganci |
 | Saltare a una preparazione | Nella ricetta aperta, blocco **Usa anche** → click; la freccia ‹ torna indietro |
+| Tempi | Tre campi distinti: **preparazione**, **cottura**, **totale**. Si compilano quelli dichiarati dalla fonte, non si sommano mai fra loro |
+| Valori nutrizionali | Riquadro nell'editor, una voce per riga: `Calorie: 540 kcal` |
 | Spuntare gli ingredienti | Click sulla riga mentre cucini |
 | Chiudere | `Esc` o click fuori |
 
