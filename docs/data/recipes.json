@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-15T16:22:20+00:00",
+  "updated_at": "2026-09-15T16:42:10+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -258,9 +258,47 @@
       "prep_min": 15,
       "cook_min": 25,
       "time_min": null,
-      "favorite": false,
+      "favorite": true,
       "created_at": "2026-09-15T16:22:20+00:00",
-      "updated_at": "2026-09-15T16:22:20+00:00"
+      "updated_at": "2026-09-15T16:38:29+00:00"
+    },
+    {
+      "id": "1ae8834780f6",
+      "name": "Salmone al curry rosso thai con riso al cocco e lime",
+      "image": "/images/20260915-6668fdeffd.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "2 lime",
+        "2 cucchiai di pasta di curry rosso thai",
+        "1 cucchiaio di miele",
+        "100 ml di acqua",
+        "150 g di riso jasmine",
+        "400 ml di latte di cocco light",
+        "100 g di fagiolini",
+        "2 filetti di salmone senza pelle da 120 g",
+        "15 g di coriandolo fresco"
+      ],
+      "steps": [
+        "Gratta la scorza di entrambi i lime su un piattino e mettila da parte.",
+        "In una ciotola mescola la pasta di curry rosso, il miele e il succo di metà dei lime con l'acqua. Regola appena di sale e pepe.",
+        "Lava bene il riso in acqua fredda e scolalo molto accuratamente. Mettilo in un pentolino e versaci il latte di cocco. Aggiungi la scorza di lime e porta a bollore. Abbassa al minimo, copri col coperchio e cuoci 5 minuti. Appoggia sopra i fagiolini spuntati, copri di nuovo e cuoci altri 5 minuti. Spegni e lascia tutto a vapore ancora qualche minuto, col coperchio.",
+        "Taglia il salmone a bocconcini generosi e salalo.",
+        "Scalda un filo d'olio d'oliva in padella a fuoco medio-vivo. Unisci i pezzi di salmone e rosolali 2-3 minuti girandoli ogni tanto, finché sono dorati da tutti i lati. Abbassa la fiamma e versa il condimento al curry. Lascialo sobbollire finché si addensa e diventa lucido, avvolgendo il salmone.",
+        "Sgrana il riso al cocco e lime con una forchetta e dividilo fra le ciotole o i contenitori. Assaggia e aggiusta con sale e altro succo di lime se serve. Aggiungi i fagiolini, copri col salmone appiccicoso e cospargi di coriandolo. Servi con spicchi del lime rimasto."
+      ],
+      "nutrition": [],
+      "nutrition_basis": "",
+      "notes": "Si conserva bene · Si riscalda (questa non è indicata per il congelamento)\n\nNell'app è classificata come Pescatarian.\n\nFonte: «Thai Red Curry Salmon with Lime & Coconut Rice» di Adam Bush — MOB, 4,3★ su 111 voti",
+      "servings": 2,
+      "prep_min": 10,
+      "cook_min": 20,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-15T16:42:10+00:00",
+      "updated_at": "2026-09-15T16:42:10+00:00"
     }
   ]
 }
