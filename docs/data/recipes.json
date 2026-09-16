@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T15:45:11+00:00",
+  "updated_at": "2026-09-16T15:47:11+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -472,8 +472,41 @@
         "Intanto scalda una padella con un filo d'olio a fuoco medio-vivo. Quando è calda cuoci il pollo marinato da entrambi i lati, finché è leggermente bruciacchiato e cotto dentro. Assaggia il brodo e regolalo con metà del succo di lime, sale, zucchero e pepe. Aggiungi altro succo di lime se lo vuoi più agrumato.",
         "Dividi il riso nelle ciotole, versaci sopra la zuppa col mestolo e completa col pollo affettato. Condisci con l'olio al peperoncino e cospargi di cipolla croccante. Finisci con le foglie di coriandolo e uno spicchio di lime a parte."
       ],
-      "nutrition": [],
-      "nutrition_basis": "",
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "856 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "38 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "55 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "26 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "54 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "8 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "3 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "963 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
       "notes": "Si conserva bene · Si congela · Si riscalda\n\nLa foto è ritagliata dalla scheda dell'app, dove l'immagine è la copertina di un video: al centro resta il pulsante play.\n\nFonte: «Curried Coconut Chicken & Rice» di Chloe René — MOB, 4,7★ su 3730 voti",
       "servings": 4,
       "prep_min": 5,
@@ -481,7 +514,7 @@
       "time_min": null,
       "favorite": false,
       "created_at": "2026-09-16T15:45:11+00:00",
-      "updated_at": "2026-09-16T15:45:11+00:00"
+      "updated_at": "2026-09-16T15:47:11+00:00"
     }
   ]
 }
