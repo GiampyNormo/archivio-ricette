@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T20:52:37+00:00",
+  "updated_at": "2026-09-16T20:55:06+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -732,6 +732,78 @@
       "favorite": false,
       "created_at": "2026-09-16T20:52:37+00:00",
       "updated_at": "2026-09-16T20:52:37+00:00"
+    },
+    {
+      "id": "aeb305f5949e",
+      "name": "Gamberi croccanti e couscous perlato in padella",
+      "image": "/images/20260916-ef6f8d93ed.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "2 pomodori grandi",
+        "1 peperone rosso",
+        "6 spicchi d'aglio",
+        "400 g di gamberoni crudi sgusciati",
+        "1 cucchiaino di peperoncino in fiocchi",
+        "1 cucchiaino di paprika affumicata",
+        "400 g di couscous perlato",
+        "1 l di brodo di pollo",
+        "25 g di prezzemolo fresco",
+        "1 limone",
+        "1 cucchiaio di olio extravergine d'oliva"
+      ],
+      "steps": [
+        "Gratta i pomodori con la grattugia a quattro facce. Trita finemente l'aglio e taglia il peperone a striscioline. Trita o stacca le foglie di prezzemolo e mettile da parte per guarnire alla fine.",
+        "Scalda una padella grande a fuoco vivo e versaci l'olio. Sala i gamberoni, buttali in padella e rosolali 2 minuti finché sono dorati. Girali, cuoci altri 30 secondi, poi toglili e mettili da parte.",
+        "Metti in padella le striscioline di peperone e falle rosolare 2-3 minuti finché si ammorbidiscono. Aggiungi i pomodori grattugiati, l'aglio, il peperoncino e la paprika affumicata. Cuoci 8-10 minuti mescolando ogni tanto, finché l'olio comincia a separarsi e i pomodori si sono ristretti del tutto.",
+        "Unisci il couscous e tostalo un minuto. Versa quasi tutto il brodo, tenendone da parte un po' per ammorbidire dopo, copri col coperchio e cuoci a fuoco medio-vivo per 5 minuti. Abbassa al minimo e prosegui altri 8 minuti, o finché il couscous è cotto. Se si asciuga troppo aggiungi il brodo rimasto. Appoggia sopra i gamberoni per farli riscaldare, poi spegni e lascia riposare 2-3 minuti.",
+        "Cospargi col prezzemolo e servi col limone tagliato a spicchi."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "620 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "32 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "19 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "5 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "72 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "6 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "4 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "627 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si riscalda (questa non è indicata per il congelamento)\n\nNell'app è classificata come Pescatarian.\n\nFonte: «One Pan Crispy Prawn & Giant Couscous» di Seb Graus — MOB, 4,4★ su 407 voti",
+      "servings": 4,
+      "prep_min": 5,
+      "cook_min": 25,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-16T20:55:06+00:00",
+      "updated_at": "2026-09-16T20:55:06+00:00"
     }
   ]
 }
