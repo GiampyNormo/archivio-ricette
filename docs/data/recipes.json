@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T21:05:32+00:00",
+  "updated_at": "2026-09-16T21:26:51+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -957,6 +957,77 @@
       "favorite": false,
       "created_at": "2026-09-16T21:05:32+00:00",
       "updated_at": "2026-09-16T21:05:32+00:00"
+    },
+    {
+      "id": "927226e9a727",
+      "name": "Gnocchi croccanti con gamberi al burro e aglio",
+      "image": "/images/20260916-65bf249f38.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "2½ spicchi d'aglio",
+        "1 cucchiaio di olio d'oliva",
+        "500 g di gnocchi freschi",
+        "50 g di burro",
+        "300 g di gamberoni crudi sgusciati",
+        "200 g di pomodorini",
+        "½ limone",
+        "10 g di prezzemolo fresco",
+        "# Per servire",
+        "2 cucchiai di olio al peperoncino",
+        "2,5 g di prezzemolo fresco"
+      ],
+      "steps": [
+        "Trita finemente l'aglio. Scalda metà dell'olio d'oliva in una padella grande a fuoco medio, unisci gli gnocchi e cuocili 6-8 minuti finché sono dorati, poi toglili con una schiumarola.",
+        "Metti il burro in padella e fallo sciogliere finché spuma e sfrigola. Continua a cuocere facendo roteare la padella per 3-4 minuti, finché la parte solida diventa dorata e profuma di biscotto. Aggiungi il resto dell'olio con l'aglio e cuoci un minuto. Unisci i gamberoni e i pomodorini e cuoci 5 minuti, finché i gamberoni sono rosa acceso e cotti dentro.",
+        "Gratta la scorza del limone e spremilo, poi trita finemente il prezzemolo. Rimetti gli gnocchi coi gamberoni e mescola bene perché si avvolgano, quindi aggiungi scorza, succo e prezzemolo. Assaggia e regola di sale e pepe.",
+        "Servi con un filo di olio al peperoncino e il prezzemolo rimasto."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "847 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "38 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "45 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "17 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "75 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "6 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "5 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "781 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nNell'app è classificata come Pescatarian.\n\nFonte: «Crispy Garlic Butter Prawn Gnocchi with Chilli Oil» di Jodie Nixon — MOB, 4,5★ su 29 voti",
+      "servings": 2,
+      "prep_min": 5,
+      "cook_min": 15,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-16T21:26:51+00:00",
+      "updated_at": "2026-09-16T21:26:51+00:00"
     }
   ]
 }
