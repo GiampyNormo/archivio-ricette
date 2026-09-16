@@ -28,6 +28,7 @@ function repoInfo() {
 
 const REPO      = repoInfo();
 const PERCORSO  = 'docs/data/recipes.json';
+const PERC_SPESA = 'docs/data/shopping.json';
 const CART_FOTO = 'docs/images';
 
 const rawUrl = (nome) =>
@@ -188,6 +189,7 @@ async function verificaChiave(t) {
 const store = {
   mode: 'static',
   sha: null,               // versione del file su GitHub, serve per non sovrascrivere
+  shaSpesa: null,
   tagValidi: new Set(),
   repo: REPO,
 
@@ -298,6 +300,65 @@ const store = {
       return nuovo;
     }
     throw new Error('L\'archivio è cambiato altrove: riprova fra un istante');
+  },
+
+  /* ── Lista della spesa ──────────────────────────────────────────
+     Vive accanto alle ricette, così è la stessa su Mac e telefono. */
+
+  async leggiSpesa() {
+    if (this.mode === 'github') {
+      const res = await gh(`/contents/${PERC_SPESA}?ref=${REPO.branch}&t=${Date.now()}`);
+      if (res.status === 404) { this.shaSpesa = null; return []; }
+      if (!res.ok) throw new Error('Non riesco a leggere la lista della spesa');
+      const file = await res.json();
+      this.shaSpesa = file.sha;
+      return JSON.parse(b64ToTesto(file.content)).items || [];
+    }
+    if (this.mode === 'local') {
+      const r = await fetch('api/shopping');
+      return r.ok ? (await r.json()).items || [] : [];
+    }
+    try {
+      const r = await fetch('data/shopping.json?v=' + Date.now());
+      return r.ok ? (await r.json()).items || [] : [];
+    } catch { return []; }
+  },
+
+  async salvaSpesa(items, messaggio) {
+    if (!this.puoScrivere()) throw new Error('Qui la lista si può solo guardare');
+
+    if (this.mode === 'local') {
+      const res = await fetch('api/shopping', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items }),
+      });
+      if (!res.ok) throw new Error('Salvataggio della lista non riuscito');
+      return items;
+    }
+
+    const testo = JSON.stringify({ version: 1, updated_at: oraIso(), items }, null, 2);
+    for (let tentativo = 0; tentativo < 2; tentativo++) {
+      const res = await gh(`/contents/${PERC_SPESA}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: messaggio || 'Aggiorno la lista della spesa',
+          content: testoToB64(testo),
+          branch: REPO.branch,
+          ...(this.shaSpesa ? { sha: this.shaSpesa } : {}),
+        }),
+      });
+      // Conflitto: rileggo per riallineare lo sha e riscrivo la mia lista.
+      // A differenza delle ricette qui non si riapplica una singola modifica —
+      // la lista si salva sempre intera — quindi due dispositivi che la
+      // cambiano nello stesso momento: vince l'ultimo che salva.
+      if (res.status === 409 || res.status === 422) { await this.leggiSpesa(); continue; }
+      if (!res.ok) throw new Error('Salvataggio della lista non riuscito');
+      this.shaSpesa = (await res.json()).content.sha;
+      return items;
+    }
+    throw new Error('La lista è cambiata altrove: riprova fra un istante');
   },
 
   /* Rilegge l'elenco dal deposito già scelto */

@@ -38,6 +38,14 @@
       <kbd class="search-kbd">/</kbd>
     </div>
 
+    <button class="icon-btn cart" id="btnCart" title="Lista della spesa">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 4h2l2.4 10.4a2 2 0 002 1.6h7.7a2 2 0 002-1.6L21 8H6"></path>
+        <circle cx="10" cy="20" r="1.2"></circle><circle cx="17" cy="20" r="1.2"></circle>
+      </svg>
+      <span class="cart-badge" id="cartBadge" hidden>0</span>
+    </button>
+
     <button class="icon-btn key" id="btnKey" hidden title="Attiva la scrittura da qui">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="7.5" cy="15.5" r="4.5"></circle><path d="M10.7 12.3L20 3"></path>
@@ -226,6 +234,29 @@
         </div>
       </footer>
     </form>
+  </div>
+</div>
+
+<!-- ── Lista della spesa ── -->
+<div class="sheet" id="spesa" hidden>
+  <div class="sheet-inner">
+    <header class="ed-head">
+      <div>
+        <div class="ed-eyebrow">Da comprare</div>
+        <div class="setup-title">Lista della spesa</div>
+      </div>
+      <button type="button" class="icon-btn close" id="spesaClose" title="Chiudi (Esc)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+    </header>
+    <div class="spesa-body" id="spesaBody"></div>
+    <footer class="ed-foot">
+      <button type="button" class="btn-danger" id="spesaSvuota" hidden>Svuota tutto</button>
+      <div class="ed-actions">
+        <button type="button" class="btn-ghost" id="spesaPuliti" hidden>Togli i presi</button>
+        <button type="button" class="btn-primary" id="spesaOk">Chiudi</button>
+      </div>
+    </footer>
   </div>
 </div>
 

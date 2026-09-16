@@ -30,6 +30,7 @@ IMG_DIR    = WEB_DIR / "images"
 DATA_FILE  = DATA_DIR / "recipes.json"
 CFG_FILE   = DATA_DIR / "config.json"
 BAK_FILE   = DATA_DIR / "recipes.bak.json"
+SHOP_FILE  = DATA_DIR / "shopping.json"
 PORT       = 8790
 
 MAX_UPLOAD_MB = 12
@@ -108,6 +109,53 @@ def tags_payload():
 
 def now_iso():
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def load_shopping():
+    if not SHOP_FILE.exists():
+        return []
+    try:
+        with SHOP_FILE.open(encoding="utf-8") as f:
+            return json.load(f).get("items", [])
+    except (json.JSONDecodeError, OSError):
+        return []
+
+
+def save_shopping(items):
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    payload = {"version": 1, "updated_at": now_iso(), "items": items}
+    fd, tmp = tempfile.mkstemp(dir=str(DATA_DIR), suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+        os.chmod(tmp, 0o644)
+        os.replace(tmp, SHOP_FILE)
+    except Exception:
+        if os.path.exists(tmp):
+            os.unlink(tmp)
+        raise
+
+
+def clean_shopping(value):
+    """Voci della spesa: testo, ricetta di provenienza e se è già preso."""
+    if not isinstance(value, list):
+        return []
+    out = []
+    for item in value[:400]:
+        if not isinstance(item, dict):
+            continue
+        text = re.sub(r"\s+", " ", str(item.get("text", ""))).strip()[:200]
+        if not text:
+            continue
+        out.append({
+            "id":          str(item.get("id", ""))[:40] or uuid.uuid4().hex[:12],
+            "text":        text,
+            "recipe_id":   str(item.get("recipe_id", ""))[:40],
+            "recipe_name": re.sub(r"\s+", " ", str(item.get("recipe_name", ""))).strip()[:120],
+            "servings":    clean_int(item.get("servings"), 1, 50),
+            "done":        bool(item.get("done", False)),
+        })
+    return out
 
 
 def load_recipes():
@@ -341,6 +389,19 @@ def api_favorite(rid):
             save_recipes(recipes)
             return jsonify(r)
     abort(404, "Ricetta non trovata")
+
+
+@app.route("/api/shopping")
+def api_shopping():
+    return jsonify({"items": load_shopping()})
+
+
+@app.route("/api/shopping", methods=["PUT"])
+def api_shopping_save():
+    body = request.get_json(force=True, silent=True) or {}
+    items = clean_shopping(body.get("items"))
+    save_shopping(items)
+    return jsonify({"items": items})
 
 
 @app.route("/api/images", methods=["POST"])

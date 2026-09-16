@@ -41,6 +41,8 @@ computer che non è tuo.
 | Tempi | Tre campi distinti: **preparazione**, **cottura**, **totale**. Si compilano quelli dichiarati dalla fonte, non si sommano mai fra loro |
 | Valori nutrizionali | Riquadro nell'editor, una voce per riga: `Calorie: 540 kcal` |
 | Sezioni negli ingredienti | Una riga che comincia con `# ` è un'intestazione: `# Per il pollo`. Serve quando la stessa cosa torna in più parti con dosi diverse |
+| Cambiare le porzioni | I tasti **−/+** sulla pillola *Porzioni* nella ricetta aperta: le dosi si riscrivono da sole. ↺ torna a quelle originali |
+| Lista della spesa | **Aggiungi alla spesa** sotto gli ingredienti, poi il carrello 🛒 in alto. Gli ingredienti arrivano già nelle dosi delle porzioni scelte |
 | Spuntare gli ingredienti | Click sulla riga mentre cucini |
 | Chiudere | `Esc` o click fuori |
 
@@ -50,6 +52,14 @@ Vengono rimpicciolite nel browser prima di partire, così l'archivio resta legge
 **Ingredienti e procedimento**: `Invio` crea la riga successiva, `Backspace` su una riga vuota
 la cancella. Con **Incolla lista** butti dentro un elenco copiato da un sito e viene diviso
 riga per riga.
+
+**Porzioni e spesa**: le dosi si riscalano moltiplicando solo il numero in testa a ogni riga —
+in «2 filetti da 120 g» cambia il 2, non la pezzatura — e le righe senza quantità (sale, olio)
+restano come sono. Singolare e plurale vengono accordati per le parole note (*1 spicchio* →
+*2 spicchi*); una parola che il programma non conosce la lascia intatta invece di inventarne
+il plurale. La lista della spesa vive accanto alle ricette, quindi è la stessa su Mac e telefono:
+la riempi a casa e la spunti al supermercato. Le spunte ravvicinate finiscono in un unico
+salvataggio, così non diventano una raffica di commit.
 
 **Preparazioni condivise**: una base che rifai in più piatti (una salsa, un olio aromatizzato,
 un misto di spezie) va inserita come ricetta a sé, poi la agganci ai piatti che la usano. Dentro
@@ -95,6 +105,7 @@ docs/                       il sito — è la cartella che GitHub Pages pubblica
   app.js                    l'interfaccia
   data/recipes.json         le ricette
   data/config.json          i tag
+  data/shopping.json        la lista della spesa
   images/                   le foto
 server.py                   server locale + elenco dei tag
 avvia.command               apre l'archivio sul Mac

@@ -17,6 +17,8 @@ const state = {
   readonly:  false,    // true dove non si può scrivere
   draftComp: [],       // preparazioni collegate nel form
   stack:     [],       // ricette da cui si è arrivati, per tornare indietro
+  porzioni:  null,     // porzioni scelte nel dettaglio, null = quelle della ricetta
+  spesa:     [],       // voci della lista della spesa
 };
 
 const $  = (s, r = document) => r.querySelector(s);
@@ -60,6 +62,84 @@ function tempoOrdine(r) {
   if (r.time_min) return r.time_min;
   const somma = (r.prep_min || 0) + (r.cook_min || 0);
   return somma || 9e9;
+}
+
+/* ── Scalatura delle dosi ────────────────────────────────────────────
+   Le dosi sono testo libero ("400 g di patate dolci", "½ cipolla rossa").
+   Si moltiplica solo il numero in testa alla riga: in "2 filetti da 120 g"
+   cambia il 2, non la pezzatura. Le righe senza numero restano com'erano. */
+
+const FRAZIONI = { '½': .5, '¼': .25, '¾': .75, '⅓': 1/3, '⅔': 2/3, '⅛': .125 };
+const SIMBOLI  = [[.125,'⅛'], [.25,'¼'], [1/3,'⅓'], [.5,'½'], [2/3,'⅔'], [.75,'¾']];
+
+/** Legge la quantità in testa alla riga. null se la riga non ne ha. */
+function leggiQuantita(riga) {
+  const m = String(riga).match(/^\s*(\d+(?:[.,]\d+)?)?\s*([½¼¾⅓⅔⅛])?(?=\s|$)/);
+  if (!m || (!m[1] && !m[2])) return null;
+  const intero = m[1] ? parseFloat(m[1].replace(',', '.')) : 0;
+  const frazione = m[2] ? FRAZIONI[m[2]] : 0;
+  return { valore: intero + frazione, resto: String(riga).slice(m[0].length) };
+}
+
+/** Scrive un numero come lo scriverebbe una persona. */
+function scriviQuantita(n) {
+  if (n >= 20) return String(Math.round(n));
+
+  // sotto le 20 unità si ragiona a frazioni: 2¼ si legge meglio di 2,25
+  const intero = Math.floor(n + 1e-9);
+  const resto = n - intero;
+  let simbolo = '';
+  let vicino = Infinity;
+  for (const [v, s] of SIMBOLI) {
+    const d = Math.abs(resto - v);
+    if (d < vicino && d < .06) { vicino = d; simbolo = s; }
+  }
+  if (!simbolo && resto > .06 && resto < .94) {
+    const arr = Math.round(n * 10) / 10;
+    return String(arr).replace('.', ',');
+  }
+  if (resto >= .94) return String(intero + 1);
+  if (!intero && !simbolo) return '0';
+  return (intero ? String(intero) : '') + simbolo;
+}
+
+/* Singolare ⇄ plurale solo per parole note: meglio lasciare "2 scalogno"
+   che inventare un plurale sbagliato su una parola mai vista. */
+const PLURALI = [
+  ['cucchiaio','cucchiai'], ['cucchiaino','cucchiaini'], ['spicchio','spicchi'],
+  ['filetto','filetti'], ['fetta','fette'], ['foglia','foglie'], ['rametto','rametti'],
+  ['pizzico','pizzichi'], ['manciata','manciate'], ['cipolla','cipolle'],
+  ['cipollotto','cipollotti'], ['scalogno','scalogni'], ['carota','carote'],
+  ['patata','patate'], ['uovo','uova'], ['coscia','cosce'], ['limone','limoni'],
+  ['peperone','peperoni'], ['cetriolo','cetrioli'], ['zucchina','zucchine'],
+  ['pomodoro','pomodori'], ['gambo','gambi'], ['barattolo','barattoli'],
+  ['lattina','lattine'], ['confezione','confezioni'], ['mazzo','mazzi'],
+  ['costa','coste'], ['vasetto','vasetti'], ['busta','buste'],
+];
+const alPlurale   = new Map(PLURALI);
+const alSingolare = new Map(PLURALI.map(([s, p]) => [p, s]));
+
+/** Accorda la parola subito dopo il numero, se la conosciamo. */
+function accorda(resto, quantita) {
+  return resto.replace(/^(\s+)([A-Za-zÀ-ÿ]+)/, (tutto, spazio, parola) => {
+    const minuscola = parola.toLowerCase();
+    const singolo = quantita <= 1 + 1e-9;   // sotto l'unità resta singolare: «⅔ spicchio»
+    const voluta = singolo ? alSingolare.get(minuscola) : alPlurale.get(minuscola);
+    if (!voluta) return tutto;                     // parola non in tabella: non la tocco
+    const resa = parola[0] === parola[0].toUpperCase()
+      ? voluta[0].toUpperCase() + voluta.slice(1) : voluta;
+    return spazio + resa;
+  });
+}
+
+/** Riscrive una riga di ingrediente moltiplicando la dose iniziale. */
+function scalaRiga(riga, fattore) {
+  if (/^#\s+/.test(riga)) return riga;             // intestazione di sezione
+  if (Math.abs(fattore - 1) < 1e-9) return riga;
+  const q = leggiQuantita(riga);
+  if (!q) return riga;                             // "Sale e pepe": niente da scalare
+  const nuova = q.valore * fattore;
+  return scriviQuantita(nuova) + accorda(q.resto, nuova);
 }
 
 /* ── Placeholder grafico per le ricette senza foto ───────────────── */
@@ -107,6 +187,9 @@ async function boot() {
 
   aggiornaModo();
   if (store.erroreChiave) toast('⚠️ ' + store.erroreChiave);
+
+  try { state.spesa = await store.leggiSpesa(); } catch { state.spesa = []; }
+  contaSpesa();
 
   buildFilters();
   buildTagPicker();
@@ -375,6 +458,12 @@ function disegnaDettaglio(id) {
   const r = state.recipes.find((x) => x.id === id);
   if (!r) return false;
 
+  // porzioni scelte: di default quelle della ricetta
+  const base = r.servings || null;
+  const scelte = state.porzioni || base;
+  const fattore = (base && scelte) ? scelte / base : 1;
+
+
   const tags = (r.tags || []).map((t) => {
     const info = state.tagIndex[t];
     return info ? `<span class="mini-tag" style="--c:${info.color}">${esc(info.label)}</span>` : '';
@@ -388,7 +477,7 @@ function disegnaDettaglio(id) {
     r.prep_min  ? { i: '🔪', k: 'Preparazione', v: r.prep_min + ' min', c: 'var(--accent2)' } : null,
     r.cook_min  ? { i: '🔥', k: 'Cottura',      v: r.cook_min + ' min', c: 'var(--accent2)' } : null,
     r.time_min  ? { i: '⏱️', k: 'Tempo',        v: r.time_min + ' min', c: 'var(--accent2)' } : null,
-    r.servings  ? { i: '🍽️', k: 'Porzioni', v: r.servings + (r.servings === 1 ? ' persona' : ' persone'), c: 'var(--cyan)' } : null,
+
     soloIngredienti(r.ingredients).length
       ? { i: '🧂', k: 'Ingredienti', v: soloIngredienti(r.ingredients).length, c: 'var(--accent)' } : null,
     (r.steps || []).length ? { i: '📋', k: 'Passaggi', v: r.steps.length, c: 'var(--violet)' } : null,
@@ -397,6 +486,19 @@ function disegnaDettaglio(id) {
       <span class="mi">${p.i}</span>
       <span><span class="mk">${p.k}</span><br><span class="mv">${esc(p.v)}</span></span>
     </div>`).join('');
+
+  // Le porzioni sono una pillola interattiva: cambiandole si riscrivono le dosi.
+  const pillolaPorzioni = base ? `
+    <div class="meta-pill porzioni" style="--c:var(--cyan)">
+      <span class="mi">🍽️</span>
+      <span><span class="mk">Porzioni</span><br>
+        <span class="porz-cmd">
+          <button class="pz" data-porz="-1" title="Una in meno"${scelte <= 1 ? ' disabled' : ''}>−</button>
+          <span class="mv porz-n">${scelte}</span>
+          <button class="pz" data-porz="1" title="Una in più"${scelte >= 50 ? ' disabled' : ''}>+</button>
+        </span></span>
+      ${fattore !== 1 ? `<button class="porz-reset" data-porz="0" title="Torna a ${base}">↺</button>` : ''}
+    </div>` : '';
 
   // Preparazioni: quelle che questa ricetta usa, e quelle che usano lei
   const usate = (r.components || []).map(ricettaPerId).filter(Boolean);
@@ -430,7 +532,7 @@ function disegnaDettaglio(id) {
   const ing = (r.ingredients || []).length
     ? `<ul class="ing-list">${r.ingredients.map((x) => (isSezione(x)
         ? `<li class="ing-sez">${esc(testoSezione(x))}</li>`
-        : `<li>${esc(x)}</li>`)).join('')}</ul>`
+        : `<li>${esc(scalaRiga(x, fattore))}</li>`)).join('')}</ul>`
     : '<div class="dt-empty-note">Nessun ingrediente inserito.</div>';
 
   const steps = (r.steps || []).length
@@ -480,9 +582,22 @@ function disegnaDettaglio(id) {
         <div class="dt-tags">${tags}</div>
       </div>
     </div>
-    ${pills ? `<div class="dt-meta">${pills}</div>` : ''}
+    ${(pills || pillolaPorzioni) ? `<div class="dt-meta">${pillolaPorzioni}${pills}</div>` : ''}
     <div class="dt-body">
-      <div><div class="sec-title">Ingredienti</div>${ing}${bloccoUsate}</div>
+      <div>
+        <div class="sec-title">Ingredienti${fattore !== 1 ? ` · dosi per ${scelte}` : ''}</div>
+        ${ing}
+        ${(!state.readonly && (r.ingredients || []).some((x) => !isSezione(x))) ? `
+          <button class="btn-spesa" data-in-spesa="${r.id}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 4h2l2.4 10.4a2 2 0 002 1.6h7.7a2 2 0 002-1.6L21 8H6"></path>
+              <circle cx="10" cy="20" r="1.2"></circle><circle cx="17" cy="20" r="1.2"></circle>
+            </svg>
+            <span>${state.spesa.some((v) => v.recipe_id === r.id)
+              ? 'Aggiorna nella spesa' : 'Aggiungi alla spesa'}</span>
+          </button>` : ''}
+        ${bloccoUsate}
+      </div>
       <div><div class="sec-title">Procedimento</div>${steps}</div>
     </div>
     ${nutri}
@@ -496,12 +611,14 @@ function disegnaDettaglio(id) {
 
 function openDetail(id, fromEl) {
   state.stack = [];
+  state.porzioni = null;
   if (!disegnaDettaglio(id)) return;
   openSheet($('#detail'), fromEl);
 }
 
 /** Cambia ricetta dentro il pannello già aperto, con un dissolvenza breve. */
 function apriCollegata(id) {
+  state.porzioni = null;
   if (!disegnaDettaglio(id)) return;
   $('#detail').scrollTop = 0;
   if (!reduced) {
@@ -514,6 +631,33 @@ function apriCollegata(id) {
 $('#detail').addEventListener('click', async (e) => {
   const li = e.target.closest('.ing-list li');
   if (li) { li.classList.toggle('done'); return; }
+
+  const inSpesa = e.target.closest('[data-in-spesa]');
+  if (inSpesa) {
+    const r = state.recipes.find((x) => x.id === inSpesa.dataset.inSpesa);
+    if (r) {
+      const y = $('#detail').scrollTop;
+      await aggiungiAllaSpesa(r, state.porzioni || r.servings || null);
+      disegnaDettaglio(r.id);
+      $('#detail').scrollTop = y;
+    }
+    return;
+  }
+
+  const pz = e.target.closest('[data-porz]');
+  if (pz) {
+    const r = state.recipes.find((x) => x.id === $('#detailInner').dataset.id);
+    const base = r && r.servings;
+    if (base) {
+      const d = parseInt(pz.dataset.porz, 10);
+      const ora = state.porzioni || base;
+      state.porzioni = d === 0 ? null : Math.min(50, Math.max(1, ora + d));
+      const y = $('#detail').scrollTop;
+      disegnaDettaglio(r.id);
+      $('#detail').scrollTop = y;       // resta dove stavi leggendo
+    }
+    return;
+  }
 
   const vai = e.target.closest('[data-vai]');
   if (vai) {
@@ -1046,6 +1190,195 @@ document.addEventListener('keydown', (e) => {
 
   if (e.key === '/') { e.preventDefault(); $('#search').focus(); }
   if (e.key.toLowerCase() === 'n' && !state.readonly) { e.preventDefault(); openEditor(null, $('#btnNew')); }
+});
+
+/* ── Lista della spesa ───────────────────────────────────────────── */
+
+function contaSpesa() {
+  const daPrendere = state.spesa.filter((v) => !v.done).length;
+  const badge = $('#cartBadge');
+  badge.textContent = daPrendere;
+  badge.hidden = daPrendere === 0;
+  $('#btnCart').classList.toggle('pieno', state.spesa.length > 0);
+}
+
+/* Salvataggio della lista: ritardato e accodato.
+
+   Spuntando le voci una dietro l'altra partivano richieste sovrapposte e
+   l'ultima ad arrivare sovrascriveva le altre. In più, in modalità GitHub
+   ogni salvataggio è un commit: una spesa da dodici voci ne avrebbe fatti
+   dodici. Così le modifiche ravvicinate finiscono in un unico salvataggio,
+   e non ne parte mai uno mentre un altro è ancora in volo. */
+let spesaTimer = null, spesaInVolo = false, spesaMsg = '', spesaDaRifare = false;
+
+async function scaricaSpesa() {
+  if (spesaInVolo) { spesaDaRifare = true; return true; }
+  spesaInVolo = true;
+  const msg = spesaMsg || 'Aggiorno la lista della spesa';
+  spesaMsg = '';
+  let ok = true;
+  try {
+    await store.salvaSpesa(state.spesa, msg);
+  } catch (e) {
+    ok = false;
+    toast('❌ ' + (e.message || 'Non sono riuscito a salvare la lista'));
+  } finally {
+    spesaInVolo = false;
+    contaSpesa();
+    if (spesaDaRifare) { spesaDaRifare = false; await scaricaSpesa(); }
+  }
+  return ok;
+}
+
+/** Per le spunte: raggruppa i cambi ravvicinati in un solo salvataggio. */
+function pianificaSpesa(messaggio) {
+  if (messaggio) spesaMsg = messaggio;
+  contaSpesa();
+  clearTimeout(spesaTimer);
+  spesaTimer = setTimeout(scaricaSpesa, 800);
+}
+
+/** Per le azioni che meritano una conferma: salva subito e aspetta. */
+async function salvaSpesa(messaggio) {
+  clearTimeout(spesaTimer);
+  if (messaggio) spesaMsg = messaggio;
+  return await scaricaSpesa();
+}
+
+/** Mette in lista gli ingredienti di una ricetta, già scalati. */
+async function aggiungiAllaSpesa(ricetta, porzioni) {
+  const base = ricetta.servings || null;
+  const fattore = (base && porzioni) ? porzioni / base : 1;
+
+  const voci = (ricetta.ingredients || [])
+    .filter((x) => !isSezione(x))
+    .map((x) => ({
+      id: nuovaVoce(),
+      text: scalaRiga(x, fattore),
+      recipe_id: ricetta.id,
+      recipe_name: ricetta.name,
+      servings: porzioni || null,
+      done: false,
+    }));
+
+  if (!voci.length) { toast('Questa ricetta non ha ingredienti da comprare'); return; }
+
+  // Ricetta già in lista: la sostituisco, così cambiando porzioni si aggiorna
+  const gia = state.spesa.some((v) => v.recipe_id === ricetta.id);
+  state.spesa = state.spesa.filter((v) => v.recipe_id !== ricetta.id).concat(voci);
+
+  if (await salvaSpesa(`Spesa: ${gia ? 'aggiorno' : 'aggiungo'} ${ricetta.name}`)) {
+    toast(gia
+      ? `🛒 Lista aggiornata: ${ricetta.name}${porzioni ? ` per ${porzioni}` : ''}`
+      : `🛒 Aggiunti ${voci.length} ingredienti${porzioni ? ` per ${porzioni} porzioni` : ''}`);
+  }
+}
+
+function nuovaVoce() {
+  const a = new Uint8Array(6);
+  crypto.getRandomValues(a);
+  return Array.from(a, (b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+function disegnaSpesa() {
+  const corpo = $('#spesaBody');
+  const sola = state.readonly;
+
+  if (!state.spesa.length) {
+    corpo.innerHTML = `<div class="spesa-vuota">
+      <div class="sv-ic">🛒</div>
+      <div class="sv-t">Lista vuota</div>
+      <div class="sv-s">Apri una ricetta e usa <b>Aggiungi alla spesa</b>:
+        gli ingredienti arrivano qui già nelle dosi che ti servono.</div></div>`;
+    $('#spesaSvuota').hidden = true;
+    $('#spesaPuliti').hidden = true;
+    return;
+  }
+
+  // raggruppate per ricetta, nell'ordine in cui le hai aggiunte
+  const gruppi = [];
+  for (const v of state.spesa) {
+    let g = gruppi.find((x) => x.id === v.recipe_id);
+    if (!g) { g = { id: v.recipe_id, nome: v.recipe_name, porzioni: v.servings, voci: [] }; gruppi.push(g); }
+    g.voci.push(v);
+  }
+
+  corpo.innerHTML = gruppi.map((g) => {
+    const presi = g.voci.filter((v) => v.done).length;
+    return `
+    <div class="sp-gruppo">
+      <div class="sp-testa">
+        <span class="sp-nome">${esc(g.nome || 'Varie')}</span>
+        <span class="sp-conto">${presi}/${g.voci.length}${g.porzioni ? ` · ${g.porzioni} porz.` : ''}</span>
+        ${sola ? '' : `<button class="sp-via" data-via-ricetta="${esc(g.id)}" title="Togli dalla lista">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>`}
+      </div>
+      <ul class="sp-voci">
+        ${g.voci.map((v) => `<li class="sp-voce${v.done ? ' presa' : ''}"
+            ${sola ? '' : `data-voce="${v.id}"`}>${esc(v.text)}</li>`).join('')}
+      </ul>
+    </div>`;
+  }).join('');
+
+  $('#spesaSvuota').hidden = sola;
+  $('#spesaPuliti').hidden = sola || !state.spesa.some((v) => v.done);
+}
+
+function apriSpesa(origine) {
+  disegnaSpesa();
+  openSheet($('#spesa'), origine);
+}
+
+$('#btnCart').addEventListener('click', (e) => apriSpesa(e.currentTarget));
+$('#spesaClose').addEventListener('click', () => closeSheet());
+$('#spesaOk').addEventListener('click', () => closeSheet());
+
+$('#spesaBody').addEventListener('click', async (e) => {
+  if (state.readonly) return;
+
+  const via = e.target.closest('[data-via-ricetta]');
+  if (via) {
+    const id = via.dataset.viaRicetta;
+    const nome = (state.spesa.find((v) => v.recipe_id === id) || {}).recipe_name || '';
+    state.spesa = state.spesa.filter((v) => v.recipe_id !== id);
+    disegnaSpesa();
+    await salvaSpesa(`Spesa: tolgo ${nome}`);
+    return;
+  }
+
+  const voce = e.target.closest('[data-voce]');
+  if (voce) {
+    const v = state.spesa.find((x) => x.id === voce.dataset.voce);
+    if (!v) return;
+    v.done = !v.done;
+    voce.classList.toggle('presa', v.done);          // reazione immediata
+    $('#spesaPuliti').hidden = !state.spesa.some((x) => x.done);
+    const g = voce.closest('.sp-gruppo');
+    const tutte = [...g.querySelectorAll('.sp-voce')];
+    g.querySelector('.sp-conto').textContent =
+      `${tutte.filter((x) => x.classList.contains('presa')).length}/${tutte.length}` +
+      (v.servings ? ` · ${v.servings} porz.` : '');
+    pianificaSpesa('Spesa: aggiorno cosa ho preso');
+  }
+});
+
+$('#spesaPuliti').addEventListener('click', async () => {
+  state.spesa = state.spesa.filter((v) => !v.done);
+  disegnaSpesa();
+  await salvaSpesa('Spesa: tolgo quello che ho preso');
+});
+
+$('#spesaSvuota').addEventListener('click', async () => {
+  const b = $('#spesaSvuota');
+  if (!b.classList.contains('confirm')) {
+    b.classList.add('confirm'); b.textContent = 'Confermi?';
+    setTimeout(() => { b.classList.remove('confirm'); b.textContent = 'Svuota tutto'; }, 4000);
+    return;
+  }
+  state.spesa = [];
+  disegnaSpesa();
+  await salvaSpesa('Spesa: svuoto la lista');
 });
 
 /* ── Chiave GitHub ────────────────────────────────────────────────── */

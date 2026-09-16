@@ -428,6 +428,95 @@ body::before {
 .meta-pill .mk { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.3px; font-weight: 600; }
 .meta-pill .mv { font-family: var(--font-display); font-size: .95rem; font-weight: 700; color: var(--c); letter-spacing: -.2px; }
 
+/* ── Carrello nella barra ── */
+.icon-btn.cart { width: 42px; height: 42px; align-self: center; flex-shrink: 0; position: relative; }
+.icon-btn.cart svg { width: 18px; height: 18px; }
+.icon-btn.cart.pieno { color: var(--accent2); border-color: rgba(var(--accent2-rgb), .4); background: rgba(var(--accent2-rgb), .1); }
+.cart-badge {
+  position: absolute; top: -5px; right: -5px; min-width: 18px; height: 18px; padding: 0 5px;
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+  background: var(--accent2); color: #12141a;
+  font-family: var(--font-display); font-size: .62rem; font-weight: 800;
+  box-shadow: 0 2px 8px rgba(var(--accent2-rgb), .5);
+}
+
+/* ── Tasto "aggiungi alla spesa" ── */
+.btn-spesa {
+  display: inline-flex; align-items: center; gap: 9px; margin-top: 16px;
+  padding: 11px 17px; border-radius: 12px; cursor: pointer;
+  background: rgba(var(--accent2-rgb), .1); border: 1px solid rgba(var(--accent2-rgb), .32);
+  color: var(--accent2); font-family: var(--font-body); font-size: .84rem; font-weight: 600;
+  transition: background .2s, border-color .2s, transform .18s var(--ease);
+}
+.btn-spesa svg { width: 16px; height: 16px; }
+.btn-spesa:hover { background: rgba(var(--accent2-rgb), .2); border-color: rgba(var(--accent2-rgb), .55); transform: translateY(-2px); }
+
+/* ── Pannello della spesa ── */
+.spesa-body { padding: 22px 30px 8px; }
+.sp-gruppo { margin-bottom: 22px; }
+.sp-testa {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+  padding-bottom: 9px; border-bottom: 1px solid var(--border);
+}
+.sp-nome { font-family: var(--font-display); font-size: .92rem; font-weight: 700; flex: 1; min-width: 0; }
+.sp-conto { font-size: .68rem; color: var(--muted); letter-spacing: .6px; white-space: nowrap; }
+.sp-via {
+  width: 24px; height: 24px; border-radius: 8px; cursor: pointer; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent; border: 1px solid transparent; color: var(--muted);
+  transition: color .18s, border-color .18s, background .18s;
+}
+.sp-via svg { width: 12px; height: 12px; }
+.sp-via:hover { color: var(--danger); border-color: rgba(244,63,94,.35); background: rgba(244,63,94,.1); }
+
+.sp-voci { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.sp-voce {
+  display: flex; align-items: flex-start; gap: 11px;
+  padding: 10px 12px; border-radius: 10px; font-size: .9rem; line-height: 1.45;
+  color: #d4dced; cursor: pointer; user-select: none;
+  transition: background .2s, opacity .2s;
+}
+.sp-voce::before {
+  content: ''; flex-shrink: 0; width: 15px; height: 15px; margin-top: 3px;
+  border-radius: 5px; border: 1.6px solid var(--accent2);
+  transition: background .2s, box-shadow .2s;
+}
+.sp-voce:hover { background: var(--surface2); }
+.sp-voce.presa { opacity: .4; text-decoration: line-through; text-decoration-color: var(--muted); }
+.sp-voce.presa::before { background: var(--accent2); box-shadow: 0 0 10px rgba(var(--accent2-rgb), .55); }
+
+.spesa-vuota { text-align: center; padding: 42px 20px 34px; }
+.spesa-vuota .sv-ic { font-size: 2.6rem; margin-bottom: 14px; }
+.spesa-vuota .sv-t { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+.spesa-vuota .sv-s { font-size: .86rem; color: var(--muted); line-height: 1.6; max-width: 380px; margin: 0 auto; }
+.spesa-vuota b { color: var(--accent2); font-weight: 600; }
+
+@media (max-width: 760px) {
+  .spesa-body { padding: 18px 20px 8px; }
+  .icon-btn.cart { width: 38px; height: 38px; }
+}
+
+/* ── Selettore porzioni ── */
+.meta-pill.porzioni { padding-right: 12px; gap: 11px; }
+.porz-cmd { display: inline-flex; align-items: center; gap: 10px; }
+.porz-cmd .pz {
+  width: 24px; height: 24px; border-radius: 8px; cursor: pointer; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(var(--accent-rgb), .1); border: 1px solid rgba(var(--accent-rgb), .28);
+  color: var(--accent); font-size: 1rem; line-height: 1; font-family: var(--font-body);
+  transition: background .18s, border-color .18s, transform .15s, opacity .18s;
+}
+.porz-cmd .pz:hover:not(:disabled) { background: rgba(var(--accent-rgb), .22); transform: translateY(-1px); }
+.porz-cmd .pz:disabled { opacity: .3; cursor: default; }
+.porz-cmd .porz-n { min-width: 16px; text-align: center; display: inline-block; }
+.porz-reset {
+  width: 24px; height: 24px; border-radius: 8px; cursor: pointer; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent; border: 1px solid var(--border); color: var(--muted);
+  font-size: .8rem; transition: color .18s, border-color .18s;
+}
+.porz-reset:hover { color: var(--accent2); border-color: rgba(var(--accent2-rgb), .45); }
+
 .dt-body { display: grid; grid-template-columns: 320px 1fr; gap: 32px; padding: 26px 32px 34px; }
 @media (max-width: 780px) { .dt-body { grid-template-columns: 1fr; gap: 26px; } }
 
