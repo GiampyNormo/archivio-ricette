@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T20:16:14+00:00",
+  "updated_at": "2026-09-16T20:20:17+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -539,7 +539,7 @@
         "½ cucchiaino di peperoncino in fiocchi"
       ],
       "steps": [
-        "Per la crema di piselli, metti nel frullatore aglio, pistacchi, parmigiano, i piselli, il succo del limone e le foglie di basilico (tienine da parte qualcuna per guarnire) insieme a 3 cucchiai di olio d'oliva, 3 cucchiai di acqua e un pizzico di sale. Frulla fino a ottenere una crema liscia.",
+        "Per la crema di piselli, metti nel frullatore aglio, pistacchi, parmigiano, i piselli, il succo del limone e le foglie di basilico (tienine da parte qualcuna per guarnire) insieme a 2¼ cucchiai di olio d'oliva, 2¼ cucchiai di acqua e un pizzico di sale. Frulla fino a ottenere una crema liscia.",
         "Metti la pasta a bollire in abbondante acqua salata. Mentre cuoce prepara gli asparagi: togli la parte dura del gambo e le punte (mettile da parte, servono dopo). Riduci a nastri il resto del gambo con un pelapatate e tieni da parte.",
         "Quando alla pasta mancano circa 2 minuti, buttaci dentro gli asparagi a nastri, il resto dei piselli e le punte che avevi tenuto da parte.",
         "Scola tutto tenendo da parte una tazza di acqua di cottura, rimetti nella pentola, unisci la crema di piselli e una bella spruzzata di acqua di cottura e mescola bene finché diventa cremosa e avvolgente. Assaggia, aggiusta di sale e aggiungi un'altra spremuta di limone se ti va.",
@@ -580,14 +580,14 @@
         }
       ],
       "nutrition_basis": "per porzione",
-      "notes": "Si conserva bene · Si congela · Si riscalda\n\nMOB indica solo la cottura (15 min), nessun tempo di preparazione.\n\nAttenzione a una discordanza dell'app: nell'elenco ingredienti olio e acqua sono 2¼ cucchiai ciascuno, ma il testo del primo passaggio dice 3 cucchiai. Ho lasciato entrambi come sono scritti.\n\nLa foto è ritagliata dalla copertina di un video: al centro resta il pulsante play.\n\nFonte: «Pasta Primavera (Spring Pasta)» — MOB, 4,8★ su 539 voti",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nMOB indica solo la cottura (15 min), nessun tempo di preparazione.\n\nDosi di olio e acqua: valgono 2¼ cucchiai ciascuno. Nel passaggio 1 l'app mostra entrambi i numeri — il testo scritto dice 3 cucchiai, le etichette sotto lo stesso passaggio dicono 2¼, come l'elenco ingredienti. Succede perché le porzioni erano impostate su 3: MOB riscala le quantità ma non il testo dei passaggi.\n\nLa foto è ritagliata dalla copertina di un video: al centro resta il pulsante play.\n\nFonte: «Pasta Primavera (Spring Pasta)» — MOB, 4,8★ su 539 voti",
       "servings": 3,
       "prep_min": null,
       "cook_min": 15,
       "time_min": null,
       "favorite": false,
       "created_at": "2026-09-16T20:16:14+00:00",
-      "updated_at": "2026-09-16T20:16:14+00:00"
+      "updated_at": "2026-09-16T20:20:17+00:00"
     }
   ]
 }
