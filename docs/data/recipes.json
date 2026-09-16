@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T20:20:17+00:00",
+  "updated_at": "2026-09-16T20:41:19+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -588,6 +588,80 @@
       "favorite": false,
       "created_at": "2026-09-16T20:16:14+00:00",
       "updated_at": "2026-09-16T20:20:17+00:00"
+    },
+    {
+      "id": "09b41540e013",
+      "name": "Pasta con salsiccia e semi di finocchio",
+      "image": "/images/20260916-b96d1f9c8f.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "4 salsicce di maiale",
+        "1 cipolla",
+        "1½ spicchi d'aglio",
+        "1 cucchiaino di semi di finocchio",
+        "½ cucchiaino di peperoncino in fiocchi",
+        "75 g di concentrato di pomodoro",
+        "100 ml di panna fresca",
+        "50 g di parmigiano",
+        "250 g di conchiglie",
+        "25 g di basilico"
+      ],
+      "steps": [
+        "Scalda una padella larga a fuoco medio. Spella le salsicce e butta in padella l'impasto a palline, con un filo d'olio. Rosolale finché sono dorate da tutti i lati, poi toglile.",
+        "Trita finemente la cipolla e affetta l'aglio. Unisci la cipolla alla padella col grasso della salsiccia e falla cuocere una decina di minuti a fuoco medio-basso, finché diventa trasparente.",
+        "Aggiungi aglio, peperoncino e semi di finocchio e cuoci una trentina di secondi, finché l'aglio profuma. Unisci il concentrato di pomodoro, mescola e cuoci 5-10 minuti finché comincia a caramellare sul fondo.",
+        "Versa la panna e tre quarti del parmigiano grattugiato. Mescola tutto e regola di sale e pepe.",
+        "Metti la pasta a cuocere in acqua bollente salata. Quando l'acqua è bella amidosa, aggiungine una tazza abbondante al sugo per ammorbidirlo.",
+        "Quando il sugo sobbolle bene, rimetti dentro l'impasto di salsiccia. Mescola e strappaci dentro un po' di basilico.",
+        "Quando la pasta è al dente uniscila al sugo. Mescola aggiungendo altra acqua di cottura e falla insaporire finché tutto si lega.",
+        "Servi in piatti caldi, completa con altro parmigiano, basilico e un filo d'olio d'oliva."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "1163 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "43 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "61 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "30 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "109 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "12 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "7 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "1225 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nNel passaggio 4 va «tre quarti del parmigiano»: sui 50 g dell'elenco sono 37,5 g, il resto va sopra alla fine.\n\nFonte: «Sausage & Fennel Pasta» di Ben Lebus — MOB, 4,8★ su 270 voti",
+      "servings": 2,
+      "prep_min": 5,
+      "cook_min": 20,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-16T20:41:19+00:00",
+      "updated_at": "2026-09-16T20:41:19+00:00"
     }
   ]
 }
