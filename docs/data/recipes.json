@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T15:47:11+00:00",
+  "updated_at": "2026-09-16T15:48:05+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -434,14 +434,14 @@
         }
       ],
       "nutrition_basis": "per porzione",
-      "notes": "Si conserva bene · Si congela · Si riscalda\n\nCome congelarlo: congela pollo cotto e brodo separatamente, in porzioni, fino a 3 mesi. Non ricongelare una volta scongelato.\n\nAccanto c'era un secondo riquadro «How to store it» tagliato nello screenshot: si leggeva solo che riguardava il riso e l'olio al sesamo.\n\nTempi non presenti negli screenshot ricevuti.\n\nFonte: «Caramelised Soy Chicken in Garlic Ginger Broth with Rice» di Chloe René — MOB, 4,4★ su 1102 voti",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nCome congelarlo: congela pollo cotto e brodo separatamente, in porzioni, fino a 3 mesi. Non ricongelare una volta scongelato.\n\nAccanto c'era un secondo riquadro «How to store it» tagliato nello screenshot: si leggeva solo che riguardava il riso e l'olio al sesamo.\n\nFonte: «Caramelised Soy Chicken in Garlic Ginger Broth with Rice» di Chloe René — MOB, 4,4★ su 1102 voti",
       "servings": 4,
-      "prep_min": null,
-      "cook_min": null,
+      "prep_min": 15,
+      "cook_min": 20,
       "time_min": null,
       "favorite": false,
       "created_at": "2026-09-16T12:10:28+00:00",
-      "updated_at": "2026-09-16T12:37:19+00:00"
+      "updated_at": "2026-09-16T15:48:05+00:00"
     },
     {
       "id": "eab96bdce135",
