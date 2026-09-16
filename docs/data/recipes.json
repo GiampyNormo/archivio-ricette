@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T20:55:06+00:00",
+  "updated_at": "2026-09-16T21:02:55+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -804,6 +804,84 @@
       "favorite": false,
       "created_at": "2026-09-16T20:55:06+00:00",
       "updated_at": "2026-09-16T20:55:06+00:00"
+    },
+    {
+      "id": "64cafe6f58c5",
+      "name": "Noodles al gochujang e pomodoro con tofu affumicato",
+      "image": "/images/20260916-20a88583d9.jpg",
+      "tags": [],
+      "components": [],
+      "ingredients": [
+        "# Per l'insalata di cetriolo",
+        "¼ cetriolo",
+        "½ cucchiaio di olio al peperoncino",
+        "1 cucchiaio di aceto di riso",
+        "½ cucchiaino di semi di sesamo",
+        "2 cipollotti",
+        "# Per il tofu",
+        "125 g di tofu affumicato",
+        "½ cucchiaio di salsa di soia",
+        "¼ cucchiaio di sciroppo d'acero",
+        "# Per i noodles",
+        "2 spicchi d'aglio",
+        "7,5 g di zenzero fresco",
+        "2 cucchiai di concentrato di pomodoro",
+        "175 g di tofu silken",
+        "¾ cucchiaio di gochujang",
+        "150 g di noodles all'uovo",
+        "½ cucchiaio di salsa di soia",
+        "Olio al peperoncino"
+      ],
+      "steps": [
+        "Affetta finemente il cetriolo e mettilo in una ciotola con l'olio al peperoncino, l'aceto di riso, un pizzico di sale e i semi di sesamo. Affetta finemente i cipollotti e tienili da parte per guarnire.",
+        "Taglia il tofu affumicato a cubetti da 2 cm. Scalda una padella a fuoco medio con un filo d'olio e, quando è calda, rosola il tofu da tutti i lati finché è dorato. Aggiungi la salsa di soia e lo sciroppo d'acero e lascia sobbollire finché diventa bello lucido e appiccicoso, poi togli dal fuoco e metti da parte.",
+        "Scalda un filo d'olio d'oliva in una padella grande a fuoco medio. Grattaci dentro aglio e zenzero e cuoci 2 minuti. Unisci il concentrato di pomodoro e cuoci altri 2 minuti, poi togli dal fuoco. Versa il composto nel frullatore col tofu silken e il gochujang, frulla fino a ottenere una crema liscia e regola di sale e pepe. Rimetti la salsa in padella.",
+        "Cuoci i noodles secondo i tempi della confezione, poi scolali tenendo da parte un po' di acqua di cottura. Saltali nella salsa, ammorbidendola con un goccio di acqua di cottura se serve.",
+        "Distribuisci i noodles nei contenitori. Completa ognuno con l'insalata di cetriolo e il tofu croccante, un filo di olio al peperoncino e una spolverata di cipollotti. Chiudi e metti in frigo: si conservano fino a 3 giorni."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "596 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "28 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "23 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "4 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "71 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "10 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "4 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "1195 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si riscalda (questa non è indicata per il congelamento)\n\nNell'app è classificata come Vegetarian.\n\nFonte: «Saucy Tomatoey Gochujang Noodles with Smoked Tofu» di Jodie Nixon — MOB, 4,4★ su 73 voti",
+      "servings": 2,
+      "prep_min": 10,
+      "cook_min": 10,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-16T21:02:55+00:00",
+      "updated_at": "2026-09-16T21:02:55+00:00"
     }
   ]
 }
