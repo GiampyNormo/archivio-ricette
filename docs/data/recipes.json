@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T12:10:28+00:00",
+  "updated_at": "2026-09-16T12:37:19+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -251,8 +251,41 @@
         "Per il pickle veloce, affetta finemente il cetriolo e riduci le carote a nastri con un pelapatate. Condisci con aceto di riso, zucchero, sale e olio di sesamo.",
         "Dividi il riso in quattro contenitori, copri col pollo e con le verdure marinate. Taglia le uova a metà e appoggiale sopra, poi finisci col verde dei cipollotti affettato. Chiudi i contenitori e mettili in frigo pronti da prendere per pranzo: si conservano fino a 3 giorni."
       ],
-      "nutrition": [],
-      "nutrition_basis": "",
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "792 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "63 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "24 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "5 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "79 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "19 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "3 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "1879 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
       "notes": "Si conserva bene · Si congela · Si riscalda\n\nCome congelarlo: congela solo il pollo cotto, in porzioni, fino a 3 mesi. Non ricongelarlo una volta scongelato. Escludi riso, uova e pickle.\n\nAccanto c'era un secondo riquadro «How to store it» tagliato nello screenshot.\n\nFonte: «Korean BBQ Chicken Rice Box» di Finn Tonry — MOB, 4,8★ su 332 voti",
       "servings": 4,
       "prep_min": 15,
@@ -260,7 +293,7 @@
       "time_min": null,
       "favorite": false,
       "created_at": "2026-09-15T16:22:20+00:00",
-      "updated_at": "2026-09-15T17:06:48+00:00"
+      "updated_at": "2026-09-16T12:37:19+00:00"
     },
     {
       "id": "1ae8834780f6",
@@ -366,8 +399,41 @@
         "Intanto monda e affetta finemente il cetriolo e salalo poco prima di servire. Riscalda il riso cotto. Assaggia il brodo e regolalo bene di sale e pepe se serve.",
         "Dividi il riso nelle ciotole. Versaci sopra il brodo col mestolo e appoggia il pollo affettato e il cetriolo. Completa con un filo di sambal o salsa al peperoncino e con l'olio di sesamo e cipollotti."
       ],
-      "nutrition": [],
-      "nutrition_basis": "",
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "583 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "35 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "24 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "5 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "55 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "11 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "3 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "987 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
       "notes": "Si conserva bene · Si congela · Si riscalda\n\nCome congelarlo: congela pollo cotto e brodo separatamente, in porzioni, fino a 3 mesi. Non ricongelare una volta scongelato.\n\nAccanto c'era un secondo riquadro «How to store it» tagliato nello screenshot: si leggeva solo che riguardava il riso e l'olio al sesamo.\n\nTempi non presenti negli screenshot ricevuti.\n\nFonte: «Caramelised Soy Chicken in Garlic Ginger Broth with Rice» di Chloe René — MOB, 4,4★ su 1102 voti",
       "servings": 4,
       "prep_min": null,
@@ -375,7 +441,7 @@
       "time_min": null,
       "favorite": false,
       "created_at": "2026-09-16T12:10:28+00:00",
-      "updated_at": "2026-09-16T12:10:28+00:00"
+      "updated_at": "2026-09-16T12:37:19+00:00"
     }
   ]
 }
