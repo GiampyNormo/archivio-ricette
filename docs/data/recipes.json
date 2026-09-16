@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T20:41:19+00:00",
+  "updated_at": "2026-09-16T20:52:37+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -662,6 +662,76 @@
       "favorite": false,
       "created_at": "2026-09-16T20:41:19+00:00",
       "updated_at": "2026-09-16T20:41:19+00:00"
+    },
+    {
+      "id": "85f15a0e3251",
+      "name": "Pasta al forno Marry Me con pollo",
+      "image": "/images/20260916-e944bfc349.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "160 g di fusilli",
+        "150 g di petto di pollo già cotto",
+        "150 g di fiocchi di latte interi",
+        "1 cucchiaio di concentrato di pomodori secchi",
+        "1 cucchiaio di gochujang",
+        "1 cucchiaino di aglio in polvere",
+        "100 g di pomodorini",
+        "15 g di basilico fresco",
+        "20 g di parmigiano"
+      ],
+      "steps": [
+        "Porta a bollore una pentola capiente di acqua salata. Butta la pasta e cuocila al dente secondo i tempi della confezione. Tieni da parte una tazza di acqua di cottura, poi scolala.",
+        "Intanto taglia i pomodorini a metà e strappa le foglie di basilico.",
+        "Metti nel frullatore i fiocchi di latte, il concentrato di pomodori secchi, il gochujang e l'aglio in polvere insieme a un goccio dell'acqua di cottura tenuta da parte. Frulla fino a ottenere una crema liscia, aggiungendo altra acqua se serve ad ammorbidirla.",
+        "Versa la pasta scolata in una ciotola capiente col pollo cotto, i pomodorini tagliati e il basilico. Copri con la salsa e mescola bene finché tutto è avvolto. Se risulta asciutta aggiungi altra acqua di cottura.",
+        "Trasferisci la pasta in una pirofila, grattaci sopra il parmigiano e passala sotto il grill caldo 5-10 minuti, finché è dorata e sobbolle in superficie."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "505 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "37 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "13 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "5 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "55 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "7 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "4 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "740 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nCome congelarla: falla raffreddare del tutto, poi congelala in porzioni (senza il basilico fresco) fino a 3 mesi. Non ricongelare una volta scongelata.\n\nAccanto c'era il solito riquadro «How to store it» tagliato nello screenshot.\n\nFonte: «Marry Me Chicken Pasta Bake» di Finn Tonry — MOB, 4,2★ su 650 voti",
+      "servings": 2,
+      "prep_min": 10,
+      "cook_min": 15,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-16T20:52:37+00:00",
+      "updated_at": "2026-09-16T20:52:37+00:00"
     }
   ]
 }
