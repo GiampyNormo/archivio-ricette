@@ -1,5 +1,62 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T20:36:43+00:00",
-  "items": []
+  "updated_at": "2026-09-16T20:38:33+00:00",
+  "items": [
+    {
+      "id": "b481a23e9a4e",
+      "text": "400 g di patate dolci",
+      "recipe_id": "d32ac280ca59",
+      "recipe_name": "Spicchi di patata dolce con pollo al chipotle",
+      "servings": 2,
+      "done": false
+    },
+    {
+      "id": "d78ffd2494ac",
+      "text": "120 g di cheddar",
+      "recipe_id": "d32ac280ca59",
+      "recipe_name": "Spicchi di patata dolce con pollo al chipotle",
+      "servings": 2,
+      "done": false
+    },
+    {
+      "id": "d0a7c941f91b",
+      "text": "2 cucchiai di panna acida",
+      "recipe_id": "d32ac280ca59",
+      "recipe_name": "Spicchi di patata dolce con pollo al chipotle",
+      "servings": 2,
+      "done": false
+    },
+    {
+      "id": "655bb7d83c60",
+      "text": "150 g di salsa",
+      "recipe_id": "d32ac280ca59",
+      "recipe_name": "Spicchi di patata dolce con pollo al chipotle",
+      "servings": 2,
+      "done": false
+    },
+    {
+      "id": "7456f3b4cc6c",
+      "text": "½ cipolla rossa",
+      "recipe_id": "d32ac280ca59",
+      "recipe_name": "Spicchi di patata dolce con pollo al chipotle",
+      "servings": 2,
+      "done": false
+    },
+    {
+      "id": "681abb0751ed",
+      "text": "10 g di coriandolo fresco",
+      "recipe_id": "d32ac280ca59",
+      "recipe_name": "Spicchi di patata dolce con pollo al chipotle",
+      "servings": 2,
+      "done": false
+    },
+    {
+      "id": "f4465a9f7e73",
+      "text": "3 lime",
+      "recipe_id": "d32ac280ca59",
+      "recipe_name": "Spicchi di patata dolce con pollo al chipotle",
+      "servings": 2,
+      "done": false
+    }
+  ]
 }
