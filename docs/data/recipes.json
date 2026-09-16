@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T12:37:19+00:00",
+  "updated_at": "2026-09-16T15:45:11+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -442,6 +442,46 @@
       "favorite": false,
       "created_at": "2026-09-16T12:10:28+00:00",
       "updated_at": "2026-09-16T12:37:19+00:00"
+    },
+    {
+      "id": "eab96bdce135",
+      "name": "Pollo al curry di cocco con riso",
+      "image": "/images/20260916-15acd1504e.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "8 cosce di pollo disossate e senza pelle",
+        "1 spicchio d'aglio",
+        "4 cucchiai di salsa di ostriche",
+        "10 g di coriandolo fresco",
+        "400 ml di latte di cocco intero",
+        "2 cucchiai di pasta di curry giallo thai",
+        "400 ml di acqua",
+        "2 lime",
+        "½ cucchiaino di zucchero",
+        "# Per servire",
+        "500 g di riso cotto",
+        "25 g di cipolla fritta croccante",
+        "4 cucchiaini di olio al peperoncino"
+      ],
+      "steps": [
+        "Metti il pollo in una ciotola. Grattaci sopra l'aglio, poi mescolaci metà della salsa di ostriche. Sala, pepa e lascialo marinare da parte. Stacca le foglie di coriandolo e trita finemente i gambi: tieni tutto da parte.",
+        "Scalda un pentolino a fuoco medio-vivo. Quando è caldo versaci un goccio di latte di cocco e cuoci un paio di secondi. Unisci i gambi di coriandolo, la pasta di curry e la salsa di ostriche rimasta e mescola finché profuma. Aggiungi l'acqua e il latte di cocco rimasto, porta a bollore, poi abbassa e fai sobbollire 10-15 minuti.",
+        "Intanto scalda una padella con un filo d'olio a fuoco medio-vivo. Quando è calda cuoci il pollo marinato da entrambi i lati, finché è leggermente bruciacchiato e cotto dentro. Assaggia il brodo e regolalo con metà del succo di lime, sale, zucchero e pepe. Aggiungi altro succo di lime se lo vuoi più agrumato.",
+        "Dividi il riso nelle ciotole, versaci sopra la zuppa col mestolo e completa col pollo affettato. Condisci con l'olio al peperoncino e cospargi di cipolla croccante. Finisci con le foglie di coriandolo e uno spicchio di lime a parte."
+      ],
+      "nutrition": [],
+      "nutrition_basis": "",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nLa foto è ritagliata dalla scheda dell'app, dove l'immagine è la copertina di un video: al centro resta il pulsante play.\n\nFonte: «Curried Coconut Chicken & Rice» di Chloe René — MOB, 4,7★ su 3730 voti",
+      "servings": 4,
+      "prep_min": 5,
+      "cook_min": 25,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-16T15:45:11+00:00",
+      "updated_at": "2026-09-16T15:45:11+00:00"
     }
   ]
 }
