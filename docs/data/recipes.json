@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T11:21:59+00:00",
+  "updated_at": "2026-09-16T12:10:28+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -332,6 +332,50 @@
       "favorite": false,
       "created_at": "2026-09-15T16:42:10+00:00",
       "updated_at": "2026-09-16T11:21:59+00:00"
+    },
+    {
+      "id": "d193211b95de",
+      "name": "Pollo caramellato alla soia in brodo di aglio e zenzero con riso",
+      "image": "/images/20260916-bf9d55609a.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "20 g di zenzero fresco",
+        "10 spicchi d'aglio",
+        "800 ml di brodo di pollo",
+        "6 cipollotti",
+        "8 cosce di pollo disossate e senza pelle",
+        "3 cucchiai di kecap manis",
+        "Pepe bianco macinato",
+        "30 ml di olio di semi",
+        "1 cucchiaio di olio di sesamo",
+        "2 cucchiaini di semi di sesamo tostati",
+        "70 ml di acqua",
+        "1 cetriolo",
+        "500 g di riso cotto",
+        "# Per servire",
+        "1 cucchiaino di sambal"
+      ],
+      "steps": [
+        "Schiaccia zenzero e aglio, poi mettili in un pentolino col brodo a fuoco medio. Monda i cipollotti, affetta finemente la parte verde e taglia il bianco a metà per il lungo. Unisci il bianco al brodo e lascialo sobbollire finché è caldo mentre prepari il resto.",
+        "Metti le cosce di pollo in una ciotola col kecap manis, sala e aggiungi pepe bianco. Lasciale marinare da parte.",
+        "Versa l'olio di semi in padella con la parte verde dei cipollotti e scalda a fuoco vivo. Quando i cipollotti sono appassiti trasferiscili in una ciotola. Mescolaci l'olio di sesamo e i semi di sesamo tostati. Metti da parte.",
+        "Rimetti la padella su fuoco medio-vivo e cuoci il pollo 7-8 minuti, finché è dorato, caramellato e con qualche punto bruciacchiato. Versa l'acqua nella marinata rimasta e versa il tutto sul pollo. Cuoci finché si riduce a una salsa densa.",
+        "Intanto monda e affetta finemente il cetriolo e salalo poco prima di servire. Riscalda il riso cotto. Assaggia il brodo e regolalo bene di sale e pepe se serve.",
+        "Dividi il riso nelle ciotole. Versaci sopra il brodo col mestolo e appoggia il pollo affettato e il cetriolo. Completa con un filo di sambal o salsa al peperoncino e con l'olio di sesamo e cipollotti."
+      ],
+      "nutrition": [],
+      "nutrition_basis": "",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nCome congelarlo: congela pollo cotto e brodo separatamente, in porzioni, fino a 3 mesi. Non ricongelare una volta scongelato.\n\nAccanto c'era un secondo riquadro «How to store it» tagliato nello screenshot: si leggeva solo che riguardava il riso e l'olio al sesamo.\n\nTempi non presenti negli screenshot ricevuti.\n\nFonte: «Caramelised Soy Chicken in Garlic Ginger Broth with Rice» di Chloe René — MOB, 4,4★ su 1102 voti",
+      "servings": 4,
+      "prep_min": null,
+      "cook_min": null,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-16T12:10:28+00:00",
+      "updated_at": "2026-09-16T12:10:28+00:00"
     }
   ]
 }
