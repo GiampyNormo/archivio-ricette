@@ -1,15 +1,7 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T20:39:10+00:00",
+  "updated_at": "2026-09-16T20:39:12+00:00",
   "items": [
-    {
-      "id": "b481a23e9a4e",
-      "text": "400 g di patate dolci",
-      "recipe_id": "d32ac280ca59",
-      "recipe_name": "Spicchi di patata dolce con pollo al chipotle",
-      "servings": 2,
-      "done": true
-    },
     {
       "id": "d78ffd2494ac",
       "text": "120 g di cheddar",
