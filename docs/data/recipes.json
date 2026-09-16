@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T21:02:55+00:00",
+  "updated_at": "2026-09-16T21:05:32+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -882,6 +882,81 @@
       "favorite": false,
       "created_at": "2026-09-16T21:02:55+00:00",
       "updated_at": "2026-09-16T21:02:55+00:00"
+    },
+    {
+      "id": "031b52bbb2be",
+      "name": "Tofu al pepe nero",
+      "image": "/images/20260916-6a4fe24a75.jpg",
+      "tags": [],
+      "components": [],
+      "ingredients": [
+        "280 g di tofu",
+        "1 cucchiaio di pepe nero in grani",
+        "1 cucchiaio di zucchero semolato",
+        "7,5 g di zenzero fresco",
+        "1 spicchio d'aglio",
+        "1½ cipollotti",
+        "30 g di burro",
+        "½ peperoncino",
+        "200 g di riso basmati",
+        "12,5 g di amido di mais",
+        "½ cucchiaio di salsa di soia scura",
+        "2½ cucchiai di salsa di soia chiara",
+        "1 cucchiaio di semi di sesamo tostati",
+        "½ cucchiaio di olio d'oliva"
+      ],
+      "steps": [
+        "Taglia il tofu a cubetti e infarinalo nell'amido di mais.",
+        "Versa dell'olio di semi in un wok a fuoco medio-vivo. Friggi il tofu finché è dorato, poi mettilo a scolare su carta da cucina.",
+        "Metti su il riso, seguendo i tempi della confezione.",
+        "Pulisci il wok, rimettilo sul fuoco e versa il resto dell'olio. Unisci metà del burro, poi l'aglio e lo zenzero tritati. Falli rosolare finché si ammorbidiscono.",
+        "Pesta i grani di pepe nel mortaio, oppure macinane la quantità giusta col macinapepe. Mettilo nel wok insieme allo zucchero e mescola. Quando lo zucchero si è sciolto aggiungi la salsa di soia e mescola di nuovo.",
+        "Affetta finemente il peperoncino rosso, uniscilo al wok e mescola, poi rimetti dentro il tofu. Aggiungi il burro rimasto e fallo sciogliere, mescolando bene perché avvolga tutto.",
+        "Servi il tofu sopra un letto di riso fumante, guarnito coi cipollotti tritati e i semi di sesamo."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "679 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "24 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "21 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "9 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "99 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "9 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "4 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "1524 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nNell'app è classificata come Vegetarian.\n\nMOB indica solo la cottura (50 min), nessun tempo di preparazione.\n\nNota sull'olio: nell'elenco ingredienti c'è mezzo cucchiaio di olio d'oliva, ma il passaggio 2 parla di olio di semi per friggere il tofu. Ho lasciato entrambi come sono scritti.\n\nFonte: «Black Pepper Tofu» di Ben Lebus — MOB, 4,6★ su 101 voti",
+      "servings": 2,
+      "prep_min": null,
+      "cook_min": 50,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-16T21:05:32+00:00",
+      "updated_at": "2026-09-16T21:05:32+00:00"
     }
   ]
 }
