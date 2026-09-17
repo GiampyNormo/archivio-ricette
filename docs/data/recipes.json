@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-17T15:06:19+00:00",
+  "updated_at": "2026-09-17T15:11:48+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -1181,6 +1181,89 @@
       "favorite": false,
       "created_at": "2026-09-17T15:06:19+00:00",
       "updated_at": "2026-09-17T15:06:19+00:00"
+    },
+    {
+      "id": "9fd6d9c519f7",
+      "name": "Noodles udon con gamberi al burro e aglio",
+      "image": "/images/20260917-165709f33c.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "400 g di gamberoni crudi sgusciati",
+        "500 g di noodles udon surgelati",
+        "30 g di burro",
+        "100 g di spinaci",
+        "3 spicchi d'aglio",
+        "30 g di zenzero fresco",
+        "1 peperoncino rosso",
+        "20 g di anacardi",
+        "2 cucchiai di arachidi",
+        "1 cipollotto",
+        "Olio al peperoncino",
+        "# Per la salsa",
+        "2 cucchiai di salsa di ostriche",
+        "1 cucchiaino di salsa di soia scura",
+        "1 cucchiaio di salsa di soia chiara",
+        "1 cucchiaio di sriracha",
+        "1 cucchiaio di zucchero",
+        "1 cucchiaino di aceto nero cinese"
+      ],
+      "steps": [
+        "Porta a bollore una pentola capiente di acqua salata.",
+        "Mescola in una ciotolina tutti gli ingredienti della salsa e mettila da parte. Affetta finemente il peperoncino. Sbuccia e gratta finemente aglio e zenzero.",
+        "Scalda un wok o una padella grande a fuoco medio. Unisci il burro e un filo d'olio d'oliva. Quando è sciolto e spumeggia, aggiungi aglio, zenzero e peperoncino. Cuoci 2-3 minuti mescolando in continuazione, finché si ammorbidiscono e caramellano appena.",
+        "Unisci i gamberoni e cuocili 1 minuto per lato, finché cominciano appena a diventare rosa.",
+        "Cuoci i noodles udon secondo i tempi della confezione, poi scolali.",
+        "Aggiungi gli spinaci in padella coi gamberoni e mescola finché sono appena appassiti. Butta dentro i noodles e versa la salsa. Salta tutto a fuoco vivo 1-2 minuti, finché i noodles sono avvolti e lucidi. Assaggia e aggiusta con altro sale o aceto nero se serve.",
+        "Trita grossolanamente gli anacardi e tostali in una padella asciutta 2-3 minuti, finché sono dorati e profumati. Poi mescolali ai noodles.",
+        "Affetta sottile il cipollotto.",
+        "Dividi i noodles in due ciotole e completa con gli anacardi tostati, le arachidi, il cipollotto affettato e un filo di olio al peperoncino, se ti va."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "632 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "52 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "19 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "8 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "65 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "8 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "4 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "1240 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si riscalda (questa non è indicata per il congelamento)\n\nNell'app è classificata come Pescatarian.\n\nNell'elenco originale il burro è indicato come «Lurpak Butter»: è una marca, non un tipo particolare di burro.\n\nFonte: «Garlic Butter Prawn Noodles» di Finn Tonry — MOB, 4,7★ su 534 voti",
+      "servings": 2,
+      "prep_min": 10,
+      "cook_min": 15,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-17T15:11:48+00:00",
+      "updated_at": "2026-09-17T15:11:48+00:00"
     }
   ]
 }
