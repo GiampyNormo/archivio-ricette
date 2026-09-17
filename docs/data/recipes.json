@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-16T21:26:51+00:00",
+  "updated_at": "2026-09-17T14:59:37+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -1028,6 +1028,91 @@
       "favorite": false,
       "created_at": "2026-09-16T21:26:51+00:00",
       "updated_at": "2026-09-16T21:26:51+00:00"
+    },
+    {
+      "id": "808566faa8bc",
+      "name": "Tacos croccanti di funghi e fagioli neri con guacamole di piselli",
+      "image": "/images/20260917-5139160704.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "# Per i funghi",
+        "200 g di funghi misti",
+        "1 cucchiaino di aglio in polvere",
+        "1 cucchiaino di peperoncino chipotle in fiocchi",
+        "1 cucchiaino di paprika affumicata",
+        "# Per i fagioli",
+        "1 cipolla",
+        "2 spicchi d'aglio",
+        "1 cucchiaio di concentrato di pomodoro",
+        "1 cucchiaino di cumino in polvere",
+        "½ cucchiaino di peperoncino in polvere",
+        "50 g di pomodori secchi",
+        "240 g di fagioli neri cotti e scolati",
+        "1 cucchiaino di salsa di soia",
+        "# Per il guacamole di piselli",
+        "220 g di piselli surgelati",
+        "30 g di tahina",
+        "20 ml di succo di lime",
+        "15 g di jalapeño freschi",
+        "# Per servire",
+        "6 tortillas di mais",
+        "Cipolla rossa marinata",
+        "1 lime"
+      ],
+      "steps": [
+        "Scalda il forno a 200°C. Taglia i funghi grossolanamente e mettili in una piccola pirofila. Aggiungi tutte le spezie dei funghi e abbondante olio d'oliva, sale e pepe nero. Mescola bene e inforna 25-30 minuti, finché sono dorati e caramellati, girandoli almeno due volte perché cuociano in modo uniforme.",
+        "Intanto prepara i fagioli. Affetta finemente la cipolla e trita l'aglio. Fai rosolare la cipolla in una pentola capiente con un po' d'olio d'oliva per 8-10 minuti finché si ammorbidisce, poi unisci l'aglio. Aggiungi il concentrato di pomodoro, la salsa di soia e le spezie e cuoci qualche minuto ancora, finché i sapori si sono legati.",
+        "Unisci i pomodori secchi e i fagioli scolati. Sciacqua la lattina dei fagioli, riempila per metà d'acqua e versa anche quella in pentola. Fai sobbollire una decina di minuti, finché quasi tutto il liquido è evaporato e i fagioli sono ben morbidi.",
+        "Per il guacamole di piselli, scongela i piselli e metti tutti gli ingredienti in un piccolo frullatore. Frulla fino a ottenere una crema quasi liscia e metti da parte.",
+        "Per comporre, spennella un lato delle tortillas con olio d'oliva e scaldale da quel lato in una padella grande. Riempi metà di ogni tortilla con fagioli e funghi, poi richiudile. Falle rosolare in padella a fuoco medio 2 minuti per lato, finché sono croccanti da entrambe le parti.",
+        "Servi col guacamole di piselli, altro lime e i sottaceti, se ti va."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "837 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "34 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "35 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "6 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "114 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "15 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "22 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "851 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nNell'app è classificata come Vegan.\n\nLa foto è ritagliata dalla copertina di un video: al centro resta il pulsante play.\n\nFonte: «Crispy Mushroom & Black Bean Tacos with Pea Guacamole» di Christina Soteriou — MOB, 4,7★ su 1123 voti",
+      "servings": 2,
+      "prep_min": 10,
+      "cook_min": 35,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-17T14:59:37+00:00",
+      "updated_at": "2026-09-17T14:59:37+00:00"
     }
   ]
 }
