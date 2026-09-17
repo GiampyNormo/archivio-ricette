@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-17T14:59:37+00:00",
+  "updated_at": "2026-09-17T15:06:19+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -1113,6 +1113,74 @@
       "favorite": false,
       "created_at": "2026-09-17T14:59:37+00:00",
       "updated_at": "2026-09-17T14:59:37+00:00"
+    },
+    {
+      "id": "7400ac9b730f",
+      "name": "Macinato di tofu al chipotle",
+      "image": "/images/20260917-898b0dbe5f.jpg",
+      "tags": [],
+      "components": [],
+      "ingredients": [
+        "900 g di tofu compatto",
+        "2 cipolle dorate",
+        "15 g di zenzero fresco",
+        "4 spicchi d'aglio",
+        "½ cucchiaio di cumino in polvere",
+        "3 cucchiai di pasta di chipotle",
+        "40 g di concentrato di pomodoro",
+        "1 lattina da 400 g di fagioli neri",
+        "500 ml di acqua",
+        "3 cucchiai di miso bianco"
+      ],
+      "steps": [
+        "Sbriciola il tofu in pezzetti piccoli, come un macinato. Trita finemente le cipolle, poi trita zenzero e aglio.",
+        "Scalda una padella grande a fuoco medio con un filo d'olio. Quando è calda unisci il tofu sbriciolato e rosolalo 10-15 minuti, finché è appena dorato. Sala e pepa generosamente. Trasferiscilo in un piatto e mettilo da parte.",
+        "Metti la cipolla nella stessa padella, aggiungendo un altro po' d'olio se serve. Saltala 5-7 minuti finché diventa trasparente, poi unisci zenzero e aglio e cuoci 1-2 minuti, finché perdono il pungente. Aggiungi cumino, pasta di chipotle e concentrato di pomodoro e mescola perché si distribuiscano. Versa i fagioli neri col loro liquido e l'acqua. Porta a bollore, poi abbassa a fuoco medio-basso e ",
+        "Rimetti il tofu in padella e mescola. Sciogli il miso in un goccio d'acqua e incorporalo. Cuoci un paio di minuti finché diventa lucido. Assaggia e aggiusta di sale se serve."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "275 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "19 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "12 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "2 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "20 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "4 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "6 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "666 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nÈ una preparazione base, non un piatto finito: nell'app ha la sezione «Serving variations» con tre modi di usarla. Se importi anche quelli li collego a questa ricetta, come per il pollo sfilacciato.\n\nNell'app è classificata come Vegan.\n\nFonte: «Smoky Chipotle Tofu Mince» — MOB, 4,5★ su 19 voti",
+      "servings": 6,
+      "prep_min": 15,
+      "cook_min": 40,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-17T15:06:19+00:00",
+      "updated_at": "2026-09-17T15:06:19+00:00"
     }
   ]
 }
