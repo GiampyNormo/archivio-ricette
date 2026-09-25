@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-25T22:33:48+00:00",
+  "updated_at": "2026-09-25T22:35:30+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -1830,6 +1830,143 @@
       "favorite": false,
       "created_at": "2026-09-25T22:33:48+00:00",
       "updated_at": "2026-09-25T22:33:48+00:00"
+    },
+    {
+      "id": "828246bbe215",
+      "name": "Coppette al cioccolato e pistacchio",
+      "image": "/images/20260926-73b2a41459.jpg",
+      "tags": [],
+      "components": [],
+      "ingredients": [
+        "500 g di crema pasticcera",
+        "200 g di cioccolato fondente",
+        "4 cucchiai di crème fraîche",
+        "80 g di pistacchi"
+      ],
+      "steps": [
+        "Metti la crema pasticcera in una ciotola. Trita grossolanamente il cioccolato e mettilo in una ciotola resistente al calore. Fallo sciogliere a bagnomaria su un pentolino di acqua che sobbolle, oppure al microonde. (500 g di crema pasticcera, 200 g di cioccolato fondente)",
+        "Incorpora il cioccolato fuso alla crema con una bella presa di sale e distribuisci il composto negli stampini o nei bicchieri.",
+        "Lascia rassodare in frigo almeno 3 ore, o tutta la notte se ti è più comodo.",
+        "Monta la crème fraîche con una frusta finché non fa una punta morbida. Distribuiscila sulle coppette e sbriciola sopra i pistacchi. (4 cucchiai di crème fraîche, 80 g di pistacchi)"
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "571 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "11 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "35 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "17 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "57 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "40 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "7 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "178 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Vegetariano · Si conserva bene\n\nCome conservarle: coperte in frigo fino a 3 giorni. Aggiungi la crème fraîche montata e i pistacchi solo al momento di servire.\nCome congelarle: congela le coppette di cioccolato (senza guarnizione) fino a 1 mese. Falle raffreddare del tutto, coprile bene e non ricongelarle dopo lo scongelamento.\nCome riportarle in temperatura: dal frigo, tirale fuori 10 minuti prima di servire e aggiungi crème fraîche montata e pistacchi all'ultimo. Dal congelatore, scongela in frigo per qualche ora e poi guarnisci.\n\nIl sale della seconda fase non compare nell'elenco ingredienti: è «una bella presa» come scritto nel passaggio.\nLe porzioni non erano indicate negli screenshot: i valori nutrizionali sono \"per porzione\" ma non si sa quante siano.\n\nFonte: «Chocolate & Pistachio Pots» di Ben Lippett — MOB, 4,5★ su 9 voti",
+      "servings": null,
+      "prep_min": 20,
+      "cook_min": 5,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-25T22:34:39+00:00",
+      "updated_at": "2026-09-25T22:34:39+00:00"
+    },
+    {
+      "id": "6ed6b0a8ef46",
+      "name": "Torta al cioccolato e barbabietola",
+      "image": "/images/20260926-467bdd3656.jpg",
+      "tags": [],
+      "components": [],
+      "ingredients": [
+        "200 g di burro non salato",
+        "250 g di barbabietole cotte",
+        "150 g di cioccolato fondente",
+        "150 g di farina autolievitante",
+        "3 cucchiai di cacao in polvere",
+        "200 g di zucchero di canna chiaro fine",
+        "½ cucchiaino di sale marino fino",
+        "½ cucchiaino di bicarbonato",
+        "3 uova",
+        "# Per la ganache",
+        "100 g di cioccolato fondente",
+        "25 g di burro",
+        "150 ml di panna fresca"
+      ],
+      "steps": [
+        "Scalda il forno a 160 °C. Ungi con poco burro uno stampo a cerniera da 23 cm, poi fodera il fondo con carta forno. (burro non salato)",
+        "Scola le barbabietole, tagliale grossolanamente e frullale fino a ottenere una purea densa nel frullatore o nel robot. Metti da parte. (250 g di barbabietole cotte)",
+        "Trita grossolanamente il cioccolato fondente per la torta e mettilo in una ciotola resistente al calore insieme al burro. Fai sciogliere a bagnomaria su un pentolino di acqua appena tremolante (oppure al microonde, a scatti di 30 secondi mescolando ogni volta) finché è tutto sciolto. (150 g di cioccolato fondente, 200 g di burro non salato)",
+        "Metti in una ciotola grande la farina, il cacao, lo zucchero, il sale e il bicarbonato, e mescola con la frusta. Rompici dentro le uova, aggiungi la purea di barbabietola, il cioccolato fuso e il burro, poi mescola tutto con la frusta finché non hai un impasto liscio e ricco. (150 g di farina autolievitante, 3 cucchiai di cacao, 200 g di zucchero di canna chiaro, ½ cucchiaino di sale marino fino, ",
+        "Versa l'impasto nello stampo foderato. Cuoci al centro del forno per 40-45 minuti, finché è cresciuto, si stacca dai bordi e uno stecchino infilato al centro esce pulito.",
+        "Lascia raffreddare la torta completamente nello stampo — puoi anche farlo la sera prima e tenerla ben avvolta.",
+        "È il momento della ganache. Trita fine il cioccolato per la ganache e mettilo in una ciotola resistente al calore. Taglia il burro a cubetti piccoli e uniscilo al cioccolato. Scalda la panna in un pentolino o al microonde finché fuma appena, poi versala uniformemente su cioccolato e burro. Lascia riposare 1 minuto, poi mescola con una spatola finché la ganache è liscia e lucida. (100 g di cioccola",
+        "Metti la torta su un piatto da portata e versaci sopra tutta la ganache. Mangiala subito, con la ganache ancora tiepida e un po' di panna fredda a parte, oppure aspetta che si rapprenda un po'. In tutti e due i modi è una vittoria."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "547 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "8 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "36 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "22 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "54 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "35 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "6 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "355 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Vegetariano · Si conserva bene · Si congela\n\nCome conservarla: coperta, in un contenitore ermetico in frigo fino a 3 giorni. Falla raffreddare del tutto prima di riporla.\nCome congelarla: congela solo la torta senza glassa, ben avvolta, fino a 2 mesi. Falla raffreddare del tutto prima e prepara la ganache al momento. Non ricongelare dopo lo scongelamento.\nCome servirla: dal frigo, a temperatura ambiente — taglia le fette e lasciale fuori 30 minuti prima di mangiarle, non serve scaldarla. Dal congelatore, scongela in frigo e poi porta a temperatura ambiente.\n\nIl burro per ungere lo stampo non ha una quantità a sé: si prende dai 200 g dell'elenco.\nLe porzioni non erano indicate negli screenshot: i valori nutrizionali sono \"per porzione\" ma non si sa quante siano.\n\nFonte: «Chocolate Beetroot Cake» di Sophie Godwin — MOB, 4,7★ su 12 voti",
+      "servings": null,
+      "prep_min": 20,
+      "cook_min": 55,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-25T22:35:30+00:00",
+      "updated_at": "2026-09-25T22:35:30+00:00"
     }
   ]
 }
