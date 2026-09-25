@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-17T15:11:48+00:00",
+  "updated_at": "2026-09-25T22:25:59+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -1264,6 +1264,143 @@
       "favorite": false,
       "created_at": "2026-09-17T15:11:48+00:00",
       "updated_at": "2026-09-17T15:11:48+00:00"
+    },
+    {
+      "id": "4279b4264b46",
+      "name": "Spaghetti con pomodorini scoppiati e bacon",
+      "image": "/images/20260926-ca17e357af.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "100 g di spaghetti",
+        "100 g di bacon a dadini",
+        "1 spicchio d'aglio",
+        "150 g di pomodorini",
+        "1 cucchiaio di pesto rosso",
+        "15 g di basilico fresco",
+        "12,5 g di parmigiano"
+      ],
+      "steps": [
+        "Qui è tutta questione di fare più cose insieme. Metti su l'acqua della pasta e buttala appena bolle, con una manciata generosa di sale. Punta un timer di 10 minuti.",
+        "Metti il bacon in padella con un filo d'olio d'oliva. Scalda a fuoco medio e fallo cuocere finché rilascia il grasso. Quando è croccante toglilo, lasciando il grasso in padella. Affetta sottile l'aglio e buttalo nel grasso caldo.",
+        "Fai sfrigolare un minuto, poi aggiungi i pomodorini. Metti il coperchio e cuoci a fuoco medio-vivo 4-5 minuti, finché i pomodorini cominciano a scoppiare e rilasciano il loro succo in padella.",
+        "Unisci il pesto e il bacon al sugo e togli dal fuoco. Trasferisci la pasta cotta in padella con qualche cucchiaio di acqua di cottura e mantecala nel sugo. Completa con le foglie di basilico e il parmigiano."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "913 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "36 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "48 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "13 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "84 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "8 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "5 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "1638 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nCome congelarla: non è il massimo da congelare. Falla raffreddare del tutto e congela solo il sugo (senza pasta, basilico e parmigiano) in porzioni, fino a 2 mesi. Non ricongelare una volta scongelato.\n\nCome riscaldarla: dal frigo, in padella a fuoco medio con un goccio d'acqua, saltando finché è bollente; basilico e parmigiano si aggiungono freschi. Dal congelatore: scongela il sugo in frigo, riscaldalo in padella e cuoci pasta fresca al momento.\n\nLa foto è ritagliata dalla copertina di un video: al centro resta il pulsante play.\n\nFonte: «Burst Tomato & Bacon Spaghetti» di Ben Lippett — MOB, 4,8★ su 187 voti (in collaborazione con Aldi)",
+      "servings": 1,
+      "prep_min": 5,
+      "cook_min": 15,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-25T22:24:58+00:00",
+      "updated_at": "2026-09-25T22:24:58+00:00"
+    },
+    {
+      "id": "43369a0e8961",
+      "name": "Spaghetti con 'nduja e acciughe",
+      "image": "/images/20260926-ed9a751ea7.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "2 spicchi d'aglio",
+        "15 g di prezzemolo fresco a foglia piatta",
+        "200 g di spaghetti",
+        "1 barattolo da 30 g di acciughe sott'olio",
+        "60 g di 'nduja",
+        "1 limone",
+        "30 g di parmigiano"
+      ],
+      "steps": [
+        "Porta a bollore una pentola capiente di acqua salata.",
+        "Intanto affetta finemente l'aglio. Trita finemente quasi tutto il prezzemolo, tenendo da parte qualche foglia per servire. Poi butta gli spaghetti nell'acqua bollente e cuocili 2 minuti in meno rispetto alla confezione.",
+        "Mentre gli spaghetti cuociono, scalda una padella grande a fuoco medio con un bel giro d'olio d'oliva. Unisci la 'nduja e lasciala sciogliere 2-3 minuti, mescolando finché diventa lucida.",
+        "Aggiungi l'aglio e le acciughe e cuoci 2-3 minuti mescolando, finché le acciughe si sono sciolte nell'olio. Abbassa la fiamma e gratta la scorza del limone direttamente in padella.",
+        "Con le pinze trasferisci gli spaghetti cotti direttamente in padella con una bella spruzzata di acqua di cottura. Salta tutto 1-2 minuti finché il sugo si aggrappa agli spaghetti, aggiungendo altra acqua se serve.",
+        "Spremici metà del succo di limone e gratta quasi tutto il parmigiano, tenendone un po' per servire. Aggiungi il prezzemolo e salta di nuovo, con un altro goccio di acqua di cottura se serve. Assaggia e regola con sale e pepe nero abbondante.",
+        "Dividi nelle ciotole e completa con un'altra macinata di pepe e il parmigiano rimasto grattugiato sopra. Cospargi con le foglie di prezzemolo tenute da parte e servi con la metà di limone rimasta, tagliata a spicchi."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "725 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "30 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "33 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "10 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "75 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "4 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "4 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "1458 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nCome congelarlo: il sugo ('nduja, acciughe, aglio) si congela bene fino a 2 mesi. Fallo raffreddare del tutto e congelalo in porzioni. Non ricongelare una volta scongelato.\n\nCome riscaldarlo: dal frigo, saltalo in padella a fuoco medio con un goccio d'acqua finché è bollente, 2-3 minuti. Dal congelatore: scongela il sugo in frigo, poi cuoci pasta fresca e saltala col sugo riscaldato in padella.\n\nFonte: «'Nduja & Anchovy Spaghetti» di Elena Silcock — MOB, 4,7★ su 64 voti",
+      "servings": 2,
+      "prep_min": 5,
+      "cook_min": 15,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-25T22:25:59+00:00",
+      "updated_at": "2026-09-25T22:25:59+00:00"
     }
   ]
 }
