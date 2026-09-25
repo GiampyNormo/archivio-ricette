@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-25T22:27:58+00:00",
+  "updated_at": "2026-09-25T22:29:48+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -1538,6 +1538,147 @@
       "favorite": false,
       "created_at": "2026-09-25T22:27:58+00:00",
       "updated_at": "2026-09-25T22:27:58+00:00"
+    },
+    {
+      "id": "adab287f80f4",
+      "name": "Pasta verde con spinaci e cannellini",
+      "image": "/images/20260926-d072f0345c.jpg",
+      "tags": [],
+      "components": [],
+      "ingredients": [
+        "300 g di pasta di semola di grano duro",
+        "1 scalogno",
+        "4 spicchi d'aglio",
+        "250 g di spinaci",
+        "30 g di basilico",
+        "240 g di fagioli cannellini",
+        "½ limone",
+        "2 cucchiai di lievito alimentare in scaglie",
+        "120 ml di acqua di cottura della pasta",
+        "Burrata vegana"
+      ],
+      "steps": [
+        "Cuoci la pasta in abbondante acqua bollente ben salata, un minuto in meno rispetto alla confezione. Scolala tenendo da parte l'acqua di cottura.",
+        "Trita finemente lo scalogno e schiaccia l'aglio. Metti lo scalogno in una padella larga a fuoco medio-basso, sala e fallo appassire 10 minuti, finché diventa trasparente. Unisci l'aglio e cuoci altri 2 minuti.",
+        "Fai bollire l'acqua nel bollitore. Metti spinaci e basilico in uno scolapasta e versaci sopra l'acqua bollente finché appassiscono. Falli intiepidire e strizza via l'acqua in eccesso. Mettili nel frullatore con scalogno e aglio, i fagioli, il succo di limone, il lievito alimentare e l'acqua di cottura, condisci generosamente e frulla fino a ottenere una crema liscissima. Aggiungi altra acqua di co",
+        "Per servire, unisci la pasta alla crema e completa con la burrata vegana. Finisci con una macinata di pepe nero fresco."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "460 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "20 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "9 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "1 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "78 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "4 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "10 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "262 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nNell'app è classificata come Vegan.\n\nMOB indica solo la cottura (25 min), nessun tempo di preparazione.\n\nÈ la ricetta col voto più basso fra quelle importate: 3,8★ su 152 voti.\n\nFonte: «Healthy Green Queen Pasta» di Sophie Waplington — MOB",
+      "servings": 4,
+      "prep_min": null,
+      "cook_min": 25,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-25T22:28:50+00:00",
+      "updated_at": "2026-09-25T22:28:50+00:00"
+    },
+    {
+      "id": "0602f09be25c",
+      "name": "Salmone piccante alla sriracha",
+      "image": "/images/20260926-890c416fde.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "# Per il salmone",
+        "1 kg di filetti di salmone senza pelle",
+        "2 cipollotti",
+        "Semi di sesamo",
+        "Spicchi di limone",
+        "# Per la salsa",
+        "4 spicchi d'aglio",
+        "3 cucchiai di miso",
+        "3 cucchiai di sriracha",
+        "2 cucchiai di salsa di pesce",
+        "2 cucchiai di miele",
+        "1 cucchiaio di aceto di riso"
+      ],
+      "steps": [
+        "Per prima cosa gratta gli spicchi d'aglio. Poi, in una ciotola capiente, sbatti insieme tutti gli ingredienti della salsa. Taglia il salmone a cubi grandi (circa 3 per filetto) e affetta finemente i cipollotti.",
+        "Metti i cubi di salmone nella ciotola e mescola bene perché si rivestano. Trasferisci in un contenitore e lascia marinare in frigo almeno 10 minuti.",
+        "Preriscalda la friggitrice ad aria a 240°C.",
+        "Metti il salmone marinato nel cestello e cuoci 3-4 minuti, finché è caramellato e cotto dentro.",
+        "Servi con una spolverata di semi di sesamo, i cipollotti affettati e gli spicchi di limone."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "489 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "58 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "21 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "5 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "16 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "12 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "1 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "1993 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nCome conservarlo: fallo raffreddare del tutto e tienilo in un contenitore ermetico in frigo fino a 3 giorni, con le guarnizioni a parte.\n\nCome congelarlo: congela solo i cubi di salmone già cotti, raffreddati bene, in porzioni, fino a 2 mesi. Non ricongelare una volta scongelato.\n\nCome riscaldarlo: dal frigo, in forno a 180°C per 8-10 minuti oppure in friggitrice ad aria a 200°C per 3-4 minuti, finché è bollente. Dal congelatore: scongela in frigo e riscalda come sopra.\n\nLe porzioni non comparivano in nessuno dei sette screenshot di questa ricetta.\n\nFonte: «Spicy Sriracha Salmon» di Finn Tonry — MOB, 4,6★ su 19 voti",
+      "servings": null,
+      "prep_min": 10,
+      "cook_min": 5,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-25T22:29:48+00:00",
+      "updated_at": "2026-09-25T22:29:48+00:00"
     }
   ]
 }
