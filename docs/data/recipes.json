@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-25T22:35:30+00:00",
+  "updated_at": "2026-09-25T22:37:33+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -1967,6 +1967,132 @@
       "favorite": false,
       "created_at": "2026-09-25T22:35:30+00:00",
       "updated_at": "2026-09-25T22:35:30+00:00"
+    },
+    {
+      "id": "83ea6aecbb97",
+      "name": "Torta Bruce Bogtrotter",
+      "image": "/images/20260926-8646424278.jpg",
+      "tags": [],
+      "components": [],
+      "ingredients": [
+        "# Per la ganache",
+        "800 g di cioccolato fondente",
+        "1,2 l di panna fresca",
+        "8 cucchiai di zucchero di canna chiaro fine",
+        "# Per la torta",
+        "280 g di farina autolievitante",
+        "1 cucchiaino di bicarbonato",
+        "350 g di zucchero muscovado scuro",
+        "375 g di zucchero di canna chiaro fine",
+        "95 g di cacao in polvere",
+        "5 uova",
+        "2 cucchiaini di estratto di vaniglia",
+        "375 g di panna acida",
+        "375 g di cioccolato fondente",
+        "375 g di burro",
+        "2 cucchiai di caffè solubile",
+        "215 ml di acqua bollente",
+        "# Per la copertura di ganache",
+        "200 g di cioccolato fondente",
+        "300 ml di panna fresca",
+        "2 cucchiai di zucchero di canna chiaro fine"
+      ],
+      "steps": [
+        "Per la ganache, trita fine il cioccolato fondente e mettilo in una ciotola grande. Metti panna e zucchero in un pentolino e scalda piano finché è quasi al bollore e lo zucchero si è sciolto — non farla bollire! Togli dal fuoco, lascia intiepidire un paio di minuti, poi versa il composto sul cioccolato. Lascia riposare 3-4 minuti prima di mescolare piano dal centro con una spatola. Sposta la spatol",
+        "Scalda il forno a 180 °C. Imburra leggermente e fodera 3 stampi da 20 cm a fondo mobile. Versa in una ciotola grande la farina, il bicarbonato, i due zuccheri, un pizzico di sale e il cacao. Se ci sono grumi duri di zucchero, sbriciolali con le dita. (burro, 280 g di farina autolievitante, 1 cucchiaino di bicarbonato, 350 g di zucchero muscovado scuro, 375 g di zucchero di canna chiaro, 95 g di ca",
+        "In un'altra ciotola grande sbatti insieme uova, estratto di vaniglia e panna acida. Metti da parte. Trita fine il cioccolato e taglia il burro a dadini, poi metti tutto in un pentolino e fai sciogliere a fuoco medio, mescolando sempre, finché è ben amalgamato. Metti da parte. Metti il caffè solubile in una caraffa e versaci sopra l'acqua bollente. (5 uova, 2 cucchiaini di estratto di vaniglia, 375",
+        "Versa il composto con la panna acida sugli ingredienti secchi insieme al caffè e al cioccolato fuso. Amalgama con un cucchiaio grande di metallo, senza lavorare troppo. Dividi metà del composto nei tre stampi foderati e inforna per 15 minuti. Per capire se sono cotti, infila uno stecchino al centro di ogni torta: se esce pulito è pronta. Se no, rimettile in forno un paio di minuti.",
+        "Lascia raffreddare le torte cotte, poi sformale su una griglia. Lava gli stampi e ripeti con il resto del composto. Quando anche le ultime tre torte sono fuori dal forno e fredde, puoi togliere la carta forno.",
+        "Quando è il momento di assemblare, ricopri un disco di pan di spagna con uno strato di ganache alto 1 cm, livellalo con una spatola e mettici sopra un altro disco. Ripeti, ricoprendo ogni disco con lo stesso strato da 1 cm, finché non li hai impilati tutti. Spalma l'esterno della torta con uno strato sottile di ganache e lascia asciugare all'aria un paio d'ore, meglio ancora tutta la notte: serve ",
+        "Per la copertura, trita fine il cioccolato e mettilo da parte. Scalda la panna con lo zucchero in un pentolino — non farla bollire! Mescola finché lo zucchero non si scioglie, poi versa sul cioccolato. Lascia riposare 3-4 minuti, poi mescola dal centro per incorporare piano il cioccolato. Falla raffreddare e addensare, poi versala sulla torta stendendola con una spatola e facendola colare sui bord",
+        "Scalda il coltello prima di tagliare, così la ganache dentro resta bella lucida."
+      ],
+      "nutrition": [],
+      "nutrition_basis": "",
+      "notes": "Vegetariano · Si conserva bene · Si congela\n\nCome conservarla: falla raffreddare del tutto, poi in un contenitore ermetico in frigo fino a 3 giorni. Si serve meglio a temperatura ambiente.\nCome congelarla: congela la torta intera già assemblata o a fette (senza la colata di cioccolato) fino a 1 mese. Falla raffreddare del tutto, avvolgila bene e non ricongelarla dopo lo scongelamento.\nCome servirla: dal frigo, a temperatura ambiente — tirala fuori 30-60 minuti prima. Dal congelatore, scongela in frigo e poi porta a temperatura ambiente.\n\nNel secondo passaggio l'app scrive «375 tbsp» di zucchero di canna: è un errore loro, nell'elenco ingredienti sono 375 g.\nIl pizzico di sale del secondo passaggio non compare nell'elenco ingredienti.\nNon c'era lo screenshot dei valori nutrizionali, e nemmeno il numero di porzioni.\n\nFonte: «Bruce Bogtrotter Cake» di Jodie Nixon — MOB, 4,5★ su 5 voti",
+      "servings": null,
+      "prep_min": 60,
+      "cook_min": 50,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-25T22:36:52+00:00",
+      "updated_at": "2026-09-25T22:36:52+00:00"
+    },
+    {
+      "id": "1b84a07c357f",
+      "name": "Torta al cocco",
+      "image": "/images/20260926-3ede111856.jpg",
+      "tags": [],
+      "components": [],
+      "ingredients": [
+        "290 g di farina 00",
+        "2½ cucchiaini di lievito per dolci",
+        "¾ di cucchiaino di sale",
+        "205 g di burro non salato",
+        "360 g di zucchero semolato fine",
+        "4 uova",
+        "240 g di latte di cocco",
+        "40 g di cocco disidratato",
+        "# Per la crema al burro",
+        "100 g di burro non salato morbido",
+        "300 g di zucchero a velo",
+        "1 cucchiaino di estratto di vaniglia",
+        "75 ml di panna fresca",
+        "# Per la guarnizione",
+        "scaglie di cocco tostate"
+      ],
+      "steps": [
+        "Scalda il forno a 150 °C ventilato. Ungi due stampi tondi da 16 cm e foderali con carta forno. Assicurati che il burro sia a temperatura ambiente. (205 g di burro non salato)",
+        "Metti in una ciotola farina, lievito e sale e mescola con la frusta finché sono ben amalgamati. (290 g di farina 00, 2½ cucchiaini di lievito, ¾ di cucchiaino di sale)",
+        "In un'altra ciotola, con le fruste elettriche, monta burro e zucchero per 2-5 minuti finché il composto è chiaro e spumoso. Rompici dentro le uova una alla volta, sbattendo bene dopo ognuna prima di aggiungere la successiva. (360 g di zucchero semolato, 4 uova)",
+        "Setaccia il mix di farina sul burro e sbatti solo il tempo di amalgamare. Versa il latte di cocco e il cocco disidratato e mescola con un cucchiaio o una spatola finché l'impasto è del tutto omogeneo. (240 g di latte di cocco, 40 g di cocco disidratato)",
+        "Dividi l'impasto nei due stampi preparati. Inforna per 30-40 minuti, finché è dorato e uno stecchino infilato al centro esce pulito. Lascia raffreddare negli stampi 10 minuti, poi trasferisci su una griglia e fai raffreddare del tutto.",
+        "Nel frattempo prepara la crema al burro. Sbatti il burro da solo per 4-5 minuti a velocità alta. Setacciaci dentro lo zucchero a velo, aggiungi vaniglia e panna, poi sbatti a velocità bassa per amalgamare. Sbatti ancora ad alta velocità per altri 2-3 minuti. (100 g di burro non salato morbido, 300 g di zucchero a velo, 1 cucchiaino di estratto di vaniglia, 75 ml di panna fresca)",
+        "Per servire, spalma la crema al burro su entrambi i dischi ormai freddi e sovrapponili uno sull'altro, a sandwich. Spolvera sopra le scaglie di cocco tostate. (scaglie di cocco tostate)"
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "908 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "8 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "47 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "31 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "114 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "85 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "2 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "374 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione (8 porzioni)",
+      "notes": "Vegetariano · Si conserva bene · Si congela\n\nCome conservarla: la torta assemblata in un contenitore ermetico in frigo fino a 3 giorni. Portala a temperatura ambiente prima di servirla.\nCome congelarla: congela solo i dischi senza crema, ben avvolti, e la crema al burro a parte, fino a 3 mesi. Non ricongelare dopo lo scongelamento.\nCome servirla: dal frigo, a temperatura ambiente — non serve scaldarla. Dal congelatore, scongela dischi e crema separatamente in frigo, poi assembla e aggiungi le scaglie di cocco prima di servire.\n\nLe scaglie di cocco tostate non hanno una quantità indicata.\n\nFonte: «Coconut Cake» di Lily Vanilli — MOB, 4,6★ su 10 voti",
+      "servings": 8,
+      "prep_min": 15,
+      "cook_min": 40,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-25T22:37:33+00:00",
+      "updated_at": "2026-09-25T22:37:33+00:00"
     }
   ]
 }
