@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-25T22:29:48+00:00",
+  "updated_at": "2026-09-25T22:33:48+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -1679,6 +1679,157 @@
       "favorite": false,
       "created_at": "2026-09-25T22:29:48+00:00",
       "updated_at": "2026-09-25T22:29:48+00:00"
+    },
+    {
+      "id": "6eed5c50d45b",
+      "name": "Riso saltato alla 'nduja",
+      "image": "/images/20260926-e876a30711.jpg",
+      "tags": [],
+      "components": [],
+      "ingredients": [
+        "4 peperoni rossi in barattolo",
+        "50 g di prezzemolo",
+        "4 spicchi d'aglio",
+        "½ cucchiaio di concentrato di pomodoro",
+        "80 g di 'nduja",
+        "1 kg di riso già cotto",
+        "50 g di panna acida",
+        "1 limone"
+      ],
+      "steps": [
+        "Comincia tagliando i peperoni, tritando grossolanamente il prezzemolo e tritando fine l'aglio. Poi scalda una padella a fuoco medio-vivo e unisci la 'nduja con un filo d'olio d'oliva.",
+        "Sbriciola la 'nduja con un cucchiaio di legno mentre cuoce, poi aggiungi l'aglio. Fai rosolare piano un paio di minuti, quindi unisci il concentrato di pomodoro.",
+        "Cuoci un minuto scarso per togliere l'amaro al concentrato, poi aggiungi i peperoni tagliati.",
+        "Alza la fiamma e regola di sale. Sgrana il riso nella busta e versalo in padella.",
+        "Mescola tutto, lasciando che il riso prenda un bel colore rosso, e cuoci un paio di minuti. Manteca col prezzemolo e impiatta.",
+        "Servi col limone tagliato a spicchi e un filo di panna acida, se ti va."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "447 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "13 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "9 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "3 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "79 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "4 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "3 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "941 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nCome congelarlo: congela la base di riso e 'nduja in porzioni fino a 1 mese, escludendo… — il riquadro era tagliato nello screenshot proprio su cosa va escluso.\n\nFonte: «'Nduja Fried Rice» di Ben Lippett — MOB, 4,6★ su 15 voti",
+      "servings": 4,
+      "prep_min": 5,
+      "cook_min": 10,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-25T22:30:28+00:00",
+      "updated_at": "2026-09-25T22:30:28+00:00"
+    },
+    {
+      "id": "ad04e9424c71",
+      "name": "Budino al cioccolato che si fa la salsa da solo",
+      "image": "/images/20260926-c24f9cc6cf.jpg",
+      "tags": [],
+      "components": [],
+      "ingredients": [
+        "# Per la copertura",
+        "190 g di zucchero muscovado chiaro",
+        "30 g di cacao in polvere",
+        "300 ml di acqua",
+        "# Per l'impasto della torta",
+        "145 g di farina 00",
+        "70 g di zucchero semolato fine",
+        "30 g di cacao in polvere",
+        "2½ cucchiaini di lievito per dolci",
+        "1 pizzico di sale marino",
+        "125 ml di latte",
+        "50 g di burro non salato",
+        "1 uovo",
+        "1 cucchiaino di estratto di vaniglia",
+        "# Per servire",
+        "100 ml di panna fresca",
+        "# Per ungere la teglia",
+        "10 g di burro non salato"
+      ],
+      "steps": [
+        "Scalda il forno a 170 °C ventilato.",
+        "Ungi una pirofila da 25 x 20 cm con il burro fuso (10 g di burro non salato).",
+        "Per la copertura, setaccia lo zucchero muscovado e il cacao in una ciotola e mescola con la frusta. Metti da parte. (190 g di zucchero muscovado chiaro, 30 g di cacao)",
+        "Per l'impasto, prendi una ciotola a parte. Setaccia dentro tutti gli ingredienti secchi: farina, zucchero semolato, cacao, lievito e il pizzico di sale. Mescola con la frusta. (145 g di farina, 70 g di zucchero semolato, 30 g di cacao, 2½ cucchiaini di lievito, 1 pizzico di sale)",
+        "Scalda piano il latte in un pentolino a fuoco basso, non oltre la temperatura corporea. Versa il latte tiepido in una ciotola pulita insieme al burro e mescola con la frusta. Unisci l'uovo e l'estratto di vaniglia e mescola ancora. (125 ml di latte, 50 g di burro non salato, 1 uovo, 1 cucchiaino di estratto di vaniglia)",
+        "Unisci il composto con l'uovo agli ingredienti secchi e mescola bene.",
+        "Versa l'impasto nella pirofila e livellalo con una spatola a gomito o col dorso di un cucchiaio.",
+        "Distribuisci sopra la copertura di zucchero e cacao in uno strato uniforme.",
+        "Versa l'acqua bollente sopra, un cucchiaio alla volta, facendo attenzione a non creare crateri. Non versarla dall'alto con la caraffa o rovini l'impasto. (300 ml di acqua)",
+        "Inforna per 25 minuti, finché uno stecchino infilato in un punto spugnoso esce pulito.",
+        "Fai raffreddare 10 minuti e servi tiepido con una cucchiaiata di panna. (100 ml di panna fresca)"
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "687 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "10 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "27 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "17 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "105 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "67 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "7 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "396 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Vegetariano · Si conserva bene · Si congela · Si riscalda\n\nCome conservarlo: fai raffreddare del tutto, poi tienilo in un contenitore ermetico in frigo fino a 3 giorni.\nCome congelarlo: fai raffreddare del tutto, poi congela in porzioni in contenitori ermetici fino a 2 mesi. Non ricongelare dopo lo scongelamento.\nCome riscaldarlo: dal frigo, microonde a scatti di 30 secondi oppure in forno a 160 °C finché è caldissimo. Dal congelatore, scongela in frigo e poi riscalda come sopra.\n\nLe porzioni non erano indicate negli screenshot: i valori nutrizionali sono \"per porzione\" ma non si sa quante siano.\n\nFonte: «Self-Saucing Chocolate Pudding» di Seema Pankhania — MOB, 4,5★ su 21 voti",
+      "servings": null,
+      "prep_min": null,
+      "cook_min": 50,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-25T22:33:48+00:00",
+      "updated_at": "2026-09-25T22:33:48+00:00"
     }
   ]
 }
