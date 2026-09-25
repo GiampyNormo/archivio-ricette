@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-25T22:25:59+00:00",
+  "updated_at": "2026-09-25T22:27:58+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -1401,6 +1401,143 @@
       "favorite": false,
       "created_at": "2026-09-25T22:25:59+00:00",
       "updated_at": "2026-09-25T22:25:59+00:00"
+    },
+    {
+      "id": "7ea109533c22",
+      "name": "Toast doppio al pesto e formaggio",
+      "image": "/images/20260926-18c739912f.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "3 fette di pane bianco in cassetta",
+        "2½ cucchiai di pesto",
+        "50 g di cheddar",
+        "50 g di mozzarella grattugiata",
+        "2 cucchiai di maionese",
+        "2 cucchiai di semi di sesamo"
+      ],
+      "steps": [
+        "Gratta i formaggi. Tosta una fetta di pane. Spalma metà del pesto su una delle fette e coprila con metà del formaggio. Spalma il pesto rimasto sulla fetta tostata e appoggiala sopra il formaggio, col pesto verso l'alto. Aggiungi il formaggio rimasto e chiudi con l'ultima fetta. Spalma la maionese sulla faccia esterna della fetta superiore e cospargila coi semi di sesamo.",
+        "Scalda una padella antiaderente a fuoco medio e appoggiaci il toast col lato ai semi di sesamo verso il basso. Metti un'altra padella sopra e premi. Fai cuocere 3-4 minuti, finché è ben dorato.",
+        "Spalma la maionese sulla faccia superiore del pane e cospargila di semi di sesamo, premendoli un po' perché restino attaccati. Gira il toast, così il lato appena condito finisce a contatto con la padella. Rimetti sopra l'altra padella per schiacciarlo. Cuoci altri 3-4 minuti, finché il formaggio è fuso e il toast è dorato. Servi subito."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "1128 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "40 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "77 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "26 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "67 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "5 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "5 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "1505 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si riscalda\n\nAttenzione a una contraddizione dell'app: in cima è marcata «Freezable», ma il riquadro sul congelamento dice il contrario — «non ideale da congelare, il pane tostato diventa molliccio, meglio farlo al momento». Riporto entrambe le cose come stanno.\n\nCome riscaldarlo: dal frigo, in padella asciutta a fuoco medio-basso 2-3 minuti per lato, finché il formaggio si scioglie ed è bollente dentro. Dal congelatore: sconsigliato.\n\nMOB indica solo la preparazione (15 min), nessun tempo di cottura.\n\nNell'app è classificato come Vegetarian.\n\nFonte: «Double Stacked Pesto Grilled Cheese» di Elena Silcock — MOB, 4,5★ su 7 voti",
+      "servings": 1,
+      "prep_min": 15,
+      "cook_min": null,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-25T22:27:00+00:00",
+      "updated_at": "2026-09-25T22:27:00+00:00"
+    },
+    {
+      "id": "78d79bda912e",
+      "name": "Bowl di patata dolce, manzo macinato e fiocchi di latte",
+      "image": "/images/20260926-ff92eb63ad.jpg",
+      "tags": [
+        "proteico"
+      ],
+      "components": [],
+      "ingredients": [
+        "260 g di patate dolci",
+        "300 g di macinato di manzo al 5% di grassi",
+        "2 cucchiai di mix di spezie per taco, delicato e di buona qualità",
+        "160 g di fiocchi di latte interi",
+        "30 g di miele piccante",
+        "150 g di pomodorini",
+        "150 g di lattuga iceberg",
+        "2 cucchiai di cipolla rossa marinata",
+        "5 g di olio di semi spray",
+        "Peperoncino in fiocchi"
+      ],
+      "steps": [
+        "Sbuccia la patata dolce e tagliala a cubetti piccoli. Spruzzala d'olio e condiscila con sale e pepe.",
+        "Cuocila in friggitrice ad aria a 200°C per 16-18 minuti, finché è dorata e morbida. In alternativa, in forno a 180°C per 30 minuti.",
+        "Intanto scalda una padella antiaderente a fuoco medio-vivo. Unisci il macinato e cuocilo 6-7 minuti, finché è rosolato e cotto dentro. Mescolaci il mix per taco e un pizzico di sale.",
+        "Mentre cuoce, taglia a metà i pomodorini e riduci la lattuga a striscioline.",
+        "Per impiattare, metti nelle ciotole la patata dolce arrostita, poi i fiocchi di latte e il manzo speziato. Aggiungi lattuga, pomodorini e cipolla marinata.",
+        "Finisci con un filo di miele piccante e un pizzico di peperoncino in fiocchi, se ti piace piccante."
+      ],
+      "nutrition": [
+        {
+          "k": "Calorie",
+          "v": "560 kcal"
+        },
+        {
+          "k": "Proteine",
+          "v": "45 g"
+        },
+        {
+          "k": "Grassi",
+          "v": "22 g"
+        },
+        {
+          "k": "Grassi saturi",
+          "v": "7 g"
+        },
+        {
+          "k": "Carboidrati",
+          "v": "45 g"
+        },
+        {
+          "k": "Zuccheri",
+          "v": "17 g"
+        },
+        {
+          "k": "Fibre",
+          "v": "7 g"
+        },
+        {
+          "k": "Sodio",
+          "v": "780 mg"
+        }
+      ],
+      "nutrition_basis": "per porzione",
+      "notes": "Si conserva bene · Si congela · Si riscalda\n\nCome conservarla: fai raffreddare del tutto manzo e patata dolce e tienili in un contenitore ermetico fino a 3 giorni. Lattuga, pomodorini e fiocchi di latte vanno tenuti a parte.\n\nCome congelarla: congela insieme, in porzioni, patata dolce e manzo speziato, dopo averli raffreddati bene. Da consumare entro 3 mesi, senza ricongelare.\n\nCome riscaldarla: dal frigo, al microonde o in padella, manzo e patata dolce finché sono bollenti; si riscalda una volta sola e le guarnizioni fresche si aggiungono dopo. Dal congelatore: scongela in frigo e poi riscalda come sopra.\n\nTempi e porzioni non comparivano in nessuno degli otto screenshot di questa ricetta.\n\nFonte: «Sweet Potato, Minced Beef & Cottage Cheese Bowl» di Finn Tonry — MOB, 4,8★ su 616 voti",
+      "servings": null,
+      "prep_min": null,
+      "cook_min": null,
+      "time_min": null,
+      "favorite": false,
+      "created_at": "2026-09-25T22:27:58+00:00",
+      "updated_at": "2026-09-25T22:27:58+00:00"
     }
   ]
 }
