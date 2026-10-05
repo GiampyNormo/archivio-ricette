@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-25T22:37:33+00:00",
+  "updated_at": "2026-10-05T17:16:23+00:00",
   "recipes": [
     {
       "id": "6c947a9ad256",
@@ -1025,9 +1025,9 @@
       "prep_min": 5,
       "cook_min": 15,
       "time_min": null,
-      "favorite": false,
+      "favorite": true,
       "created_at": "2026-09-16T21:26:51+00:00",
-      "updated_at": "2026-09-16T21:26:51+00:00"
+      "updated_at": "2026-10-05T17:16:23+00:00"
     },
     {
       "id": "808566faa8bc",
